@@ -1,0 +1,282 @@
+<!-- Begin page -->
+<div id="wrapper" class="rw">
+    <div class="content-page">
+        <div class="content">
+            <!-- Start Content-->
+            <div class="container-fluid ">
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box exp2">
+                            <h4 class="header-title">Account Information</h4>
+                            <div class="mb-2">
+                                <div class="row">
+                                    <div class="col-12 text-sm-center form-inline">
+                                        <div class="form-group mr-2">
+                                            <select id="demo-foo-filter-status" class="custom-select custom-select-sm">
+                                                <option value="">Show all</option>
+                                                <option value="active">Active</option>
+                                                <option value="disabled">Disabled</option>
+                                                <option value="suspended">Suspended</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="demo-foo-search" type="text" placeholder="Search"
+                                                class="form-control form-control-sm" autocomplete="on">
+                                        </div>
+                                        <div class="col-sm-8 splitOp">
+                                            <div class="text-sm-right">
+                                                <div class="btn-group mb-1">
+                                                    <button type="button" class="btn  waves-effect waves-light ml-2 back1" data-toggle="modal" data-target="#account_modal"><i class="mdi mdi-plus-circle mr-1 fcolor"></i><span class="fcolor">New</span></button> &nbsp;&nbsp;
+                                                    <button type="button" class="btn  dropdown-toggle back1"
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <i class="mdi mdi-view-list mdi-12px fcolor"></i><span
+                                                            class="pro-user-name mr-1"><i
+                                                                class="mdi mdi-chevron-down fcolor"></i></span> </button>
+                                                    <div class="dropdown-menu">
+                                                        <a routerLink="/view-accounts" class="dropdown-item"
+                                                                routerLinkActive="active"> <i
+                                                                    class="mdi mdi-check-bold backcolor "></i>Table view</a>
+                                                        <a routerLink="/splitAccount" class="dropdown-item"
+                                                            routerLinkActive="active"> <i
+                                                                class="mdi mdi-view-split-vertical "></i>Split View</a>  
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div><!-- end col-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
+                                    data-page-size="20">
+                                    <thead>
+                                        <tr>
+                                            <th data-toggle="true">Account Name </th>
+                                            <th data-hide="phone">Phone</th>
+                                            <th data-toggle="true">Account Owner</th>
+                                            <th data-hide="phone">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let account of account">
+                                            <td><a routerLink="/Account-status/{{account.id}}"
+                                                    routerLinkActive="active">{{account.account_name}}&nbsp;</a>
+                                            <td>{{account.phone_Number}}</td>
+                                            <td>{{account.account_owner}}</td>
+                                            <td>
+                                                <a href="javascript:void(0);" (click)="selectPolicy(account)"
+                                                    data-toggle="modal" data-target="#modal" class="action-icon"> <i
+                                                        class="mdi mdi-square-edit-outline"></i></a>
+                                                <a href="javascript:void(0);" (click)="deleteAccount(account.id)"
+                                                    class="action-icon">
+                                                    <i class="mdi mdi-delete"></i></a>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="active">
+                                            <td colspan="7">
+                                                <div class="text-right">
+                                                    <ul
+                                                        class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0">
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div> <!-- end card-box -->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+    </div>
+
+</div>
+<!-- END wrapper -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal" *ngIf="selectedPolicy" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-size">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title" id="myCenterModalLabel">Edit Account</h4>
+                <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body p-4">
+              
+                <form class="form-horizontal" (ngSubmit)="Update()" class="form" [formGroup]="editProfileForm">
+                    <div>
+                        <p class="bg-light label">Account Information</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">
+                                            Account name
+                                        </label>
+                                        <input type="text" formControlName="account_name" [(ngModel)] = "selectedPolicy.account_name" required="true" name="account_name" class="form-control input"  [ngClass]="{ 'is-invalid': submitted && a.account_name.errors }"
+                                            placeholder="Type something"/>
+                                            <div *ngIf="submitted && a.account_name.errors" class="invalid-feedback">
+                                                <div *ngIf="a.account_name.errors.required">Account name is required</div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Accont Owner</label>
+                                        <input type="text" formControlName="account_owner" required="true" [(ngModel)] = "selectedPolicy.account_owner" name="account_owner" class="form-control input" [ngClass]="{ 'is-invalid': submitted && a.account_owner.errors }"
+                                            placeholder="Type something"/>
+                                            <div *ngIf="submitted && a.account_owner.errors" class="invalid-feedback">
+                                                <div *ngIf="a.account_owner.errors.required">Account owner name is required</div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Website</label>
+                                        <input type="text" formControlName="website"   [(ngModel)] = "selectedPolicy.website" name="website" class="form-control input" 
+                                            placeholder="Type something"/>
+                                            
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Phone</label>
+                                        <input type="text" formControlName="phone_Number"  [(ngModel)] = "selectedPolicy.phone_Number" name="phone_Number" class="form-control input" [ngClass]="{ 'is-invalid': submitted && a.phone_Number.errors }"
+                                            placeholder="Type something"/>
+                                            <div *ngIf="submitted && a.phone_Number.errors" class="invalid-feedback">
+                                                <div *ngIf="a.phone_Number.errors.required">Phone number is required</div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Description</label>
+                                        <textarea type="text" name="description" formControlName="description" [(ngModel)] = "selectedPolicy.description" class="form-control input" placeholder="Description..." ></textarea>                            
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Industry</label>
+                                        <input type="text" formControlName="industry" [(ngModel)] = "selectedPolicy.industry"   name="industry" class="form-control input" 
+                                            placeholder="Type something"/>
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Employees</label>
+                                        <input type="text" formControlName="employee" [(ngModel)] = "selectedPolicy.employee"   name="employee" class="form-control input" 
+                                            placeholder="Type something"/>
+                                            
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Type</label>
+                                        <input type="text" formControlName="type" [(ngModel)] = "selectedPolicy.type"  name="type" class="form-control input" 
+                                            placeholder="Type something"/>
+                                            
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Parent Account</label>
+                                        <input type="text" formControlName="parent_account" [(ngModel)] = "selectedPolicy.parent_account"   name="parent_account" class="form-control input" 
+                                            placeholder="Type something"/>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="bg-light label">Address Information</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Address</label>
+                                        <textarea type="text" name="address" [(ngModel)] = "selectedPolicy.address" formControlName="address" class="form-control input" placeholder="Address" ></textarea>                            
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">City</label>
+                                        <input type="text" formControlName="city" [(ngModel)] = "selectedPolicy.city" 
+                                         name="city" class="form-control input" 
+                                            placeholder="Type something"/>
+                                            
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">State</label>
+                                        <input type="text" formControlName="state" [(ngModel)] = "selectedPolicy.state"  name="state" class="form-control input"  
+                                            placeholder="Type something"/>
+                                            
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Pin Code</label>
+                                        <input type="text" formControlName="pincode" [(ngModel)] = "selectedPolicy.pincode"  name="pincode" class="form-control input" [ngClass]="{ 'is-invalid': submitted && a.pincode.errors }"
+                                            placeholder="Type something"/>
+                                            <div *ngIf="submitted && a.pincode.errors" class="invalid-feedback">
+                                                <div *ngIf="a.pincode.errors.required">Pincode is required</div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Country</label> 
+                                        <input type="text" formControlName="country" [(ngModel)] = "selectedPolicy.country"  name="country" class="form-control input" 
+                                            placeholder="Type something"/>
+                                           
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group mb-0 button">
+                                    <div>
+                                        <button type="submit" (click)="Update(selectedPolicy.id)"  class="btn btn-primary waves-effect waves-light button">
+                                            Update
+                                        </button>
+                                        
+                                        <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" id="b2" class="btn btn-secondary waves-effect m-l-5 button">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div> 
+                            </div>
+                            
+                        </div>
+                    </div>        
+                </form>
+                              
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

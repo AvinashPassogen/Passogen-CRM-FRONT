@@ -1,0 +1,182 @@
+<!-- Begin page -->
+<div id="wrapper" class="rw">
+  <div class="content-page">
+      <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid "><br>
+            <div class="row">
+              <div class="col-12">
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-lg-8 order-lg-1 order-1 assh">
+                <div class="card mb-2 search">
+                    <div class="card-body">
+                      <div class="chart-wrapper">
+                        <canvas baseChart class="canva"
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [plugins]="barChartPlugins"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType">
+                        </canvas>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-1 order-2 assi">
+              <div class="card " >
+                <div class="card-body abc">
+                  <h4 class="header-title mb-3">Assistatant</h4>
+                  <p>New lead assigned to you today</p>
+                  <hr>
+                  <div class="inbox-widget name1" data-simplebar style="max-height: 470px;" *ngFor="let leads of leads">
+                        <div class="inbox-item inbox-height t">
+                          <div *ngFor="let account of account">
+                            <div *ngFor="let contacts of contacts">
+                              <spam *ngIf=" (contacts.phone_Number) == (leads.phone_Number) && (leads.phone_Number) == (account.phone_Number)">
+                                  <p class="size dropdown-item "><a href="" routerLinkActive="active" data-toggle="modal" data-target="#basicExampleModal"  (click)="selectLeads(leads)" id="b1" >
+                                    <img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="35">&nbsp;{{leads.salutation}}&nbsp;&nbsp;&nbsp;{{leads.first_Name}}&nbsp;&nbsp;&nbsp;{{leads.last_Name}}</a>
+                                  </p>
+                              </spam>
+                            </div>
+                          </div>
+                        </div>
+                        <hr class="hrt">
+                   </div>
+                </div>
+              </div> <!-- end card -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4 col-lg-5 assh1">
+                <div class="card">
+                  <div class="card-body abc">
+                      <h4 class="header-title mb-3">Today's Task</h4>
+                      <hr>
+                      <div class="inbox-widget name1" data-simplebar style="max-height: 470px;" *ngFor="let task of tasks">
+                          <div class="inbox-item inbox-height">
+                                <spam *ngIf="(task.date2 | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM')">
+                                    <p class="size dropdown-item "><a href="" (click)="selectTask(task)" routerLinkActive="active" data-toggle="modal" data-target="#myModal1" >
+                                    {{task.assigned}}</a>
+                                    </p>
+                                    <hr class="hrt">
+                                </spam>
+                          </div>     
+                      </div>
+                  </div>
+                </div> <!-- end card -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Assistatant/lead model -->
+<div class="modal fade test"  id="basicExampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1" role="dialog">
+<div class="modal-dialog " role="document">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header bg-light popupheader">
+      <h4 class="modal-title" id="exampleModalLabel">Assistatant</h4>
+      <button type="button"  data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body" class=" border">
+        <form [formGroup]="editProfileForm" class="edf">
+            <div class="form-group form-row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                            <div class="sm-3 paddi ml-4">
+                                <div class="row demo">
+                                  <div class="col sm-2 p-1">
+                                <h5><label
+                                  class="text-muted font-13 mb-0 text-truncate">Company</label><input
+                                  matInput formControlName="company_Name"
+                                  [(ngModel)]="selectedLeads.company_Name"
+                                  name="company_Name" parsley-type="company_Name">
+                                </h5>
+                                </div>
+                                 <div class="col sm-2 p-1">
+                                  <h5 > <label
+                                    class="text-muted font-13 mb-0 text-truncate">Mobile</label><input
+                                    matInput formControlName="mobile_Number"
+                                    [(ngModel)]="selectedLeads.mobile_Number"
+                                    name="mobile_Number" parsley-type="mobile_Number"> </h5>
+                                </div>
+                              </div>
+                                  <div class="row demo">
+                                    <div class="col sm-2 p-1">
+                                  <h5 class="mt-4"> <label
+                                    class="text-muted font-13 mb-0 text-truncate">Email</label><input
+                                    matInput formControlName="email" name="email"
+                                    [(ngModel)]="selectedLeads.email" parsley-type="email">
+                                    </h5>
+                                  </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer bg-light">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Task modal -->
+<div class="modal fade test1" id="myModal1" role="dialog">
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header bg-light">
+      <h4 class="modal-title">Today's Task</h4>
+      <button type="button"  data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body" class=" border">
+        <form [formGroup]="editForm" class="edf">
+            <div class="form-group form-row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                         <mat-form-field class="p-1 ml-2">
+                                <h5 ><label
+                                    class="text-muted font-13 mb-0 text-truncate">Assinged To</label>
+                                    <input matInput formControlName="assigned" name="assigned" [(ngModel)]="selectedPolicy1.assigned"
+                                        parsley-type="assigned">
+                            </h5>
+                        </mat-form-field>
+                        <mat-form-field class="p-1">
+                            <h5>
+                                <label class="text-muted font-13 mb-0 text-truncate">Name</label>
+                                <input matInput formControlName="t_name" name="t_name" [(ngModel)]="selectedPolicy1.t_name"
+                                    parsley-type="t_name">
+                        </h5>
+                    </mat-form-field>
+                        <mat-form-field class="p-1 ml-2">
+                            <h5>
+                                <label class="text-muted font-13 mb-0 text-truncate">Comments</label>
+                                <input matInput formControlName="comments" name="comments" [(ngModel)]="selectedPolicy1.comments"
+                                    parsley-type="comments">
+                        </h5>
+                    </mat-form-field>
+                        <mat-form-field class="p-1 ">
+                        <h5>
+                            <label class="text-muted font-13 mb-0 text-truncate">Priority</label>
+                                <input matInput formControlName="priority" name="priority" [(ngModel)]="selectedPolicy1.priority"
+                                    parsley-type="priority">
+                        </h5>
+                    </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer bg-light">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+

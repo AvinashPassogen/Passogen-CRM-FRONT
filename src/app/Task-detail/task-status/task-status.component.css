@@ -1,0 +1,170 @@
+.input-form{
+  position: relative;
+  border:none;
+  border-color: transparent;
+  outline: none; 
+  border-bottom: 1px solid #CCC;
+  color: #555;
+  width: 300px; 
+}
+.form{
+  font-family: "Open Sans", sans-serif;
+}
+.rw{
+  font-family: "Open Sans", sans-serif;
+}
+
+.fcolor{
+  color: white;
+}
+.expl2{
+  height: 32%;
+}
+.exp2{
+  height: 38%;
+}
+.button{
+  border-radius: 5px;
+  margin-top: 10px;    
+}
+
+.content-page {
+margin-left: 40px;
+margin-right: 5px;
+overflow: hidden;
+padding: 0 15px 65px 15px;
+min-height: 80vh;
+margin-top: 100px;
+}
+
+.card-box-2 {
+background-color: #fff;
+padding: 1.5rem;
+box-shadow: 0 0.75rem 6rem rgba(56,65,74,.03);
+margin-bottom: 24px;
+border-radius: .25rem;
+
+}
+
+#btn{
+position: relative;
+left:72%;
+}
+
+#b1{
+margin-left: 10px;
+}
+
+#b2{
+margin-left: 14px;
+}
+
+#E2{
+margin-left:340px; 
+}
+
+.icon{
+  text-align: right;
+  margin-right:-0%;
+  }
+
+.head{
+  margin-top: -1.4%;
+  margin-left: -2.4%;
+margin-right: -2.4%;
+
+}
+
+.modal-size{
+  max-width: 800px;
+}
+.modal-centered{
+  text-align: center;
+}
+.label{
+  font-size: 15px;
+}
+.button{
+  margin-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  
+}
+.back1{
+  background-color: #5387f5; 
+  
+ }
+#b1{
+margin-left: 10px;
+}
+
+#b2{
+margin-left: 14px;
+}
+@media only screen and (max-width: 1366px){
+  .btn1{
+    left: 24.2%;
+   
+}
+.del{
+  left: 14%;
+ 
+}
+}
+/* Desktop Styles */
+@media only screen and (min-width: 1370px) and (max-width: 1605px)    {
+  .btn1{
+      left: 24%;
+     
+  }
+  .del{
+    left: 14%;
+   
+  }
+  .tag{
+    margin-left: -12%;
+  }
+}
+/*  Laptop Styles */
+@media only screen and (max-device-width : 1024px)    {
+  .btn1{
+      left: 18.3%;
+     
+  }
+  .del{
+    left: 10.3%;
+   
+}
+}
+ 
+/* Tablet Styles */
+@media only screen and (max-width: 768px) {
+  .btn1{
+      left:11.5%;
+      
+  }
+  .del{
+    left: 7.9%;
+    
+  padding: 0px;
+
+  }
+}
+/* Mobile Styles */
+@media screen and (max-width: 320px) {
+  .btn1{
+      left: 0.1%;
+     
+  }
+  .bt2{
+    width: 42.5%;
+    
+  }
+   
+  .del{
+    left: 5%;
+    margin-top: 2%;
+  }
+
+   
+}
