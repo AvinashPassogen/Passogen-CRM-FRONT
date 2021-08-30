@@ -283,8 +283,6 @@
                                                                             class="form-control input" required placeholder="Type something" />
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <div class="form-group">
                                                                         <label class="label">Type</label>
@@ -294,6 +292,8 @@
                                                                     </div>
                                                                     
                                                                 </div>
+                                                            </div>
+                                                            <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <div class="form-group">
                                                                         <label class="label">Parent Account</label>
@@ -302,8 +302,6 @@
                                                                             
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <div class="form-group">
                                                                         <label class="label">Website</label>
@@ -340,6 +338,14 @@
                                                                             class="form-control input" required placeholder="Type something" />
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Employee</label>
+                                                                        <input type="text" formControlName="employee"
+                                                                            [(ngModel)]="selectedPolicy.employee" name="employee"
+                                                                            class="form-control input" required placeholder="Type something" />
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             
                                                         </div>
@@ -369,7 +375,7 @@
                 <h4 class="modal-title" id="myCenterModalLabel">Edit Accounts Information</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 modal-height1">
                 <form [formGroup]="editForm" class="form-horizontal"  class="form">
                     <div class="row">
                         <div class="col-sm-10">
@@ -462,7 +468,7 @@
                 <h4 class="modal-title" id="myCenterModalLabel">Update Account</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 modal-height">
               
                 <form class="form-horizontal" class="form" [formGroup]="editForm">
                     <div>
@@ -577,7 +583,7 @@
                             <div class="row">
                                 <div class="form-group mb-0 button">
                                     <div>
-                                        <button type="submit"  (click)="onClickSubmit(editForm.value)"  class="btn btn-primary waves-effect waves-light button">
+                                        <button type="submit"  data-dismiss="modal" (click)="modal.dismiss()"  class="close" (click)="onClickSubmit(editForm.value)"  class="btn btn-primary waves-effect waves-light button">
                                             Update
                                         </button>
                                         &nbsp;&nbsp;

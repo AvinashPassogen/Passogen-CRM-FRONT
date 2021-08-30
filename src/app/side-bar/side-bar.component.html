@@ -31,7 +31,7 @@
                         <a routerLink="/contact-view" class="nav-link dropdown-toggle arrow-none" href="#"
                             id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="false"
                             aria-expanded="false">
-                            <i class="fe-airplay mr-1"> </i> Contacts<div class="arrow-down"></div>
+                            <i class="fe-book mr-1"></i> Contacts<div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             <a href="#" data-toggle="modal" data-target="#contact-modal" class="dropdown-item">New
@@ -71,100 +71,11 @@
                         <a routerLink="/Task-view" class="nav-link dropdown-toggle arrow-none" href="#"
                             id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            <i class="fe-airplay mr-1"> </i> Tasks <div class="arrow-down"></div>
+                            <i class="fe-clipboard mr-1"></i> Tasks <div class="arrow-down"></div>
                         </a>
   
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             <a href="#" data-toggle="modal" data-target="#task-modal" class="dropdown-item">Add Tasks</a>
-                        </div>
-                    </li>
-                    <li class="dropdown notification-list topbar-dropdown data1">
-                        <a href="" class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                          <i class="fe-bell noti-icon"></i>
-                           <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
-                         </a>
-                           <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-         
-                            <!-- item-->
-                            <div class="dropdown-item noti-title bg-light ">
-                        
-                        
-                                <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
-                                </h5>
-                            </div>
-         
-                            <div class="noti-scroll" data-simplebar>
-                        
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item active not">
-                        
-                                    <p class="heading"><u> Your Today's work</u></p>
-                        
-                                    <div *ngFor="let task of tasks">
-                        
-                                        <div class="notify-details name1" *ngIf="(task.date2 | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM')">
-                                            <hr class="hrt">
-                                            <h5><img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="40">&nbsp; <b><u>{{task.t_name}}</u></b></h5>
-                                            <h6>Your Today's work is <u>{{task.subject}}</u> And assigned<br>by
-                                            <u>{{task.assigned}} </u> sir and your status is <u> {{task.status}}.</u></h6>
-                        
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr class="hrw">
-                                <a href="javascript:void(0);" class="dropdown-item notify-item active not">
-                        
-                                        <p class="heading1"><u> Your Tomorrow's Work</u></p>
-                                        <hr>
-                                        <div *ngFor="let task of tasks">
-                        
-                                        <div class="notify-details name1" *ngIf=" (task.date2 | date:'EEEE d MMMM') == (tmrwDate | date:'EEEE d MMMM')">
-                                        <h5><img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="40">&nbsp;<b><u>{{task.t_name}}</u></b></h5>
-                                            <h6>Your Tomorrow's work is <u>{{task.subject}}</u> And assigned <br> by
-                                            <u>{{task.assigned}} </u> sir and your status is <u> {{task.status}}.</u></h6>
-                                            <hr>
-                        
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-         
-                            <!-- All-->
-                            <a routerLink="/notification" class="dropdown-item text-center text-primary notify-item notify-all bg-light">
-                                View all
-                                <i class="fe-arrow-right"></i>
-                            </a>
-         
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown us" *ngIf="loggedIn">
-                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <span class="pro-user-name ml-1"> <i class="fe-user"></i>
-                                User <i class="mdi mdi-chevron-down dow"></i>
-                            </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                            <!-- item-->
-                            <div class="dropdown-header noti-title bg-light">
-                                <h6 class="text-overflow m-0">Welcome !</h6>
-                            </div>
-  
-                            <!-- item-->
-                            <a routerLink="/setting" href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-settings"></i>
-                                <span>Settings</span>
-                            </a>
-                            <!-- item-->
-                            <a href="#"  (click)="logout()" class="dropdown-item notify-item">
-                                <i class="fe-log-out"></i>
-                                <span>Logout</span>
-                            </a>
-  
                         </div>
                     </li>
                 </ul> <!-- end navbar-->
@@ -212,7 +123,6 @@
                                                                 <div *ngIf="submitted && f.lead_Status.errors" class="invalid-feedback">
                                                                     <div *ngIf="f.lead_Status.errors.required && LeadForm.get('lead_Status').touched">Lead status is required</div>
                                                               </div>
-                                                                <!-- <small class="text-danger" *ngIf="LeadForm.get('lead_Status').hasError('required') && LeadForm.get('lead_Status').touched">Lead Status is Required</small> -->
   
                                                             </div>
                                                         </div>
@@ -255,7 +165,6 @@
                                                                         <div *ngIf="f.first_Name.errors.required && LeadForm.get('first_Name').touched">First name is required</div>
                                                                   </div>
                                                                </div>
-                                                                <!-- <small class="text-danger" *ngIf="LeadForm.get('first_Name').hasError('required') && LeadForm.get('first_Name').touched">First Name is Required</small> -->
                                                             </div>
   
   
@@ -280,7 +189,6 @@
                                                                     <div *ngIf="submitted && f.last_Name.errors" class="invalid-feedback">
                                                                         <div *ngIf="f.last_Name.errors.required && LeadForm.get('last_Name').touched">Last name is required</div>
                                                                   </div>
-                                                                <!-- <small class="text-danger" *ngIf="LeadForm.get('last_Name').hasError('required') && LeadForm.get('last_Name').touched">Last Name is Required</small> -->
                                                             </div>
   
                                                         </div>
@@ -307,7 +215,6 @@
                                                                     <div *ngIf="submitted && f.company_Name.errors" class="invalid-feedback">
                                                                         <div *ngIf="f.company_Name.errors.required && LeadForm.get('company_Name').touched">Company name is required</div>
                                                                   </div>
-                                                                <!-- <small class="text-danger" *ngIf="LeadForm.get('company_Name').hasError('required') && LeadForm.get('company_Name').touched">Company Name is Required</small> -->
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -319,7 +226,6 @@
                                                                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                                                             <div *ngIf="f.email.errors.required">Enter a valid e-mail</div>
                                                                       </div>
-                                                                        <!-- <small class="text-danger" *ngIf="LeadForm.get('email').hasError('required') && LeadForm.get('email').touched">Company Name is Required</small>     -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -514,10 +420,6 @@
                                                                     Save
                                                                 </button>
   
-                                                                <!-- <button type="submit" (click)="onSubmit()" class="btn btn-success waves-effect waves-light button bor">
-                                                                    Save & New
-                                                                </button> -->
-  
                                                                 <button type="reset" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary waves-effect m-l-5 button bor">
                                                                     Cancel
                                                                 </button>
@@ -546,7 +448,7 @@
     <div class="modal-dialog modal-dialog-centered modal-size">
         <div class="modal-content">
             <div class="modal-header bg-light popupheader">
-                <h4 class="modal-centered" id="myCenterModalLabel">New Contact</h4>
+                <h4 class="modal-centered" id="myCenterModalLabel">Add New Contact</h4>
                 <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4 lead">
@@ -591,9 +493,6 @@
                                                                     <div *ngIf="submitted && c.first_Name.errors" class="invalid-feedback">
                                                                         <div *ngIf="c.first_Name.errors.required && contactForm.get('first_Name').touched">First name is required</div>
                                                                   </div>
-                                                                <!-- <small class="text-danger"
-                                                                    *ngIf="contactForm.get('first_Name').hasError('required') && contactForm.get('first_Name').touched">First
-                                                                    Name is Required</small> -->
                                                             </div>
   
                                                         </div>
@@ -621,9 +520,6 @@
                                                                     <div *ngIf="submitted && c.last_Name.errors" class="invalid-feedback">
                                                                         <div *ngIf="c.last_Name.errors.required && contactForm.get('last_Name').touched">Last name is required</div>
                                                                   </div>
-                                                                <!-- <small class="text-danger"
-                                                                    *ngIf="contactForm.get('last_Name').hasError('required') && contactForm.get('last_Name').touched">Last
-                                                                    Name is Required</small> -->
                                                             </div>
   
                                                         </div>
@@ -633,14 +529,13 @@
                                                                 <input type="text" formControlName="account_Name"
                                                                     name="account_Name" class="form-control input"
                                                                     [ngClass]="{ 'is-invalid': submitted && c.account_Name.errors && contactForm.get('account_Name').touched}" placeholder="Type something" />
-                                                                <!-- <small class="text-danger"
-                                                                    *ngIf="contactForm.get('account_Name').hasError('required') && contactForm.get('account_Name').touched">Account
-                                                                    Name is Required</small> -->
+                                                                
                                                                     <div *ngIf="submitted && c.account_Name.errors" class="invalid-feedback">
                                                                         <div *ngIf="c.account_Name.errors.required && contactForm.get('account_Name').touched">Account name is required</div>
                                                                   </div>
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label class="label">Title</label>
@@ -766,12 +661,15 @@
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
-                                                                <label class="label">Mailing City</label>
-                                                                <input type="text" name="city" formControlName="city"
-                                                                    class="form-control input" placeholder="City"  [ngClass]="{ 'is-invalid': submitted && c.city.errors }">
-                                                                    <div *ngIf="submitted && c.city.errors" class="invalid-feedback">
-                                                                        <div *ngIf="c.city.errors.required">Mailing City is required</div>
-                                                                  </div>
+                                                                <label class="label">Mailing Country</label>
+                                                                <select formControlName="country" class="form-control country" (change)="onChangeCountry($event.target.value)"
+                                                                [ngClass]="{ 'is-invalid': submitted && c.country.errors }">
+                                                                  <option value="">country...</option>
+                                                                  <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                                                                </select>
+                                                                <div *ngIf="submitted && c.country.errors" class="invalid-feedback">
+                                                                    <div *ngIf="c.country.errors.required">Country is required</div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -780,23 +678,26 @@
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label class="label">Mailing State</label>
-                                                                <input type="text" class="form-control input"
-                                                                    formControlName="state" name="state"
-                                                                    placeholder="State"  [ngClass]="{ 'is-invalid': submitted && c.state.errors }">
-                                                                    <div *ngIf="submitted && c.state.errors" class="invalid-feedback">
-                                                                        <div *ngIf="c.state.errors.required">Mailing State is required</div>
-                                                                  </div>
+                                                                <select formControlName="state" class="form-control input" (change)="onChangeState($event.target.value)" 
+                                                                [ngClass]="{ 'is-invalid': submitted && c.state.errors }">
+                                                                  <option value="">Select state...</option>
+                                                                  <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                                                                </select>
+                                                                <div *ngIf="submitted && c.state.errors" class="invalid-feedback">
+                                                                    <div *ngIf="c.state.errors.required">Mailing State is required</div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
-                                                                <label class="label">Mailing Country</label>
-                                                                <input type="text" class="form-control input"
-                                                                    formControlName="country" name="country"
-                                                                    placeholder="Country"  [ngClass]="{ 'is-invalid': submitted && c.country.errors }">
-                                                                    <div *ngIf="submitted && c.country.errors" class="invalid-feedback">
-                                                                        <div *ngIf="c.country.errors.required">Country is required</div>
-                                                                  </div>
+                                                                <label class="label">Mailing City</label>
+                                                                <select formControlName="city" class="form-control input" [ngClass]="{ 'is-invalid': submitted && c.city.errors }">
+                                                                  <option value="">Select city...</option>
+                                                                  <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+                                                                </select>
+                                                                <div *ngIf="submitted && c.city.errors" class="invalid-feedback">
+                                                                    <div *ngIf="c.city.errors.required">Mailing City is required</div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -822,11 +723,6 @@
                                                                     class="btn btn-primary waves-effect waves-light button bor">
                                                                     Save
                                                                 </button>
-  
-                                                                <!-- <button type="submit" (click)="SubmitContact()"
-                                                                    class="btn btn-success waves-effect waves-light button bor">
-                                                                    Save & New
-                                                                </button> -->
   
                                                                 <button type="reset" class="close" (click)="resetForm();" data-dismiss="modal"
                                                                     aria-hidden="true"
@@ -886,9 +782,6 @@
                                                                 <div *ngIf="submitted && t.subject.errors" class="invalid-feedback">
                                                                     <div *ngIf="t.subject.errors.required && taskForm.get('subject').touched">Subject is required</div>
                                                               </div>
-                                                            <!-- <small class="text-danger"
-                                                                *ngIf="taskForm.get('subject').hasError('required') && taskForm.get('subject').touched">Subject
-                                                                is Required</small> -->
                                                         </div>
   
                                                     </div>
@@ -902,9 +795,6 @@
                                                                 <div *ngIf="submitted && t.assigned.errors" class="invalid-feedback">
                                                                     <div *ngIf="t.assigned.errors.required && taskForm.get('assigned').touched">Assigned to required</div>
                                                               </div>
-                                                            <!-- <small class="text-danger"
-                                                                *ngIf="taskForm.get('assigned').hasError('required') && taskForm.get('assigned').touched">Assigned
-                                                                To is Required</small> -->
                                                         </div>
   
                                                     </div>
@@ -914,9 +804,7 @@
                                                             <input type="date" formControlName="date1" name="date1"
                                                                 class="form-control input"
                                                                 placeholder="Type something" [ngClass]="{ 'is-invalid': submitted && t.date1.errors && taskForm.get('date1').touched}"/>
-                                                            <!-- <small class="text-danger"
-                                                                *ngIf="taskForm.get('date1').hasError('required') && taskForm.get('date1').touched">Date
-                                                                is Required</small> -->
+                                                            
                                                                 <div *ngIf="submitted && t.date1.errors" class="invalid-feedback">
                                                                     <div *ngIf="t.date1.errors.required && taskForm.get('date1').touched">Due Date is required</div>
                                                               </div>
@@ -934,9 +822,6 @@
                                                                 <div *ngIf="submitted && t.t_name.errors" class="invalid-feedback">
                                                                     <div *ngIf="t.t_name.errors.required && taskForm.get('t_name').touched">Name is required</div>
                                                               </div>
-                                                            <!-- <small class="text-danger"
-                                                                *ngIf="taskForm.get('t_name').hasError('required') && taskForm.get('t_name').touched">Name
-                                                                is Required</small> -->
                                                         </div>
   
                                                     </div>
@@ -1005,9 +890,6 @@
                                                                 <div *ngIf="submitted && t.date2.errors" class="invalid-feedback">
                                                                     <div *ngIf="t.date2.errors.required && taskForm.get('date2').touched">Remainder date is required</div>
                                                               </div>
-                                                            <!-- <small class="text-danger"
-                                                                *ngIf="taskForm.get('date2').hasError('required') && taskForm.get('date2').touched">Date
-                                                                is Required</small> -->
                                                         </div>
   
                                                     </div>
@@ -1033,11 +915,6 @@
                                                                 class="btn btn-primary waves-effect waves-light button bor">
                                                                 Save
                                                             </button>
-  
-                                                            <!-- <button type="submit"
-                                                                class="btn btn-success waves-effect waves-light button bor">
-                                                                Save & New
-                                                            </button> -->
   
                                                             <button type="reset" class="close" (click)="resetForm();" data-dismiss="modal"
                                                                 aria-hidden="true"
@@ -1147,11 +1024,6 @@
                                                                 <label class="label">Type</label>
                                                                 <input type="text" formControlName="type"  name="type" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && o.type.errors" class="invalid-feedback">
-                                                                        <div *ngIf="o.type.errors">Type is required</div>
-  
-                                                                     </div> -->
-                                                                     <!-- [ngClass]="{ 'is-invalid': submitted && o.type.errors }" -->
                                                             </div>
   
                                                         </div>
@@ -1184,11 +1056,6 @@
                                                                 <label class="label">Primary Campaign Source</label>
                                                                 <input type="text" formControlName="primary_csource"  name="primary_csource" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && o.primary_csource.errors" class="invalid-feedback">
-                                                                        <div *ngIf="o.primary_csource.errors">Primary Campaign source is required</div>
-  
-                                                                     </div> -->
-                                                                     <!-- [ngClass]="{ 'is-invalid': submitted && o.primary_csource.errors }" -->
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -1196,11 +1063,6 @@
                                                                 <label class="label">Probability(%)</label>
                                                                 <input type="text" formControlName="probability"  name="probability" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && o.probability.errors" class="invalid-feedback">
-                                                                        <div *ngIf="o.probability.errors">Probability is required</div>
-  
-                                                                     </div> -->
-                                                                     <!-- [ngClass]="{ 'is-invalid': submitted && o.probability.errors }" -->
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -1208,11 +1070,6 @@
                                                                 <label class="label">Amount</label>
                                                                 <input type="text" formControlName="amount"  name="amount" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && o.amount.errors" class="invalid-feedback">
-                                                                        <div *ngIf="o.amount.errors">Amount is required</div>
-  
-                                                                     </div> -->
-                                                                     <!-- [ngClass]="{ 'is-invalid': submitted && o.amount.errors }" -->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1268,10 +1125,6 @@
                                                                     <option value="Completed">Other</option>
   
                                                                 </select>
-                                                                <!-- <div *ngIf="submitted && o.loss_reason.errors" class="invalid-feedback">
-                                                                    <div *ngIf="o.loss_reason.errors">Loss reason is required</div>
-  
-                                                                 </div> -->
                                                             </div>
   
                                                         </div>
@@ -1289,11 +1142,6 @@
                                                                 <label class="label">Next Step</label>
                                                                 <input type="text" formControlName="next_step"   name="next_step" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && o.next_step.errors" class="invalid-feedback">
-                                                                        <div *ngIf="o.next_step.errors">Next step is required</div>
-  
-                                                                     </div> -->
-                                                                     <!-- [ngClass]="{ 'is-invalid': submitted && o.next_step.errors }" -->
                                                             </div>
   
                                                         </div>
@@ -1309,10 +1157,6 @@
                                                                     <option value="Purchase List">Purchase List</option>
                                                                     <option value="Other">Other</option>
                                                                 </select>
-                                                                <!-- <div *ngIf="submitted && o.lead_source.errors" class="invalid-feedback">
-                                                                    <div *ngIf="o.lead_source.errors">Lead source is required</div>
-  
-                                                                 </div> -->
                                                             </div>
   
                                                         </div>
@@ -1320,10 +1164,7 @@
                                                             <div class="form-group">
                                                                 <label class="label">Description</label>
                                                                 <textarea type="text" name="description" formControlName="description" class="form-control input" placeholder="Description..." ></textarea>
-                                                                <!-- <div *ngIf="submitted && o.description.errors" class="invalid-feedback">
-                                                                    <div *ngIf="o.description.errors">Description is required</div>
-  
-                                                                 </div>                            -->
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1335,10 +1176,6 @@
                                                                 <button type="submit"  class="btn btn-primary waves-effect waves-light button bor">
                                                                     Save
                                                                 </button>
-  
-                                                                <!-- <button type="submit"   class="btn btn-success waves-effect waves-light button bor">
-                                                                    Save & New
-                                                                </button> -->
   
                                                                 <button type="submit" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary waves-effect m-l-5 button bor">
                                                                     Cancel
@@ -1415,9 +1252,6 @@
                                                                 <label class="label">Type</label>
                                                                 <input type="text" formControlName="type" name="type" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.type.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.type.errors.required">Type is required</div>
-                                                                  </div> -->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1427,9 +1261,6 @@
                                                                 <label class="label">Parent Account</label>
                                                                 <input type="text" formControlName="parent_account" required="true" name="parent_account" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.parent_account.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.parent_account.errors.required">Parent account is required</div>
-                                                                  </div> -->
                                                             </div>
                                                         </div>
   
@@ -1438,9 +1269,6 @@
                                                                 <label class="label">Website</label>
                                                                 <input type="text" formControlName="website"   name="website" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.website.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.website.errors.required">Website is required</div>
-                                                                  </div> -->
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -1458,11 +1286,9 @@
                                                     <div class="row">
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
-                                                                <label class="label">Description</label>
-                                                                <textarea type="text" name="description" formControlName="description" class="form-control input" placeholder="Description..." ></textarea>
-                                                                <!-- <div *ngIf="submitted && a.description.errors" class="invalid-feedback">
-                                                                    <div *ngIf="a.description.errors.required">Description is required</div>
-                                                              </div> -->
+                                                                <label class="label">Email</label>
+                                                                <input type="text" formControlName="email" name="email" class="form-control input"
+                                                                    placeholder="Type something"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -1470,20 +1296,23 @@
                                                                 <label class="label">Industry</label>
                                                                 <input type="text" formControlName="industry"   name="industry" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.industry.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.industry.errors.required">Industry is required</div>
-                                                                  </div> -->
                                                             </div>
                                                         </div>
-  
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label class="label">Employees</label>
                                                                 <input type="text" formControlName="employee"  name="employee" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.employee.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.employee.errors.required">Employees is required</div>
-                                                                  </div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label class="label">Description</label>
+                                                                <textarea type="text" name="description" formControlName="description" class="form-control input" placeholder="Description..." ></textarea>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1496,30 +1325,27 @@
                                                                 <label class="label">Address</label>
   
                                                                 <textarea type="text" name="address" formControlName="address" class="form-control input" placeholder="Address" ></textarea>
-                                                                <!-- <div *ngIf="submitted && a.address.errors" class="invalid-feedback">
-                                                                    <div *ngIf="a.address.errors.required">Address is required</div>
-                                                              </div> -->
+                                                                
                                                             </div>
                                                         </div>
   
                                                         <div class="col-sm-4">
+                                                            
                                                             <div class="form-group">
-                                                                <label class="label">City</label>
-                                                                <input type="text" formControlName="city"   name="city" class="form-control input"
-                                                                    placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.city.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.city.errors.required">City is required</div>
-                                                                  </div> -->
+                                                                <label class="label">Country</label>
+                                                                <select formControlName="country" class="form-control country" (change)="onChangeCountry($event.target.value)">
+                                                                  <option value="">country...</option>
+                                                                  <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label class="label">State</label>
-                                                                <input type="text" formControlName="state"  name="state" class="form-control input"
-                                                                    placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.state.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.state.errors.required">State is required</div>
-                                                                  </div> -->
+                                                                <select formControlName="state" class="form-control input" (change)="onChangeState($event.target.value)">
+                                                                  <option value="">Select state...</option>
+                                                                  <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                                                                </select>
                                                             </div>
                                                         </div>
   
@@ -1527,12 +1353,11 @@
                                                     <div class="row">
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
-                                                                <label class="label">Country</label>
-                                                                <input type="text" formControlName="country"  name="country" class="form-control input"
-                                                                    placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.country.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.country.errors.required">Country is required</div>
-                                                                  </div> -->
+                                                                <label class="label">City</label>
+                                                                <select formControlName="city" class="form-control input">
+                                                                  <option value="">Select city...</option>
+                                                                  <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -1540,9 +1365,6 @@
                                                                 <label class="label">Pin Code</label>
                                                                 <input type="text" formControlName="pincode" required="true" name="pincode" class="form-control input"
                                                                     placeholder="Type something"/>
-                                                                    <!-- <div *ngIf="submitted && a.pincode.errors" class="invalid-feedback">
-                                                                        <div *ngIf="a.pincode.errors.required">Pincode is required</div>
-                                                                  </div> -->
                                                             </div>
                                                         </div>
   
@@ -1554,11 +1376,6 @@
                                                                 <button type="submit"   aria-hidden="true" class="btn btn-primary waves-effect waves-light button bor">
                                                                     Save
                                                                 </button>
-  
-                                                                <!-- <button type="submit"  class="btn btn-success waves-effect waves-light button bor">
-                                                                    Save & New
-                                                                </button> -->
-  
                                                                 <button type="reset" (click)="resetForm();" class="close" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary waves-effect m-l-5 button bor">
                                                                     Cancel
                                                                 </button>

@@ -65,7 +65,7 @@ label{
   margin-top: 8%;
 }
 .ex1{
-  height: 830px;
+  height: 790px;
   overflow: scroll;
   background:white;
   /* margin-left: -2%; */
@@ -109,20 +109,22 @@ label{
  
 .exp2{
   width: 104%;
-  height: 130px;
+  height: 11.5%;
 }
 .edf{
   margin-top: -2%;
 }
 .expl2{
   width: 104%;
+  height: 10.5%;
+}
+.expp2{
+  width: 104%;
 }
 .uln{
   margin-top: -1%;
 }
-/* .rw{
-  margin-top: -1.5%;
-} */
+
 hr.new1 {
   border-top: 1px solid rgba(134, 126, 126, 0.548);
   margin-top: 1%;
@@ -139,35 +141,14 @@ hr.new1 {
   margin-top: -2.4%;
 
 }
-/* .men{
-  margin-top: 1.5%;
-}
-.btn1{
-  margin-left: 74%;
- 
-}
-.del{
-  margin-left: 0.5%;
-} */
+
 .button{
   margin-left: 10px;
   border-radius: 5px;
   margin-bottom: 20px;
   
 }
-/* .pi{
-  width: 17.5%;
-}
-  .le{
-    margin-left: 1%;
-  }
-  .sal{
-    margin-right: 0%;
-    margin-left: 10%;
-  }
-  .fir{
-    margin-right: -2%;
-  } */
+
   #btn{
     position: relative;
     left: 920px;
@@ -220,6 +201,24 @@ hr.new1 {
   .tag{
     margin-left: -12%;
   }
+.modal-dialog {
+  max-width: 700px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 700px;
+}
+.modal-body{
+  height: 500px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.icon{
+  margin-top: -4%;
+}
 }
 /*  Laptop Styles */
 @media only screen and (max-device-width : 1024px)    {
@@ -231,6 +230,27 @@ hr.new1 {
     left: 5.3%;
    
 }
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.margin{
+  margin-right: 10px;
+}
+.icon{
+  margin-top: -6%;
+}
 }
  
 /* Tablet Styles */
@@ -241,13 +261,30 @@ hr.new1 {
   }
   .del{
     left: 6.2%;
-    /* text-decoration: none;
-  display: inline-block; */
+    
   padding: 0px;
 
   }
   .dat{
     margin-top: 0.2%;
+  }
+  .modal-dialog {
+    max-width: 550px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 550px;
+  }
+  .modal-body{
+    height: 400px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  }
+  .icon{
+    margin-top: -5%;
   }
 }
 /* Mobile Styles */
@@ -271,6 +308,26 @@ hr.new1 {
 .exp2{
   height: 25%;
 
+}
+
+ 
+/* Tablet Styles */
+@media only screen and (max-width: 1440px) {
+  .modal-dialog {
+    max-width: 550px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 550px;
+  }
+  .modal-body{
+    height: 400px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  }
 }
 
 }

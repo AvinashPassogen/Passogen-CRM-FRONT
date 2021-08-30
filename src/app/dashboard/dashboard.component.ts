@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup, FormControl, Validators  } from '@angular/forms
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,20 @@ export class DashboardComponent implements OnInit {
   barChartOptions: ChartOptions = {
     responsive: true,
   };
+
+  close_date = [];
+  amount = [];
+  stage = [];
+  data = [];
+  status = [];
+  won = 0;
+  lost = 0;
+  painding = 0;
+  unqualified = 0;
+  new = 0;
+  working = 0;
+  nurturing = 0;
+  qualified = 0;
   barChartLabels: Label[];
   barChartType: ChartType = 'bar';
   barChartLegend = true;
@@ -34,6 +49,11 @@ export class DashboardComponent implements OnInit {
   error: string;
   plid: number;
   lead_Status: number;
+  taskCount: any;
+  leadCount: any;
+  accCount: any;
+  contactCount: any;
+  oppocount: any;
   public show: boolean = true;
   public hide: boolean = false;
   public buttonName: any = '';
@@ -130,7 +150,7 @@ editForm = new FormGroup({
   today = new Date();
   today1 = new Date();
   tmrwDate = new Date(new Date().setDate(new Date().getDate() + 1));
-  selectedPolicy1 : Tasks = {
+  selectedTask : Tasks = {
     id:null,
     subject: null,
     assigned: null,
@@ -147,7 +167,7 @@ editForm = new FormGroup({
   first_Name: null,
   middle_Name: null,
   last_Name: null,
-  tttle: null,
+  title: null,
   company_Name: null,
   industry: null,
   phone_Number: null,
@@ -163,16 +183,125 @@ editForm = new FormGroup({
   state: null,
   city: null,
   rating: null};
+  
   constructor(private formBuilder: FormBuilder,private fb: FormBuilder,private accountService:AccountService,private taskService:TaskService,private TaskService:TaskService,
-    private router: Router,private leadService:LeadService,private http: HttpClient,private ContactsService:ContactsService,private route: ActivatedRoute,private apiService: ApiService,) { }
+    private router: Router,private leadService:LeadService,private http: HttpClient,private ContactsService:ContactsService,private route: ActivatedRoute,private apiService: ApiService,
+    
+    ) { 
+      this.http.get('http://localhost:8080/api/OppoAll').subscribe(data => {
+        for(let i in data){
+          this.stage.push(data[i].stage);   
+          if((data[i].stage) == 5){
+            this.won = ++this.won;
+          }
+          else if((data[i].stage) == 6){
+            this.lost = ++this.lost;
+          }  
+          else if((data[i].stage) !== 5 && (data[i].stage) !== 6){
+            this.painding = ++this.painding;
+          }         
+        }
+        let chartdata = {
+        labels: ["Won","Lost","Pending"],
+        datasets:[
+          {
+            label:"Status",
+            fill: false,
+            lineTension:0.1,
+            backgroundColor:[  
+              "#6658dd","#fa5c7c","#4fc6e1","#ebeff2 "
+            ],  
+            data:[this.won, this.lost,this.painding]
+          }
+      
+        ]
+      };
+      const canvas = <HTMLCanvasElement> document.getElementById('pie-chart-example');
+      const ctx = canvas.getContext('2d');
+
+      let LineGraph = new Chart(ctx, {
+        type:'pie',
+        data:chartdata,
+      });
+    }, error => console.error(error));
+
+    this.http.get(`http://localhost:8080/api/leadsAll`).subscribe(data=> {
+      for(let i in data){
+        this.status.push(data[i].lead_Status);   
+        if((data[i].lead_Status) == 1){
+          this.unqualified = ++this.unqualified;
+        }
+        else if((data[i].lead_Status) == 2){
+          this.new = ++this.new;
+        }  
+        else if((data[i].lead_Status) == 3){
+          this.working = ++this.working;
+        } 
+        else if((data[i].lead_Status) == 4){
+          this.nurturing = ++this.nurturing;
+        }
+        else if((data[i].lead_Status) == 5){
+          this.qualified = ++this.qualified;
+        }        
+      }
+      let chartdata = {
+      labels: ["Unqualified","New","Working","Nurturing","Qualified"],
+      datasets:[
+        {
+          label:"Status",
+          fill: false,
+          lineTension:0.1,
+          backgroundColor:[  
+                "#3cb371",  
+                "#0000FF",  
+                "#9966FF",  
+                "#4C4CFF",  
+                "#00FFFF",  
+                 
+          ],  
+          data:[this.unqualified, this.new,this.working, this.nurturing, this.qualified]
+        }
+    
+      ]
+    };
+    const canvas = <HTMLCanvasElement> document.getElementById('bar-chart-example');
+    const ctx = canvas.getContext('2d');
+
+    let LineGraph = new Chart(ctx, {
+      type:'bar',
+      data:chartdata,
+    });
+      }, error => console.error(error)
+    );
+  }
   addForm: FormGroup;
     submitted = false;
     ngOnInit(): void {
-      this.http.get<any[]>(`http://localhost:8080/api/leadsAll`).subscribe(data=> {
-      this.barChartLabels = data.map(item=>item.lead_Status);
-      this.barChartData =  [
-        { data: data.map(item=>item.lead_Status), label: 'lead_Status' }
-      ];});
+
+      this.taskService.getAllCount().subscribe(
+        data =>{
+          this.taskCount = data;
+        }
+      )
+
+      this.leadService.getCount().subscribe(
+        data =>{
+          this.leadCount = data;
+        }
+      )
+
+      this.accountService.getCount().subscribe(
+        data =>{
+          this.accCount = data;
+        }
+      )
+
+      this.ContactsService.getCount().subscribe(
+        data =>{
+          this.contactCount = data;
+        }
+      )
+      
       this.account = new Account();
       this.contacts = new Contacts();
       this.reloadacc();
@@ -365,7 +494,7 @@ editForm = new FormGroup({
         });
       }
       selectTask(tasks: Tasks){
-      this.selectedPolicy1 = tasks;
+      this.selectedTask = tasks;
     }
     selectLeads(leads: Leads){
       this.selectedLeads = leads;

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { LoginService } from '../login.service';
-import { User } from '../user';
+import { User } from '../models/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -200,8 +200,8 @@ export class LoginComponent implements OnInit {
       this.loginService.generateToken(this.credentials).subscribe(
         (response:any)=>{
           console.log(response.token);
-
-          this.loginService.loginUser(response.token)
+          localStorage.setItem('token', response.token);
+         // this.loginService.loginUser(response.token)
           window.location.href="/dashboard"
         },
         error=>{

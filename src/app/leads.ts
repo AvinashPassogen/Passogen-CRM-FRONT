@@ -4,7 +4,7 @@ export class Leads {
     first_Name:string;
     middle_Name:string;
     last_Name:string;
-    tttle:string;
+    title:string;
     company_Name:string
     industry:string;
     phone_Number:string;

@@ -14,7 +14,7 @@ export class Opportunity {
     roi_analysis_completed: boolean = false;
     discovery_completed: boolean = false;
     stage:string;
-    amount:string;
+    amount:number;
     description:string;
     loss_reason:string;
 

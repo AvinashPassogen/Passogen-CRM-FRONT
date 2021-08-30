@@ -160,7 +160,7 @@ hr.new1 {
   text-align: center;
 }
 .label{
-  font-size: 15px;
+  font-size: small;
 }
 .button{
   margin-left: 10px;
@@ -168,7 +168,17 @@ hr.new1 {
   margin-bottom: 20px;
   
 }
-
+.exx{
+  width: 104%;
+  height: 15%;
+}
+.exx2{
+  width: 104%;
+  height: 15%;
+}
+.abc{
+  margin-top: -1%;
+}
   .expl2{
     width: 104%;
     height: 15%;
@@ -203,6 +213,20 @@ hr.new1 {
   padding: 0px;
 
   }
+  .exx{
+    width: 104%;
+    height: 30%;
+  }
+  .exx2{
+    width: 104%;
+    height: 30%;
+  }
+  .expl2{
+    height: 15%;
+  }
+  .exp2{
+    height: 20%;
+  }
   .edit1{
     margin-left: 1%;
   }
@@ -213,6 +237,21 @@ hr.new1 {
   .dat{
     margin-top: 0.5%;
   }
+  .modal-dialog {
+    max-width: 600px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 600px;
+  }
+  .modal-body{
+    height: 450px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  } 
 }
 /* Mobile Styles */
 @media screen and (max-width: 320px) {
@@ -245,4 +284,38 @@ hr.new1 {
     left: 4.3%;
    
 }
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1370px) and (max-width: 1605px)    {
+  .modal-dialog {
+    max-width: 700px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 700px;
+  }
+  .modal-body{
+    height: 500px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  }
 }

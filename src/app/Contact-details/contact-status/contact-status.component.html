@@ -11,7 +11,7 @@
                 <div class="row" id="abc">
                     <div class="col-lg-12 order-lg-1 order-1">
                         <div class="card-box expl2">
-                            <h4 class="header-title bg-light mb-1">Contact</h4>
+                            <h4 class="header-title bg-light lei">Contact</h4>
                                 <form [formGroup]="editForm">
                                     <div class="row ">
                                         <div class="col-sm-7">
@@ -28,67 +28,48 @@
                                     </div>
                                 </form>
                         </div>
-                        <div class="card-box-2 exp2">
-                            <h4 class="bg-light label" id="pqr">Contact Information</h4>
-                            <form [formGroup]="editForm">
-                                <div class="form-group-form-row">
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="card-box exp2">
+                            <h4 class="header-title bg-light lei">Contact Information</h4>
+                            <form [formGroup]="editForm" class="edf">
+                                <div class="form-group form-row divv">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
-                                            <mat-form-field>
-                                                <h5 class="f1">
-                                                    <label class="text-muted font-13 mb-0 text-truncate">Email</label>
-                                                    <input matInput formControlName="email" name="email"
-                                                        [(ngModel)]="selectedPolicy.email" parsley-type="email">
-                                                </h5>
-                                            </mat-form-field>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3 col-md-3">
-                                            <div class="form-group">
-                                            <mat-form-field>
-                                                <h5 class="f1">
-                                                    <label class="text-muted font-13 mb-0 text-truncate">Phone
-                                                        no</label>
-                                                    <input matInput formControlName="phone_Number" name="phone_Number"
-                                                        [(ngModel)]="selectedPolicy.phone_Number"
-                                                        parsley-type="phone_Number">
-                                                </h5>
-                                            </mat-form-field>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3 col-md-3">
-                                            <div class="form-group">
-                                            <mat-form-field>
-                                                <h5 class="f1">
-                                                    <label class="text-muted font-13 mb-0 text-truncate">Account
-                                                        Name</label>
-                                                    <input matInput formControlName="account_Name" name="account_Name"
-                                                        [(ngModel)]="selectedPolicy.account_Name"
-                                                        parsley-type="account_Name">
-                                                </h5>
-                                            </mat-form-field>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-2 col-md-2">
-                                            <div class="form-group">
-                                            <mat-form-field>
-                                                <h5 class="f1">
-                                                    <label class="text-muted font-13 mb-0 text-truncate">Address</label>
-                                                    <input matInput formControlName="address" name="address"
-                                                        parsley-type="address">
-                                                </h5>
-                                            </mat-form-field>
+                                                <mat-form-field class="col-sm-2">
+                                                    <h5><label
+                                                            class="text-muted font-13 mb-0 text-truncate">Account Name</label><input
+                                                            matInput formControlName="account_Name" name="account_Name"
+                                                            [(ngModel)]="selectedPolicy.account_Name" parsley-type="account_Name">
+                                                    </h5>
+                                                </mat-form-field>
+                                                <mat-form-field class="col-sm-4">
+                                                    <h5> <label
+                                                            class="text-muted font-13 mb-0 text-truncate">E-Mail</label><input
+                                                            matInput formControlName="email"
+                                                            [(ngModel)]="selectedPolicy.email"
+                                                            name="email" parsley-type="email"> </h5>
+                                                </mat-form-field>
+                                                <mat-form-field class="col-sm-3">
+                                                    <h5><label
+                                                            class="text-muted font-13 mb-0 text-truncate">Phone Number</label><input
+                                                            matInput formControlName="phone_Number"
+                                                            [(ngModel)]="selectedPolicy.phone_Number"
+                                                            name="phone_Number" parsley-type="phone_Number"> </h5>
+                                                </mat-form-field>
+                                                <mat-form-field class="col-sm-3">
+                                                    <h5><label
+                                                        class="text-muted font-13 mb-0 text-truncate pt-2">Title</label><input
+                                                        matInput formControlName="title" name="title"
+                                                        [(ngModel)]="selectedPolicy.title" parsley-type="title">
+                                                    </h5>
+                                                </mat-form-field>
+                                                <div class="icon">
+                                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#mod"
+                                                        class="action-icon">
+                                                        <i class="mdi mdi-square-edit-outline col-lg-12" id="E1"></i>
+                                                    </a>
+                                                </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-sm-1">
-                                        <div class="icon">
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#mod"
-                                        class="action-icon" >
-                                        <i class="mdi mdi-square-edit-outline" id="E1"></i></a>
-                                        </div>    
-                                </div>
-                                </div>
                                 </div>
                             </form>
                         </div>
@@ -112,7 +93,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane" id="home-b1">
-                                    <div class="card-box exp2 k">
+                                    <div class="card-box aa">
                                         <form [formGroup]="editForm" class="edf">
                                             <fieldset>
                                                 <div class="form-group form-row">
@@ -166,7 +147,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane show active" id="profile-b1">
-                                    <div class="card-box exp2 k">                        
+                                    <div class="card-box aa">                        
                                         <form [formGroup]="editForm" class="edf">
                                             <fieldset>
                                                 <div class="form-group form-row">
@@ -229,28 +210,26 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="messages-b1">
-                                    <div class="card-box exp2 k">
+                                    <div class="card-box aa">
                                         <form [formGroup]="editForm" class="edfs">
                                             <fieldset>
                                                 <div class="form-group form-row">
                                                     <div class="col-sm-12">
                                                         <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label"> Name</label>
-                                                                    <h5 id="work3"></h5>
+                                                                    <h5 id="flname"></h5>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Account Name</label>
                                                                     <input type="text" formControlName="account_Name" [(ngModel)] = "selectedPolicy.account_Name" name="account_Name" class="form-control input"
                                                                         placeholder="Type something"/>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Reports To</label>
                                                                     <input type="text" formControlName="reports_To" [(ngModel)] = "selectedPolicy.reports_To" name="reports_To" class="form-control input"
@@ -259,46 +238,45 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Title</label>
                                                                     <input type="text" formControlName="title" [(ngModel)] = "selectedPolicy.title" name="title" class="form-control input"
                                                                         placeholder="Type something"/>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Department</label>
                                                                     <input type="text" formControlName="department" [(ngModel)] = "selectedPolicy.department" name="department" class="form-control input"
                                                                         placeholder="Type something"/>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Email</label>
                                                                     <input type="text" formControlName="email" [(ngModel)] = "selectedPolicy.email" name="email" class="form-control input"
                                                                         placeholder="Type something"/>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Fax</label>
                                                                     <input type="text" formControlName="fax" [(ngModel)] = "selectedPolicy.fax" name="fax" class="form-control input"
                                                                         placeholder="Type something"/>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Mobile Number</label>
                                                                     <input type="text" formControlName="mobile_Number" [(ngModel)] = "selectedPolicy.mobile_Number" name="mobile_Number" class="form-control input"
                                                                         placeholder="Type something"/>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Phone Number</label>
                                                                     <input type="text" formControlName="phone_Number" [(ngModel)] = "selectedPolicy.phone_Number" name="phone_Number" class="form-control input"
@@ -306,10 +284,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-2 btn2">
-                                                            <button class="btn align-items-center note-link bt2 back1"   (click)="newTast()" ><span
-                                                                class="fcolor">Save</span></button>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </fieldset>

@@ -6,15 +6,11 @@
             <div class="container-fluid"><br>
                 
                 <div class="row" id="abc">
-                    <div class="col-lg-4 order-lg-1 order-2 ex1">
+                    <div class="col-lg-4 order-lg-1 order-2 ex1" id="xyz">
                         <div class="card mb-2">
                             <div class="card-body ex">
                                 <h4 class="header-title bg-light label">All Opportunity</h4>
-                                
-
-
-
-                                    <div class="input-group mb-3" id="searchbar">
+                                <div class="input-group mb-3" id="searchbar">
                                         <input (keypress)="searchStage()" (keyup)="searchStage()" type="text"
                                             class="form-control" placeholder="Search by stage" [(ngModel)]="stage" />
 
@@ -68,9 +64,9 @@
                                 <div class="col-sm-6">
                                     <h5>
                                         <label
-                                            class=" text-muted font-13 mb-0 text-truncate ">Stage</label>
+                                            class=" text-muted font-13 mb-0 text-truncate ">Opportunity Name</label>
                                             <div>
-                                             <h5>   {{opportunity.stage}}</h5>
+                                             <h5>{{opportunity.opportunity_name}}</h5>
                                             </div>
                                     </h5>
                                     
@@ -113,7 +109,7 @@
                                                <div class="col-sm-2 btn1">
                                                 <button class="btn d-flex align-items-center bt2 back1" data-toggle="modal" data-target="#modal">  <i class="mdi mdi-square-edit-outline mr-1 fcolor"></i><span class="fcolor">Edit</span></button>
                                                </div>
-                                               <div class="col-sm-2 del">
+                                               <div class="col-sm-2">
                                                 <button class="btn d-flex align-items-center back1" (click)="deleteOpportunity(editForm.value)" ><i class="mdi mdi-delete mr-1 fcolor"></i><span class="fcolor">Delete</span></button>
                                             </div>
                                                
@@ -186,50 +182,45 @@
                                     <div class="tab" role="tabpanel">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs nav-pills p-1 bg-light  rounded-pill align-items-center" role="tablist">
-                                            <button type="button" class="btn back1" data-toggle="collapse"
+                                            <button type="button" (click)="onToggleDivSizeChange()" class="btn back1" data-toggle="collapse"
                                             href="#cardCollpase1" role="button" aria-haspopup="true"
                                             aria-controls="cardCollpase1" aria-expanded="true">
                                             <i class="mdi mdi-chevron-down fcolor"></i></button>
                                      
-                                            <li class="presentation ml-1" (click)="unqualifiedStatus(editForm.value)">
-                                                <a class="nav-link rounded-pill note-link d-flex align-items-center active px-2 px-md-2 mr-1"
+                                            <li role="presentation" class="unqualified" (click)="unqualifiedStatus(editForm.value)">
+                                                <a class="nav-link rounded-pill note-link d-flex align-items-center active px-md-1 mr-1"
                                                     id="pills-home-tab" style="background-color: #3C69C9;" data-toggle="pill" href="#pills-home" role="tab"
                                                     aria-controls="pills-home" aria-selected="true">
-                                                    <i
-                                                        class="icon-layers mr-1 fcolor"></i> <span class="fcolor">Qualification</span></a>
+                                                    <span class="newco fcolor"><i class="icon-layers mr-1 fcolor"></i>Qualification</span></a>
                                             </li>
-                                            <li class="presentation" (click)="newStatus(editForm.value)">
-                                                <a class="nav-link rounded-pill note-link d-flex align-items-center  px-2 px-md-2 mr-1" style="background-color: #3C69C9;"
+                                            <li role="presentation" class="new" (click)="newStatus(editForm.value)">
+                                                <a class="nav-link rounded-pill note-link d-flex align-items-center px-md-1 mr-1" style="background-color: #3C69C9;"
                                                     id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
                                                     aria-controls="pills-profile" aria-selected="false">
-                                                    <i
-                                                    class="icon-briefcase mr-1 fcolor"></i>   <span class="fcolor">Needs Analysis</span></a>
+                                                    <span class="newc fcolor"><i class="icon-briefcase mr-1 fcolor"></i>Needs Analysis</span></a>
                                             </li>
-                                            <li class="presentation" (click)="workingStatus(editForm.value)">
-                                                <a class="nav-link rounded-pill note-link d-flex align-items-center  px-2 px-md-2 mr-1" style="background-color: #3C69C9;"
+                                            <li role="presentation" class="working" (click)="workingStatus(editForm.value)">
+                                                <a class="nav-link rounded-pill note-link d-flex align-items-center px-md-1 mr-1" style="background-color: #3C69C9;"
                                                     id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                                                    aria-controls="pills-contact" aria-selected="false"><i
-                                                    class="icon-share-alt mr-1 fcolor"></i> <span class="fcolor">Proposal</span></a>
+                                                    aria-controls="pills-contact" aria-selected="false">
+                                                    <span class="cen fcolor"><i class="icon-share-alt mr-1 fcolor"></i>Proposal</span></a>
                                             </li>
-                                            <li class="presentation" (click)="nurturingStatus(editForm.value)">
+                                            <li role="presentation" class="nurt" (click)="nurturingStatus(editForm.value)">
                                                 <a href="#home" data-toggle="tab" aria-expanded="false" id="negotiation"
-                                                    class="nav-link rounded-pill note-link d-flex align-items-center  px-2 px-md-2 mr-1" style="background-color: #3C69C9;">
-                                                    <i
-                                                    class="icon-share-alt mr-1 fcolor"></i>   <span class="fcolor">Negotiation</span>
+                                                    class="nav-link rounded-pill note-link d-flex align-items-center px-md-2 mr-1" style="background-color: #3C69C9;">
+                                                    <span class="ncen fcolor"><i class="icon-share-alt mr-1 fcolor"></i>Negotiation</span>
                                                 </a>
                                             </li>
-                                            <li class="closedlost">
+                                            <li role="presentation" class="convert">
                                                 <a href="javascript:void(0)" data-toggle="tab" aria-expanded="true" data-toggle="modal" id="close_lost"  data-target="#change_closed_stage"
-                                                    class="nav-link rounded-pill note-link d-flex align-items-center  px-2 px-md-2 mr-1" style="background-color: #3C69C9;">
-                                                    <span class="fcolor">Closed
-                                                        Lost</span>
+                                                    class="nav-link rounded-pill note-link d-flex align-items-center px-md-2 mr-1" style="background-color: #3C69C9;">
+                                                    <span class="newco fcolor"><i class="icon-share-alt mr-1" id="fcol"></i>Closed Lost</span>
                                                 </a>
                                         </li> 
-                                        <li class="completestage"> <a href="javascript:void(0)" (click)="toggleColor(editForm.value)"
-                                            class="nav-link    rounded-pill d-flex align-items-center active  px-2 px-md-2 mr-1" style="background-color: #3C69C9;"
+                                        <li role="presentation" class="mark"> <a href="javascript:void(0)" (click)="toggleColor(editForm.value)"
+                                            class="nav-link rounded-pill note-link d-flex align-items-center active px-md-2" style="background-color: #3C69C9;"
                                                 id="add-notes">
-                                                <i class="icon-note m-1 fcolor"></i><span
-                                                    class="font-13 fcolor">Complete Stage</span></a>
+                                                <span class="markc font-13 fcolor"><i class="icon-note m-1 fcolor"></i>Mark Stage as Complete</span></a>
                                         </li>
                                         
                                     </ul>
@@ -632,7 +623,7 @@
                                                     <div class="form-group form-row">
                                                         <div class="col-sm-12">
                                                             <div class="row">
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Opportunity Name</label>
                                                                         <input type="text" formControlName="opportunity_name" [(ngModel)]="selectedPolicy.opportunity_name"
@@ -641,7 +632,7 @@
                                                                     </div>
                                                                     
                                                                 </div>
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Opportunity Owner</label>
                                                                         <input type="text" formControlName="opportunity_owner"
@@ -649,18 +640,19 @@
                                                                             class="form-control input" required placeholder="Type something" />
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
+                                                           
+                                                           
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Account Name</label>
                                                                         <input type="text" formControlName="account_name" [(ngModel)]="selectedPolicy.account_name"
                                                                             name="account_name" class="form-control input" required
                                                                             placeholder="Type something" />
                                                                     </div>
-                                                                    
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-3">
+                                                                <div class="row">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Close Date</label>
                                                                         <input type="text" formControlName="close_date"
@@ -668,9 +660,8 @@
                                                                             class="form-control input" required placeholder="Type something" />
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
+                                                          
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Type</label>
                                                                         <input type="text" formControlName="type" [(ngModel)]="selectedPolicy.type"
@@ -679,7 +670,7 @@
                                                                     </div>
                                                                     
                                                                 </div>
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Stage</label>
                                                                         <input type="text" formControlName="stage"
@@ -689,7 +680,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-4">
+                                                                  
                                                                     <div class="form-group">
                                                                         <label class="label">Primary Campaign Source</label>
                                                                         <input type="text" formControlName="primary_csource" [(ngModel)]="selectedPolicy.primary_csource"
@@ -698,26 +690,27 @@
                                                                     </div>
                                                                     
                                                                 </div>
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
-                                                                        <label class="label">Probability</label>
+                                                                        <label class="label mbotom">Probability</label>
                                                                         <input type="text" formControlName="probability"
                                                                             [(ngModel)]="selectedPolicy.probability" name="probability"
                                                                             class="form-control input" required placeholder="Type something" />
                                                                     </div>
-                                                                </div>
+                                                             
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
+                                                            
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
-                                                                        <label class="label">Amount</label>
+                                                                        <label class="label mbotom">Amount</label>
                                                                         <input type="text" formControlName="amount" [(ngModel)]="selectedPolicy.amount"
                                                                             name="amount" class="form-control input" required
                                                                             placeholder="Type something" />
                                                                     </div>
-                                                                    
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-3">
+                                                                <div class="row">
+                                                                <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Loss Reason</label>
                                                                         <input type="text" formControlName="loss_reason"
@@ -730,6 +723,7 @@
                                                     </div>
                                                 </fieldset>
                                             </form>
+                                          
                                           
                                         </div>
                                     </div>

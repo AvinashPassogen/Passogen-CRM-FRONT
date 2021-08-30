@@ -10,6 +10,12 @@
 .form{
   font-family: "Open Sans", sans-serif;
 }
+.exp2{
+  height: 10%;
+}
+.aa{
+  height: 350px;
+}
 .input-form{
   position: relative;
   border:none;
@@ -40,7 +46,9 @@
 }
 
 label{
-  font-size: 15px;
+  font-size: small;
+  font-family: "Open Sans", sans-serif;
+
 }
 .fcolor{
   color:white;
@@ -55,7 +63,7 @@ label{
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-  
+  border-width: 1px;
 }
 
 
@@ -204,20 +212,92 @@ margin-left: 14px;
   }
 }
 /*  Laptop Styles */
-@media only screen and (max-device-width : 1024px)    {
+
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1024px)  
+{ 
   .btn1{
-      left: 18.3%;
-     
-  }
-  .closed{
-    margin-left: 5%;
-  }
-  .del{
-    left: 10.3%;
-   
+    left: 20%; 
 }
+.del{
+  left:12%;
+}
+.convert{
+  
+  width: 25%;
+}
+.nurt{
+  margin-left: 5.5%;
+  width: 25%;
+}
+.unqualified{
+  width: 25%;
+}
+.new{
+  width: 25%;
+}
+.working{
+  width: 28%;
+}
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
 }
 
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.icon{
+  margin-top: -4%;
+}
+
+} 
+
+
+/* Desktop Styles */
+@media screen and (min-width: 1440px)  {
+.mark{
+  width: 23%;
+}
+.nurt{
+  width: 13%;
+}
+.working{
+  width: 13%;
+}
+.new{
+  width: 17%;
+}
+.convert{
+  width: 16%;
+}
+.unqualified{
+  width: 13%;
+}
+.modal-dialog {
+  max-width: 700px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 700px;
+}
+.modal-body{
+  height: 500px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+}
+}
  
 /* Tablet Styles */
 @media only screen and (max-width: 768px) {
@@ -227,10 +307,29 @@ margin-left: 14px;
   }
   .del{
     left: 7%;
-    /* text-decoration: none;
-  display: inline-block; */
   padding: 0px;
 
+  }
+  .convert{
+    margin-top: 0.3%;
+    width: 28%;
+  }
+  .nurt{
+    margin-left: 7%;
+    margin-top: 0.3%;
+    width: 23%;
+  }
+  .unqualified{
+    width: 25%;
+  }
+  .new{
+    width: 31%;
+  }
+  .working{
+    width: 25%;
+  }
+  .icon{
+    margin-top: -5%;
   }
 }
 /* Mobile Styles */

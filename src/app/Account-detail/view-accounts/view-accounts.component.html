@@ -108,8 +108,8 @@
     <div class="modal-dialog modal-dialog-centered modal-size">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title" id="myCenterModalLabel">Edit Account</h4>
-                <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myCenterModalLabel">Update Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4">
               
@@ -219,24 +219,42 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="label">City</label>
-                                        <input type="text" formControlName="city" [(ngModel)] = "selectedPolicy.city" 
-                                         name="city" class="form-control input" 
-                                            placeholder="Type something"/>
-                                            
+                                        <label class="label">Country</label>
+                                        <select formControlName="country" [(ngModel)]="selectedPolicy.country"
+                                            class="form-control country"
+                                            (change)="onChangeCountry($event.target.value)">
+                                            <option value="">country...</option>
+                                            <option *ngFor="let country of countries" [value]="country.id">
+                                                {{country.name}}</option>
+                                        </select>
                                     </div>
                                 </div>
+
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">State</label>
-                                        <input type="text" formControlName="state" [(ngModel)] = "selectedPolicy.state"  name="state" class="form-control input"  
-                                            placeholder="Type something"/>
-                                            
+                                        <select formControlName="state" [(ngModel)]="selectedPolicy.state"
+                                            class="form-control input" (change)="onChangeState($event.target.value)">
+                                            <option value="">Select state...</option>
+                                            <option *ngFor="let state of states" [value]="state.id">{{state.name}}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                
                             </div>
                             <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">City</label>
+                                        <select formControlName="city" [(ngModel)]="selectedPolicy.city"
+                                            class="form-control input">
+                                            <option value="">Select city...</option>
+                                            <option *ngFor="let city of cities" [value]="city.name">{{city.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Pin Code</label>
@@ -247,14 +265,7 @@
                                           </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="label">Country</label> 
-                                        <input type="text" formControlName="country" [(ngModel)] = "selectedPolicy.country"  name="country" class="form-control input" 
-                                            placeholder="Type something"/>
-                                           
-                                    </div>
-                                </div>
+                                
                                
                             </div>
 

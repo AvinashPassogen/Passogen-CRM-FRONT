@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OpportunityService} from '../../servies/opportunity.service';
 import { Tasks } from 'src/app/models/tasks';
 import { TaskService } from 'src/app/servies/task.service';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-opportunity-split',
@@ -14,8 +15,15 @@ import { TaskService } from 'src/app/servies/task.service';
   styleUrls: ['./opportunity-split.component.css']
 })
 export class OpportunitySplitComponent implements OnInit {
-
- 
+  srcHeight:any;
+srcWidth:any;
+@HostListener('window:resize',['$event'])
+getScreenSize(event?){
+  this.srcWidth= window.innerWidth;
+  console.log(this.srcWidth);
+}
+Present:boolean = true;
+  isPresent:boolean = true;
   editProfileForm: FormGroup;
   opportunities:Opportunity;
   opportunity:Opportunity;
@@ -77,7 +85,7 @@ export class OpportunitySplitComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
   private route: Router, private fb: FormBuilder,private modalService: NgbModal,
   private router: ActivatedRoute,private oppoService:OpportunityService, public taskService: TaskService,
-){}
+){  this.getScreenSize();}
 
 
   addForm: FormGroup;
@@ -215,6 +223,29 @@ export class OpportunitySplitComponent implements OnInit {
     this.oppoService.updateOpportunity(id,this.selectedPolicy).subscribe(()=>{
 
     });
+  }
+
+  onToggleDivSizeChange(){
+    const element = document.getElementById('xyz');
+    if(this.Present){
+      element.style.height ="1270px";
+      this.Present = false;
+    }else{
+      element.style.height ="1030px";
+      this.Present = true;
+    }
+    if(this.srcWidth==1024)
+    {
+      if(this.isPresent){
+
+        element.style.height ="1350px";
+        this.isPresent = false;
+      }
+      else{
+        element.style.height ="1050px";
+        this.isPresent = true;
+      }
+    }
   }
 
   unqualifiedStatus(data)

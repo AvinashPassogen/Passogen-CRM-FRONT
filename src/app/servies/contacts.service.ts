@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class ContactsService {
 
   private baseUrl = 'http://localhost:8080/api/Contacts'
+  
+  private Url = 'http://localhost:8080/api/contactCount'
 
   constructor(private http: HttpClient) { }
 
@@ -35,5 +37,9 @@ export class ContactsService {
 
   findByTitle(title) {
     return this.http.get(`${this.baseUrl}?title=${title}`);
+  }
+
+  getCount(){
+    return this.http.get(`${this.Url}`);
   }
 }

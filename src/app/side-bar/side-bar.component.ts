@@ -13,6 +13,7 @@ import { Opportunity } from '../models/opportunity';
 import { Account } from '../models/account';
 import { AccountService } from '../servies/account.service';
 import { LoginService } from '../login.service';
+import { User } from '../models/user';
   declare var $: any;
 
 
@@ -28,6 +29,8 @@ import { LoginService } from '../login.service';
 
 export class SideBarComponent implements OnInit {
   public loggedIn=false;
+  count: any;
+  user: any;
   constructor(
     public route:Router,
     public formBuilder: FormBuilder,private loginService: LoginService,
@@ -95,6 +98,20 @@ export class SideBarComponent implements OnInit {
 
   ngOnInit(): void {
     
+      this.loginService.getUser().subscribe(
+        data => {
+          this.user = data;
+        },error=>{
+        console.log(error);
+  
+      }
+      );
+      this.taskService.getCount().subscribe(
+        data =>{
+          this.count = data;
+        }
+      )
+
     this.loggedIn=this.loginService.isLoggedIn();
 
     this.tasks = new Tasks();
@@ -198,19 +215,21 @@ export class SideBarComponent implements OnInit {
    
     this.AccountForm = this.formBuilder.group({
       account_name:['',Validators.required],
-        industry:[''],
-        phone_Number:['', [ Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]],
-        account_owner:['',Validators.required],
-        employee:[''],
-        address:[''],
-        pincode:[''],
-        country:[''],
-        state:[''],
-        city:[''],
-        description:[''],
-        type:[''],
-        website:[''],
-        parent_account:['']
+      account_owner:['',Validators.required],
+      type:[''],
+      parent_account:[''],
+      website:[''],
+      phone_Number:['', [ Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]],
+      email:[],
+      industry:[''],
+      employee:[''],
+      description:[''],
+      address:[''],
+      country:[''],
+      state:[''],
+      city:[''],
+      pincode:['']
+        
     });
   }
   uptasks(id: number,task){
@@ -387,6 +406,7 @@ export class SideBarComponent implements OnInit {
   submitOppo(){
     this.submitted = true;
     // stop here if form is invalid
+    console.log(this.OpportunityForm.value);
     if (this.OpportunityForm.invalid) {
         return;
     }
@@ -398,7 +418,6 @@ export class SideBarComponent implements OnInit {
         
       });
       // this. resetForm();
-      this.refresh();
       $("#opportunitymodal").modal("hide");
     }
     
@@ -455,5 +474,6 @@ export class SideBarComponent implements OnInit {
     this.loginService.logout()
     location.reload();
   }
+
            
 }

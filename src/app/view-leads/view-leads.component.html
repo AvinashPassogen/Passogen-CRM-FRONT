@@ -129,7 +129,7 @@
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h4 class="modal-title" id="myCenterModalLabel">Update Leads</h4>
-                <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4">
                 <form class="form-horizontal" [formGroup]="addForm" class="form">
@@ -395,8 +395,8 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Zip</label>
-                                        <input name="pincode" type="text" [(ngModel)]="selectedPolicy.zip"
-                                            formControlName="pincode" class="form-control input" placeholder="Zip">
+                                        <input name="pincode" type="text" [(ngModel)]="selectedPolicy.pincode"
+                                            formControlName="pincode" class="form-control input" placeholder="Pincode">
                                     </div>
                                 </div>
                             </div>

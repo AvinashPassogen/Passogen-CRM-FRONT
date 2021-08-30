@@ -8,11 +8,13 @@ import { Leads } from './leads';
 })
 export class LeadService {
 
-  private baseUrl = 'http://localhost:8080/api/leads';
-
+  private Url = 'http://localhost:8080/api/leadcount';
+  private baseUrl = 'http://localhost:8080/api/leads';  
+  tk = localStorage.getItem("token");
   constructor(private http: HttpClient) { }
 
   getAllLeads(){
+    
     return this.http.get<Leads>(this.baseUrl).pipe();
   }
 
@@ -41,5 +43,10 @@ export class LeadService {
   findByTitle(title) {
     return this.http.get(`${this.baseUrl}?title=${title}`);
   }
+
+  getCount(){
+    return this.http.get(`${this.Url}`);
+  }
+
    
 }

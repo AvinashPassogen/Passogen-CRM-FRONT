@@ -17,7 +17,9 @@
     text-align: center;
 }
 .label{
-    font-size: 15px;
+    font-size: small;
+    font-family: "Open Sans", sans-serif;
+
 }
 .button{
     margin-left: 10px;
@@ -28,7 +30,9 @@
 .splitOp{
     left: 12.2%;
 }
-
+.button2{
+    background-color: #4176e7;
+}
 
 .lead{
     margin-top: -22px;

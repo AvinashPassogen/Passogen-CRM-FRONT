@@ -22,6 +22,8 @@ import { AuthGuard } from './services/auth.guard';
 import { NotificationComponent } from './notification/notification.component';
 import { SettingComponent } from './setting/setting.component';
 import { LogoutComponent } from './logout/logout.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { GraphComponent } from './graph/graph.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
@@ -32,7 +34,6 @@ const routes: Routes = [
     { path: 'lead-status',component: LeadStatusComponent, canActivate:[AuthGuard]},
     { path: 'lead-status/:id',component: LeadStatusComponent, canActivate:[AuthGuard]},
     { path: 'split/:id', component:SplitViewComponent, canActivate:[AuthGuard]},
-    
     { path: 'contact-view', component: ViewContactsComponent,canActivate:[AuthGuard]},
     { path: 'contact/:id', component: ViewContactsComponent,canActivate:[AuthGuard]},
     { path: 'contact-split-view', component: ContactSplitViewComponent,canActivate:[AuthGuard]},
@@ -69,7 +70,8 @@ const routes: Routes = [
   
     { path: 'notifiation-view', component: NotificationComponent,canActivate:[AuthGuard]},
     { path: 'notification', component:NotificationComponent,canActivate:[AuthGuard] },
-
+    { path: 'sidebar', component: SideBarComponent, canActivate:[AuthGuard] },
+    { path: 'graph', component: GraphComponent, canActivate:[AuthGuard] },
     { path: 'logout', component: LogoutComponent }
 
 ];

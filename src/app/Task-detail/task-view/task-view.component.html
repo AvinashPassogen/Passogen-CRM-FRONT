@@ -33,10 +33,10 @@
                                             <div class="text-sm-right">
                                                 <div class="btn-group mb-1">
 
-                                                    <button type="button" class="btn bg-blue waves-effect waves-light ml-2 back1" data-toggle="modal" data-target="#task-modal"><i class="mdi mdi-plus-circle mr-1 fcolor"></i><span class="fcolor">New</span></button> &nbsp;&nbsp;
+                                                    <button type="button" class="btn button2 waves-effect waves-light ml-2" data-toggle="modal" data-target="#task-modal"><i class="mdi mdi-plus-circle mr-1 fcolor"></i><span class="fcolor">New</span></button> &nbsp;&nbsp;
                                                    
                 
-                                                    <button type="button" class="btn bg-blue dropdown-toggle back1"
+                                                    <button type="button"  class="btn button2 dropdown-toggle"
                                                         data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">
                                                         <i class="mdi mdi-view-list mdi-12px fcolor"></i><span
@@ -137,14 +137,14 @@
     <div class="modal-dialog modal-dialog-centered modal-size">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title" id="myCenterModalLabel">Edit Tasks</h4>
-                <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myCenterModalLabel">Update Task</h4>
+                <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
 
             <div class="modal-body p-4">
                 <form class="form-horizontal" (ngSubmit)="onSubmittasks()" [formGroup]="addForm" class="form">
                     <div>
-                        <p class="bg-light label">Task Information</p>
+                        <p class="bg-light font-weight-bold label">Task Information</p>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -228,7 +228,7 @@
 
                             </div>
                             <div>
-                                <p class="bg-light label">Additional Information</p>
+                                <p class="bg-light font-weight-bold label">Additional Information</p>
                             </div>
                             <div class="row">
 
@@ -265,7 +265,7 @@
                             </div>
 
                             <div>
-                                <p class="bg-light label">Other Information</p>
+                                <p class="bg-light font-weight-bold label">Other Information</p>
                             </div>
 
                             <div class="row">

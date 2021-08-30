@@ -95,11 +95,11 @@
                                             </div>
                                         </form>
                                 </div>
-                            <div class="card-box exp2">
-                                <h4 class="bg-light label" id="pqr">Contact Information</h4>
-                                <form [formGroup]="editForm">
-                                    <div class="form-group-form-row">
-                                        <div class="form-group">
+                                <div class="card-box exp2">
+                                    <h4 class="bg-light label" id="pqr">Contact Information</h4>
+                                    <form [formGroup]="editForm" class="divv">
+                                        <div class="form-group-form-row">
+                                            <div class="form-group">
                                                     <mat-form-field class="col-sm-3">
                                                         <h5 class="f1"><label
                                                                 class="text-muted font-13 mb-0 text-truncate">Account Name</label><input
@@ -107,8 +107,8 @@
                                                                 [(ngModel)]="selectedPolicy.account_Name" parsley-type="account_Name">
                                                         </h5>
                                                     </mat-form-field>
-                                                    <mat-form-field class="col-sm-3">
-                                                        <h5 class="f1"> <label
+                                                    <mat-form-field class="col-sm-5">
+                                                        <h5 class="text"> <label
                                                                 class="text-muted font-13 mb-0 text-truncate">Email</label><input
                                                                 matInput formControlName="email"
                                                                 [(ngModel)]="selectedPolicy.email"
@@ -121,13 +121,9 @@
                                                                 [(ngModel)]="selectedPolicy.phone_Number"
                                                                 name="phone_Number" parsley-type="phone_Number"> </h5>
                                                     </mat-form-field>
-                                                    <mat-form-field class="col-sm-3">
-                                                        <h5 class="f1"><label
-                                                                class="text-muted font-13 mb-0 text-truncate">Address</label><input
-                                                                matInput formControlName="address"
-                                                                [(ngModel)]="selectedPolicy.address"
-                                                                name="address" parsley-type="address"> </h5>
-                                                    </mat-form-field>
+                                                    <div class="col-sm-1">
+                                                        
+                                                    </div>
                                                     <div class="icon">
                                                         <a href="javascript:void(0);" data-toggle="modal" data-target="#mod"
                                                         class="action-icon btnedit">
@@ -137,7 +133,7 @@
                                             </div>
                                     </form>
                                 </div>
-                                <div class="card-box t">                
+                                <div class="card-box expp">                
                                     <ul class="nav nav-tabs nav-bordered">
                                         <li class="nav-item">
                                             <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link">
@@ -282,85 +278,100 @@
                                                         <div class="form-group form-row">
                                                             <div class="col-sm-12">
                                                                 <div class="row">
-                                                                    <div class="col-sm-3">
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label"> Name</label>
-                                                                            <h5 id="work3"></h5>
+                                                                                <input type="text" formControlName="account_Name" [(ngModel)] = "selectedPolicy.account_Name" name="account_Name" class="form-control input"
+                                                                                placeholder="Type something"/>
+                                                                            
+                                                                            
                                                                         </div>
-                                                                    </div>
+                                                                   
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3">
+                                                             
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Account Name</label>
                                                                             <input type="text" formControlName="account_Name" [(ngModel)] = "selectedPolicy.account_Name" name="account_Name" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                           
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-3">
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Reports To</label>
                                                                             <input type="text" formControlName="reports_To" [(ngModel)] = "selectedPolicy.reports_To" name="reports_To" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                                
                                                                         </div>
                                                                     </div>
+                                                                    
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-sm-3">
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Title</label>
                                                                             <input type="text" formControlName="title" [(ngModel)] = "selectedPolicy.title" name="title" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                                
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-3">
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Department</label>
                                                                             <input type="text" formControlName="department" [(ngModel)] = "selectedPolicy.department" name="department" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                                
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3">
+                                                              
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Email</label>
                                                                             <input type="text" formControlName="email" [(ngModel)] = "selectedPolicy.email" name="email" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                                
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-3">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Fax</label>
                                                                             <input type="text" formControlName="fax" [(ngModel)] = "selectedPolicy.fax" name="fax" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                                
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3">
+                                                               
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Mobile Number</label>
                                                                             <input type="text" formControlName="mobile_Number" [(ngModel)] = "selectedPolicy.mobile_Number" name="mobile_Number" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                                
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-3">
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
                                                                             <label class="label">Phone Number</label>
                                                                             <input type="text" formControlName="phone_Number" [(ngModel)] = "selectedPolicy.phone_Number" name="phone_Number" class="form-control input"
                                                                                 placeholder="Type something"/>
+                                                                                
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-2 btn2">
+                                                                    
                                                                     <button class="btn align-items-center note-link bt2 back1"   (click)="newTast()" ><span
                                                                         class="fcolor">Save</span></button>
                                                                 </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </fieldset>
                                                 </form>
+                                              
                                             </div>
                                         </div>
                                     </div>
@@ -488,7 +499,7 @@
             <div class="modal-body p-4 ">
                 <form class="form-horizontal" [formGroup]="editForm" class="form">
                     <div>
-                        <p class="bg-light label">Contact Information</p>
+                        <p class="bg-light font-weight-bold label">Contact Information</p>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -601,7 +612,7 @@
                                 </div>                                                  
                             </div>
                             <div>
-                                <p class="bg-light label">Address Information</p>
+                                <p class="bg-light font-weight-bold label">Address Information</p>
                             </div>
                             <div class="row">
                                 <div class="col-sm-4">

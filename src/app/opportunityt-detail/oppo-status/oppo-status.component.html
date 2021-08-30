@@ -94,7 +94,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="card-box exp2">
+                            <div class="card-box expp">
                                 <div class="tab" role="tabpanel">
                                     
                                     <ul class="nav nav-pills p-1 bg-light mb-1 rounded-pill align-items-center" role="tablist">
@@ -103,42 +103,38 @@
                                         aria-controls="cardCollpase1" aria-expanded="true">
                                         <i class="mdi mdi-chevron-down fcolor"></i></button>&nbsp;
                                  
-                                        <li role="presentation"> <a class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-4 mr-0 mr-md-1" (click)="unqualifiedStatus(editForm.value)" style="background-color: #3C69C9;"
+                                        <li role="presentation" class="unqualified"> <a class="nav-link rounded-pill note-link d-flex align-items-center px-md-4 mr-md-0" (click)="unqualifiedStatus(editForm.value)" style="background-color: #3C69C9;"
                                             id="pills-home-tab"  data-toggle="pill" href="#pills-home"  role="tab"  
                                             aria-controls="pills-home" aria-selected="true" >
-                                            <i class="fe-layers mr-1 fcolor"></i>
-                                            <span class=".text-secondary fcolor">Qualification</span></a>
-                                    </li>
-                                        <li role="presentation"> <a class="nav-link  rounded-pill  note-link d-flex align-items-center px-2 px-md-4  mr-0 mr-md-1" (click)="newStatus(editForm.value)" style="background-color: #3C69C9;"
+                                            <span class=".text-secondary fcolor"><i class="fe-layers mr-1 fcolor"></i>Qualification</span></a>
+                                        </li>
+                                        <li role="presentation" class="new"> <a class="nav-link  rounded-pill  note-link d-flex align-items-center px-md-3 mr-md-0" (click)="newStatus(editForm.value)" style="background-color: #3C69C9;"
                                             id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"  
                                             aria-controls="pills-profile" aria-selected="false">
-                                            <i class="fe-briefcase mr-1 fcolor"></i><span class="fcolor">Needs Analysis</span>  
+                                            <span class="fcolor"><i class="fe-briefcase mr-1 fcolor"></i>Needs Analysis</span>  
                                         </a>
-                                    </li>
-                                        <li role="presentation">  <a class="nav-link btn-primary rounded-pill note-link d-flex align-items-center  px-2 px-md-4 mr-0 mr-md-1" (click)="workingStatus(editForm.value)" style="background-color: #3C69C9;"
+                                        </li>
+                                        <li role="presentation" class="working"><a class="nav-link btn-primary rounded-pill note-link d-flex align-items-center px-md-4 mr-md-0" (click)="workingStatus(editForm.value)" style="background-color: #3C69C9;"
                                             id="pills-contact-tab" data-toggle="pill"  href="#pills-contact" role="tab" 
                                             aria-controls="pills-contact" aria-selected="false">
-                                            <i class="icon-share-alt mr-1" id="fcol"></i><span
-                                                class="fcolor">Proposal</span> </a>
-                                    </li>
+                                            <span class="fcolor"><i class="icon-share-alt mr-1" id="fcol"></i>Proposal</span> </a>
+                                        </li>
 
-                                        <li role="presentation">  <a href="#home" data-toggle="tab" aria-expanded="false" id="negotiation"
-                                            class="nav-link btn-primary rounded-pill note-link d-flex align-items-center px-2 px-md-4 mr-0 mr-md-1" (click)="nurturingStatus(editForm.value)" style="background-color: #3C69C9;">
-                                            <i class="icon-share-alt mr-1" id="fcol"></i><span
-                                                class="fcolor">Negotiation</span> 
+                                        <li role="presentation" class="nurt">  <a href="#home" data-toggle="tab" aria-expanded="false" id="negotiation"
+                                            class="nav-link btn-primary rounded-pill note-link d-flex align-items-center px-md-4 mr-md-0" (click)="nurturingStatus(editForm.value)" style="background-color: #3C69C9;">
+                                            <span class="fcolor"><i class="icon-share-alt mr-1" id="fcol"></i>Negotiation</span> 
                                         </a>
-                                    </li>
-                                        <li role="presentation">  <a href="javascript:void(0)" data-toggle="tab" aria-expanded="true" id="close_lost" data-toggle="modal"  data-target="#change_closed_stage"
-                                            class="btn  rounded-pill note-link d-flex align-items-center px-2 px-md-4 mr-0 mr-md-1" style="background-color: #3C69C9;">
-                                            <i class="icon-share-alt mr-1" id="fcol"></i><span class="fcolor">Closed
-                                                Lost</span> 
+                                        </li>
+                                        <li role="presentation" class="convert">  <a href="javascript:void(0)" data-toggle="tab" aria-expanded="true" id="close_lost" data-toggle="modal"  data-target="#change_closed_stage"
+                                            class="btn  rounded-pill note-link d-flex align-items-center px-md-3 mr-md-0" style="background-color: #3C69C9;">
+                                            <span class="fcolor"><i class="icon-share-alt mr-1" id="fcol"></i>Closed Lost</span> 
                                         </a>
-                                    </li>
-                                    <li role="presentation" (click)="toggleColor(editForm.value)">  <a href="javascript:void(0)" 
-                                        class="btn  rounded-pill note-link d-flex align-items-center px-1 px-md-4" style="background-color: #3C69C9;">
-                                        <i class="far fa-calendar-alt mr-1" id="fcol"></i><span class="fcolor">Mark Stage as Complete</span> 
-                                    </a>
-                                </li>
+                                        </li>
+                                        <li role="presentation" class="mark" (click)="toggleColor(editForm.value)">  <a href="javascript:void(0)" 
+                                            class="btn  rounded-pill note-link d-flex align-items-center px-md-4" style="background-color: #3C69C9;">
+                                            <span class="fcolor"><i class="far fa-calendar-alt mr-1" id="fcol"></i>Mark Stage as Complete</span> 
+                                        </a>
+                                        </li>
                                        
                                     </ul>
                                 </div>
@@ -468,7 +464,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane" id="home-b1">
-                                    <div class="card-box exp2">
+                                    <div class="card-box aa">
                                         <form [formGroup]="editForm" class="edf">
                                             <fieldset>
                                                 <div class="form-group form-row">
@@ -537,7 +533,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane show active" id="profile-b1">
-                                    <div class="card-box exp2">                        
+                                    <div class="card-box aa">                        
                                         <form [formGroup]="editForm" class="edf">
                                             <fieldset>
                                                 <div class="form-group form-row">
@@ -623,13 +619,13 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="messages-b1">
-                                    <div class="card-box exp2">
+                                    <div class="card-box aa">
                                         <form [formGroup]="editForm" class="edf">
                                             <fieldset>
                                                 <div class="form-group form-row">
                                                     <div class="col-sm-12">
                                                         <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Opportunity Name</label>
                                                                     <input type="text" formControlName="opportunity_name" [(ngModel)]="selectedPolicy.opportunity_name"
@@ -638,7 +634,7 @@
                                                                 </div>
                                                                 
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Opportunity Owner</label>
                                                                     <input type="text" formControlName="opportunity_owner"
@@ -646,9 +642,7 @@
                                                                         class="form-control input" required placeholder="Type something" />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Account Name</label>
                                                                     <input type="text" formControlName="account_name" [(ngModel)]="selectedPolicy.account_name"
@@ -657,7 +651,10 @@
                                                                 </div>
                                                                 
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Close Date</label>
                                                                     <input type="text" formControlName="close_date"
@@ -665,9 +662,7 @@
                                                                         class="form-control input" required placeholder="Type something" />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Type</label>
                                                                     <input type="text" formControlName="type" [(ngModel)]="selectedPolicy.type"
@@ -676,7 +671,7 @@
                                                                 </div>
                                                                 
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Stage</label>
                                                                     <input type="text" formControlName="stage"
@@ -686,7 +681,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Primary Campaign Source</label>
                                                                     <input type="text" formControlName="primary_csource" [(ngModel)]="selectedPolicy.primary_csource"
@@ -695,7 +690,7 @@
                                                                 </div>
                                                                 
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Probability</label>
                                                                     <input type="text" formControlName="probability"
@@ -703,9 +698,7 @@
                                                                         class="form-control input" required placeholder="Type something" />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Amount</label>
                                                                     <input type="text" formControlName="amount" [(ngModel)]="selectedPolicy.amount"
@@ -714,7 +707,10 @@
                                                                 </div>
                                                                 
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="row">
+                                                            
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Loss Reason</label>
                                                                     <input type="text" formControlName="loss_reason"

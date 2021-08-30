@@ -9,8 +9,10 @@ import { Tasks } from "../models/tasks";
 export class TaskService {
 
   private baseUrl = 'http://localhost:8080/api/task'
-
+  private basUrl = 'http://localhost:8080/api/countTask'
   url = 'http://localhost:8080/api/insertTask'
+  urlcount = 'http://localhost:8080/api/allcountTask'
+  
   constructor(private http : HttpClient) { }
   getAllTasks(){
     return this.http.get<Tasks>(this.baseUrl).pipe();
@@ -44,5 +46,15 @@ export class TaskService {
 
   findByTitle(subject) {
     return this.http.get(`${this.baseUrl}?subject=${subject}`);
+  }
+
+  getCount(){
+    return this.http.get(`${this.basUrl}`);
+  }
+
+  getAllCount(){
+    
+    return this.http.get(`${this.urlcount}`);
+
   }
 }

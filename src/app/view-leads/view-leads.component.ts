@@ -32,7 +32,7 @@ export class ViewLeadsComponent implements OnInit {
   first_Name: null,
   middle_Name: null,
   last_Name: null,
-  tttle: null,
+  title: null,
   company_Name: null,
   industry: null,
   phone_Number: null,
@@ -57,9 +57,7 @@ export class ViewLeadsComponent implements OnInit {
     addForm: FormGroup;
 
     ngOnInit() {
-
       this.getAllCountries();
-        
 
       this.LeadForm = this.formBuilder.group({
         salutation: [''],
@@ -184,7 +182,6 @@ export class ViewLeadsComponent implements OnInit {
   
     Update(plid){
        this.leadService.UpdateLeads(plid, this.selectedPolicy).subscribe(()=>{
-         this.refresh();
         });
       }
       

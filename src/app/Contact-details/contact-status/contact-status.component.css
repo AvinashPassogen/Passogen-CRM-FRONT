@@ -10,11 +10,19 @@
 .expl2{
   height: 10%;
 }
-.exp2{
-  height: 13%;
+.icon{
+  text-align: right;
+  margin-right:0%;
+  margin-top: -3%;
+  }
+.aa{
+  height: 350px;
 }
-.k{
-  height: 420px;
+.exp2{
+  height: 12%;
+}
+.lei{
+  margin-top: -1%;
 }
 .rw{
   font-family: "Open Sans", sans-serif;
@@ -26,7 +34,9 @@
   border-radius: 5px;
   margin-top: 10px;    
 }
-
+.edf{
+  margin-top: -1%;
+}
 .content-page {
 margin-left: 40px;
 margin-right: 5px;
@@ -67,8 +77,8 @@ fieldset
   }
 
 label{
-  font-size: smaller;
-  font-family: "Open Sans";
+  font-size: small;
+  font-family: "Open Sans", sans-serif;
 }
 
 #btn{
@@ -175,14 +185,14 @@ margin-right: -2.4%;
   height: 650px;
   overflow: hidden;
 }
-.contacts{
-  height: 400px;
-}
+
  .modal-body:hover{
     overflow-y: auto;
 } 
 
-
+.contacts{
+  height: 400px;
+}
 #b1{
 margin-left: 10px;
 }
@@ -198,7 +208,60 @@ margin-left: 14px;
   .del{
     left: 11.3%;
 }
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
 }
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 350px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.divv{
+  margin-top: -2%;
+}
+.icon{
+  margin-top: -4%;
+}
+}
+
+
+@media only screen and (max-device-width : 1440px)    {
+  .btn1{
+      left: 19.3%;
+  }
+  .del{
+    left: 11.3%;
+}
+.modal-dialog {
+  max-width: 700px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 700px;
+}
+.modal-body{
+  height: 550px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.divv{
+  margin-top: -1%;
+}
+.icon{
+  margin-top: -3%;
+}
+}
+
 /* Desktop Styles */
 @media screen and (min-width: 1200px)  {
   .btn1{
@@ -214,6 +277,7 @@ margin-left: 14px;
 .last{
   margin-left: -16%;
 }
+
 }
  
 /* Tablet Styles */
@@ -231,6 +295,35 @@ margin-left: 14px;
   .last{
     margin-left: -4%;
   }
+  .icon{
+    text-align: right;
+    margin-right:0%;
+    margin-top: -7%;
+    }
+    .exp2{
+      height: 13%;
+    }
+    .modal-dialog {
+      max-width: 550px;
+      margin: 1.75rem auto;
+    }
+    .modal-size{
+      max-width: 550px;
+    }
+    .modal-body{
+      height: 400px;
+      overflow: hidden;
+    }
+    
+     .modal-body:hover{
+        overflow-y: auto;
+    } 
+    .icon{
+      margin-top: -5%;
+    }
+    .edf{
+      margin-top: -2%;
+    }
 }
 /* Mobile Styles */
 @media screen and (max-width: 320px) {

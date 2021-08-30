@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class AccountService {
 
   private baseUrl = 'http://localhost:8080/api/account'
-
+  
+  private Url = 'http://localhost:8080/api/accountCount'
   constructor(private http: HttpClient) { }
 
   
@@ -41,5 +42,9 @@ export class AccountService {
 
   findByTitle(account_name) {
     return this.http.get(`${this.baseUrl}?type=${account_name}`);
+  }
+
+  getCount(){
+    return this.http.get(`${this.Url}`);
   }
 }

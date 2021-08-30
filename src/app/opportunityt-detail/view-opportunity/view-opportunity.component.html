@@ -31,9 +31,9 @@
                                         <div class="col-sm-8 splitOp">
                                             <div class="text-sm-right">
                                                 <div class="btn-group mb-1">
-                                                    <button type="button" class="btn btn-primary bg-blue waves-effect waves-light ml-2" data-toggle="modal" data-target="#opportunitymodal"><i class="mdi mdi-plus-circle mr-1"></i>New</button> &nbsp;&nbsp;
+                                                    <button type="button" class="btn btn-primary back1 waves-effect waves-light ml-2" data-toggle="modal" data-target="#opportunitymodal"><i class="mdi mdi-plus-circle mr-1"></i>New</button> &nbsp;&nbsp;
                                                    
-                                                    <button type="button" class="btn btn-primary bg-blue dropdown-toggle"
+                                                    <button type="button" class="btn btn-primary back1 dropdown-toggle"
                                                         data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">
                                                         <i class="mdi mdi-view-list mdi-12px"></i><span
@@ -131,8 +131,8 @@
     <div class="modal-dialog modal-dialog-centered modal-size">  
         <div class="modal-content">
             <div class="modal-header bg-light">
-            <h4 class="modal-title " id="myCenterModalLabel">Edit Opportunity</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myCenterModalLabel">Update Opportunity</h4>
+                <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
         
             <div class="modal-body p-4">

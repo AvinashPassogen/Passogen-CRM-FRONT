@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../servies/account.service';
+import { ApiService } from 'src/app/api.service';
 declare var $: any;
 @Component({
   selector: 'app-view-accounts',
@@ -16,6 +17,9 @@ export class ViewAccountsComponent implements OnInit {
   id: number;
   account:Account;
   error:string;
+  countries: {};
+  states: {};
+  cities: {};
   selectedPolicy:  Account  = { 
     id: null,
     account_name: null,
@@ -38,11 +42,14 @@ export class ViewAccountsComponent implements OnInit {
     private route:Router,
     private fb: FormBuilder,
     private modalService: NgbModal,
-    private router:ActivatedRoute,
+    private router:ActivatedRoute,private apiService: ApiService,
     private accountService:AccountService) { }
     submitted = false;
     get a() { return this.editProfileForm.controls; }
     ngOnInit(): void {
+
+      this.getAllCountries();
+
       this.account = new Account();
       this.reloadData();
       this.editProfileForm = this.formBuilder.group({
@@ -68,6 +75,35 @@ export class ViewAccountsComponent implements OnInit {
         error=>this.error=error
       );
     }
+
+    getAllCountries(){
+      this.apiService.getAllCountries().subscribe(
+        data => this.countries = data
+      );
+    }
+
+    getState(event){
+      var obj = {
+        countryId: event
+      }; 
+      this.apiService.getStateByCountryId(event).subscribe(
+        data => {
+          this.states = data;
+          this.cities = null;
+        }
+      );
+    }
+    getCity(event){
+      if (event) {
+        this.apiService.getCityByStateId(event).subscribe(
+          data => this.cities = data
+        );
+      } else {
+        this.cities = null;
+      }
+    
+    }
+
     deleteAccount(id: number) {
       this.accountService.deleteAccount(id)
         .subscribe(
@@ -82,6 +118,35 @@ export class ViewAccountsComponent implements OnInit {
      }
     selectPolicy(account: Account){
       this.selectedPolicy = account;
+      if(this.selectedPolicy.country){
+        this.getState(this.selectedPolicy.country);
+      }
+      if(this.selectedPolicy.state){
+        this.getCity(this.selectedPolicy.state);
+      }
+    }
+    onChangeCountry(countryId: number) {
+      if (countryId) {
+        this.apiService.getStateByCountryId(countryId).subscribe(
+          data => {
+            this.states = data;
+            this.cities = null;
+          }
+        );
+      } else {
+        this.states = null;
+        this.cities = null;
+      }
+    }
+
+    onChangeState(stateId: number) {
+      if (stateId) {
+        this.apiService.getCityByStateId(stateId).subscribe(
+          data => this.cities = data
+        );
+      } else {
+        this.cities = null;
+      }
     }
     Update(id){
       this.submitted = true;
@@ -94,12 +159,7 @@ export class ViewAccountsComponent implements OnInit {
       {
         this.accountService.updateAccount(id, this.selectedPolicy).subscribe(()=>{
         });
-        this.refresh();
         $("#modal").modal("hide");
       }
-     }
-     resetForm()
-     {
-      this.editProfileForm.reset();
      }
 }

@@ -2,14 +2,20 @@
 
   font-family: "Open Sans", sans-serif;
 }
-.inbox-height{
-  margin-top: -3%;
+.divv{
+  margin-top: -6%;
 }
-.t{
-  height: 60px;
+.ttask{
+  margin-top: 2%;
 }
-.assh1{
-  font-family: "Open Sans", sans-serif;
+.spa{
+  margin-top: -5%;
+}
+.divvv{
+  margin-top: -10%;
+}
+.hrt{
+  margin-top: -4%;
 }
 .test{
   margin-left: 40%;
@@ -38,84 +44,65 @@
   margin-left: 40%;
   max-width: 40%;
 }
-.mt-4{
-  padding-left: -20%;
-}
-.paddi{
-  padding: -5;
-}
-.name1
-{
-  margin-top: -3.5%;
-}
-.it{
-  margin-top: -3%;
-}
-.hrt{
-  margin-top: -3%;
-}
-img{
-  margin-top: -2%;
-}
+
 .assi{
   display:block;
     width:100%;
-    height:50%;
+    height:60%;
     overflow:scroll;
     overflow-x: hidden;
-    margin-top: 1%;
 }
 .assh{
   display:block;
     width:100%;
-    height:360px;
+    height:260px;
     overflow:scroll;
     overflow-x: hidden;
-    margin-top: 1%;
 }
-.assh1{
+.pie{
   display:block;
     width:100%;
-    height:250px;
+    height:495px;
     overflow:scroll;
     overflow-x: hidden;
-    margin-top: 2%;
 }
+.piecanva{
+  height: 300px;
+}
+
 @media only screen and (max-width: 1440px){
   .assh{
     display:block;
       width:100%;
-      height:315px;
+      height:240px;
       overflow:scroll;
       overflow-x: hidden;
-  }
-  .assh1{
-    display:block;
-      width:100%;
-      height:250px;
-      overflow:scroll;
-      overflow-x: hidden;
-    margin-left: -1%;
   }
   .top{
     margin-top: -11%;
+  }
+  .pie{
+    display:block;
+      width:100%;
+      height:450px;
+      overflow:scroll;
+      overflow-x: hidden;
   }
  }
 @media only screen and (max-width: 1024px){
   .assh{
     display:block;
       width:100%;
-      height:340px;
+      height:190px;
       overflow:scroll;
       overflow-x: hidden;
   }
-  .assh1{
+  .pie{
     display:block;
       width:100%;
-      height:250px;
+      height:370px;
       overflow:scroll;
       overflow-x: hidden;
-      margin-left: 0.1%;
   }
  }
  /* Tablet Styles */
@@ -123,16 +110,20 @@ img{
   .assh{
     display:block;
       width:100%;
-      height:400px;
+      height:150px;
       overflow:scroll;
       overflow-x: hidden;
   }
-  .assh1{
-    display:block;
-      width:103%;
-      height:250px;
-      overflow:scroll;
-      overflow-x: hidden;
-      margin-top: -8.5%;
+  .divvv{
+    margin-top: -5%;
+  }
+  .hrt{
+    margin-top: -3%;
+  }
+  .divv{
+    margin-top: -4%;
+  }
+  .pie{
+    height: 500px;
   }
 }

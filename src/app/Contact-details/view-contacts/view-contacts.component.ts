@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from '../../servies/contacts.service';
+import { ApiService } from 'src/app/api.service';
 @Component({
   selector: 'app-view-contacts',
   templateUrl: './view-contacts.component.html',
@@ -16,6 +17,10 @@ export class ViewContactsComponent implements OnInit {
   contacts:Contacts;
   contact:Contacts;
   error:string;
+  countries: {};
+  states: {};
+  cities: {};
+
   selectedPolicy: Contacts = { 
        id:null,
        salutation: null,
@@ -39,10 +44,13 @@ export class ViewContactsComponent implements OnInit {
   };
   constructor(private formBuilder: FormBuilder,
     private route:Router,private fb: FormBuilder,private modalService: NgbModal,private router:ActivatedRoute,
-    private ContactsService:ContactsService) { }
+    private ContactsService:ContactsService, private apiService: ApiService) { }
     addForm: FormGroup;
   ngOnInit(): void {
     this.contacts = new Contacts();
+
+    this.getAllCountries();
+
     this.reloadData();
     this.addForm = this.formBuilder.group({
       salutation:[''],
@@ -127,20 +135,49 @@ export class ViewContactsComponent implements OnInit {
       error=>this.error=error
     );
   }
-  resetForm()
-  {
-   this.addForm.reset();
-   this.refresh();
-  }
   refresh(): void {
     window.location.reload();
    }
+   getAllCountries(){
+    this.apiService.getAllCountries().subscribe(
+      data => this.countries = data
+    );
+  }
 
+  getState(event){
+    var obj = {
+      countryId: event
+    }; 
+    this.apiService.getStateByCountryId(event).subscribe(
+      data => {
+        this.states = data;
+        this.cities = null;
+      }
+    );
+  }
+  getCity(event){
+    if (event) {
+      this.apiService.getCityByStateId(event).subscribe(
+        data => this.cities = data
+      );
+    } else {
+      this.cities = null;
+    }
+  
+  }
+
+  
   selectPolicy(contacts: Contacts){
     this.selectedPolicy = contacts;
+    if(this.selectedPolicy.country){
+      this.getState(this.selectedPolicy.country);
+    }
+    if(this.selectedPolicy.state){
+      this.getCity(this.selectedPolicy.state);
+    }
   }
   updateForm(id) {
-    this.ContactsService.updateContacts(id, this.selectedPolicy).subscribe(()=>{this.refresh();
+    this.ContactsService.updateContacts(id, this.selectedPolicy).subscribe(()=>{
     });
   }
   deleteContacts(id: number) {
@@ -152,4 +189,29 @@ export class ViewContactsComponent implements OnInit {
       },
       error => console.log(error));
 }
+
+onChangeCountry(countryId: number) {
+  if (countryId) {
+    this.apiService.getStateByCountryId(countryId).subscribe(
+      data => {
+        this.states = data;
+        this.cities = null;
+      }
+    );
+  } else {
+    this.states = null;
+    this.cities = null;
+  }
+}
+
+onChangeState(stateId: number) {
+  if (stateId) {
+    this.apiService.getCityByStateId(stateId).subscribe(
+      data => this.cities = data
+    );
+  } else {
+    this.cities = null;
+  }
+}
+
 }

@@ -137,6 +137,9 @@ export class ContactStatusComponent implements OnInit {
 
           var fname = str1.concat(' ', str2).concat(' ', str3);
           document.getElementById("work1").innerHTML= fname;
+
+          var fname = str1.concat(' ', str2).concat(' ', str3);
+          document.getElementById("flname").innerHTML= fname;
       }
     );
     this.contactsService.getContacts(this.router.snapshot.params.id).subscribe((result)=>{

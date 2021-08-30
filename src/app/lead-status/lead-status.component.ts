@@ -43,7 +43,7 @@ export class LeadStatusComponent implements OnInit {
   first_Name: null,
   middle_Name: null,
   last_Name: null,
-  tttle: null,
+  title: null,
   company_Name: null,
   industry: null,
   phone_Number: null,
@@ -156,12 +156,13 @@ export class LeadStatusComponent implements OnInit {
           var name = str1.concat(' ', str2).concat(' ', str3);
           var fname = str1.concat(' ', str2).concat(' ', str3);
           var leadname = str1.concat(' ', str2).concat(' ', str3);
+          var convertname = str1.concat(' ', str2).concat(' ', str3);
           document.getElementById("work1").innerHTML= name;
           document.getElementById("work2").innerHTML= fname;
           console.log(fullname)
           document.getElementById("work").innerHTML= fullname;
           document.getElementById("work3").innerHTML= leadname;
-
+          document.getElementById("convo").innerHTML= convertname;
         }
         
       );

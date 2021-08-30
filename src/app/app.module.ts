@@ -40,6 +40,8 @@ import { AuthGuard } from './services/auth.guard';
 import { SettingComponent } from './setting/setting.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ChartsModule } from 'ng2-charts';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { GraphComponent } from './graph/graph.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +69,7 @@ import { ChartsModule } from 'ng2-charts';
     NotificationComponent,
     SettingComponent,
     LogoutComponent,
-    
+    GraphComponent,    
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,9 @@ import { ChartsModule } from 'ng2-charts';
     NgbModule,MatIconModule,MatButtonModule,MatCardModule,
     ChartsModule
   ],
-  providers: [ LoginService, AuthGuard,[{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}]],
+  providers: [ LoginService, AuthGuard, { provide: HTTP_INTERCEPTORS, 
+    useClass: TokenInterceptorService, 
+    multi: true} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

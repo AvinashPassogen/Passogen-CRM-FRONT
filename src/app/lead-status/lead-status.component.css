@@ -9,23 +9,31 @@
     margin-top: 2%;  
     margin-bottom: 10%;  
 }
+.aa{
+  height: 350px;
+}
 .demo{
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   width: auto;
+  border-width: 1px;
   }
   .demo1{
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     width: 80%;
+    border-width: 1px;
+
     }
     .dem{
       border-top-style: hidden;
       border-right-style: hidden;
       border-left-style: hidden;
       width: 70%;
+      border-width: 1px;
+
       }
     .Guidence{
       margin-top: -3%;
@@ -38,6 +46,12 @@
 }
 .expl2{
   height: 9%;
+}
+.cen{
+  margin-left: -50%;
+}
+.ncen{
+  margin-left: -50%;
 }
 .exp2{
   height: 10%;
@@ -149,15 +163,67 @@ transition: opacity is linear;
 .back1{
   background-color: #4176e7; 
  }
-/* Desktop Styles */
-@media screen and (min-width: 1024px)  {
+
+@media only screen   
+and (min-device-width : 768px)   
+and (max-device-width : 1024px)  
+{ 
   .btn1{
-      left: 20%; 
-  }
-  .del{
-    left:12%;
+    left: 20%; 
 }
+.del{
+  left:12%;
 }
+.convert{
+  margin-top: 0.3%;
+  width: 25%;
+}
+.nurt{
+  margin-left: 5%;
+  margin-top: 0.3%;
+  width: 25%;
+}
+.unqualified{
+  width: 25%;
+}
+.new{
+  width: 25%;
+}
+.working{
+  width: 28%;
+}
+.cen{
+  margin-left: 10%;
+}
+.newc{
+  margin-left: 10%;
+}
+.newco{
+  margin-left: 20%;
+}
+.ncen{
+  margin-left: 8%;
+}
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.icon{
+  margin-top: -4%;
+}
+} 
+
 /* Desktop Styles */
 @media screen and (min-width: 1440px)  {
   .btn1{
@@ -165,6 +231,42 @@ transition: opacity is linear;
   }
   .del{
     left:12%;
+}
+.mark{
+  width: 22%;
+}
+.nurt{
+  width: 15%;
+}
+.working{
+  width: 15%;
+}
+.new{
+  width: 15%;
+}
+.ncen{
+  margin-left: -50%;
+}
+.newc{
+  margin-left: -30%;
+}
+.modal-dialog {
+  max-width: 700px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 700px;
+}
+.modal-body{
+  height: 500px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+}
+.icon{
+  margin-top: -3%;
 }
 }
 /* Desktop Styles */
@@ -199,6 +301,39 @@ transition: opacity is linear;
   }
   .nurt{
     margin-left: 6.5%;
+  }
+  .convert{
+    margin-top: 0.3%;
+    width: 25%;
+  }
+  .nurt{
+    margin-left: 7%;
+    margin-top: 0.3%;
+    width: 25%;
+  }
+  .unqualified{
+    width: 25%;
+  }
+  .new{
+    width: 25%;
+  }
+  .working{
+    width: 37%;
+  }
+  .newco{
+    margin-left: 10%;
+  }
+  .newc{
+    margin-left: -50%;
+  }
+  .ncen{
+    margin-left: -100%;
+  }
+  .icon{
+    margin-top: -5%;
+  }
+  .divv{
+    margin-top: -3%;
   }
 }
 /* Mobile Styles */

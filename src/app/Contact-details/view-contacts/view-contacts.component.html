@@ -102,8 +102,8 @@
     <div class="modal-dialog modal-dialog-centered modal-size">  
         <div class="modal-content">
             <div class="modal-header bg-light">
-            <h4 class="modal-centered" id="myCenterModalLabel">Edit Contacts</h4>
-            <button type="button" class="close" data-dismiss="modal" (click)="resetForm();" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myCenterModalLabel">Update Contact</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4 contacts">
                 <form class="form-horizontal" (ngSubmit)="updateForm()" [formGroup]="addForm" class="form" >
@@ -276,11 +276,14 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="label">Mailing City</label>
-                                        <input type="text" name="city" formControlName="city" [(ngModel)] = "selectedPolicy.city" class="form-control input" placeholder="City" [ngClass]="{ 'is-invalid': submitted && c.city.errors }">
-                                        <div *ngIf="submitted && c.city.errors" class="invalid-feedback">
-                                            <div *ngIf="c.city.errors.required">Mailing City is required</div>
-                                      </div>
+                                        <label class="label">Mailing Country</label>
+                                        <select formControlName="country" [(ngModel)]="selectedPolicy.country"
+                                            class="form-control country"
+                                            (change)="onChangeCountry($event.target.value)">
+                                            <option value="">country...</option>
+                                            <option *ngFor="let country of countries" [value]="country.id">
+                                                {{country.name}}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -288,19 +291,23 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Mailing State</label>
-                                        <input type="text" class="form-control input" formControlName="state" [(ngModel)] = "selectedPolicy.state" name="state" placeholder="State" [ngClass]="{ 'is-invalid': submitted && c.state.errors }">
-                                        <div *ngIf="submitted && c.state.errors" class="invalid-feedback">
-                                            <div *ngIf="c.state.errors.required">Mailing State is required</div>
-                                      </div>
+                                        <select formControlName="state" [(ngModel)]="selectedPolicy.state"
+                                            class="form-control input" (change)="onChangeState($event.target.value)">
+                                            <option value="">Select state...</option>
+                                            <option *ngFor="let state of states" [value]="state.id">{{state.name}}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="label">Mailing Country</label>
-                                        <input type="text" class="form-control input" formControlName="country" [(ngModel)] = "selectedPolicy.country" name="country" placeholder="Country" [ngClass]="{ 'is-invalid': submitted && c.country.errors }">
-                                        <div *ngIf="submitted && c.country.errors" class="invalid-feedback">
-                                            <div *ngIf="c.country.errors.required">Country is required</div>
-                                      </div>
+                                        <label class="label">Mailing City</label>
+                                        <select formControlName="city" [(ngModel)]="selectedPolicy.city"
+                                            class="form-control input">
+                                            <option value="">Select city...</option>
+                                            <option *ngFor="let city of cities" [value]="city.name">{{city.name}}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -315,15 +322,19 @@
                             </div>
                             <div class="row">
                                 <div class="form-group mb-0 button">
-                                    <div> 
-                                        <button type="submit" (click)="updateForm(selectedPolicy.id)"  id="b1" aria-hidden="true" 
-                                         class="btn btn-primary button" >Update</button>
-                                        
-                                        <button type="reset" (click)="resetForm();" class="close" data-dismiss="modal" (click)="modal.dismiss()" id="b2" aria-hidden="true" class="btn btn-secondary waves-effect m-l-5 button">
+                                    <div>
+                                        <button type="submit" (click)="updateForm(selectedPolicy.id)" class="close"
+                                            data-dismiss="modal" (click)="modal.dismiss()"
+                                            class="btn btn-primary waves-effect waves-light button">
+                                            Update
+                                        </button>
+
+                                        <button type="reset" class="close" data-dismiss="modal" (click)="resetForm();" aria-hidden="true"
+                                            class="btn btn-secondary waves-effect ml-2 button">
                                             Cancel
                                         </button>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>

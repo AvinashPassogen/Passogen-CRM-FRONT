@@ -20,6 +20,7 @@ import { Tasks } from '../models/tasks';
 export class SplitViewComponent implements OnInit {
 
   addForm: FormGroup;
+  isPresent:boolean = true;
 
   leads: Leads;
   tutorials: any;
@@ -43,7 +44,7 @@ export class SplitViewComponent implements OnInit {
   first_Name: null,
   middle_Name: null,
   last_Name: null,
-  tttle: null,
+  title: null,
   company_Name: null,
   industry: null,
   phone_Number: null,
@@ -442,6 +443,18 @@ console.log(this.states);      }
     console.log(data);
     this.leadService.Update(data.plid,data).subscribe(()=>{
     });
+  }
+
+  onToggleDivSizeChange(){
+    const element = document.getElementById('xyz');
+    if(this.isPresent){
+      element.style.height ="1150px";
+      this.isPresent = false;
+    }else{
+      element.style.height ="900px";
+      this.isPresent = true;
+    }
+
   }
 
   onChangeCountry(countryId: number) {

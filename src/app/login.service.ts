@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from './user';
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -26,14 +26,14 @@ public loginUserFromRemote(user: User):Observable<any>{
     return this.http.post(`${this.baseUrl}/register`, user);
   }
 
-  loginUser(token){
-    localStorage.setItem("token",token)
-    return true;
-    this.router.navigate(['/logout']);
-  }
+  // loginUser(token){
+  //   localStorage.setItem("token",token)
+  //   return true;
+  //   this.router.navigate(['/logout']);
+  // }
 
   getUser(){
-    return this.http.get<User>(this.Url).pipe();
+    return this.http.get<User>("http://localhost:8080/getUser");
   }
 
   isLoggedIn()

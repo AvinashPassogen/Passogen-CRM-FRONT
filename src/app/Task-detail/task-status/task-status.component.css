@@ -82,7 +82,9 @@ margin-right: -2.4%;
   text-align: center;
 }
 .label{
-  font-size: 15px;
+  font-size: small;
+  font-family: "Open Sans", sans-serif;
+
 }
 .button{
   margin-left: 10px;
@@ -110,6 +112,21 @@ margin-left: 14px;
   left: 14%;
  
 }
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
 }
 /* Desktop Styles */
 @media only screen and (min-width: 1370px) and (max-width: 1605px)    {
@@ -124,6 +141,30 @@ margin-left: 14px;
   .tag{
     margin-left: -12%;
   }
+  .modal-dialog {
+    max-width: 700px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 700px;
+  }
+  .modal-body{
+    height: 500px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  }
+  .edf{
+    margin-top: -1%;
+  }
+  .exp2{
+    height: 32%;
+  }
+  .icon{
+    margin-top: 1%;
+  }
 }
 /*  Laptop Styles */
 @media only screen and (max-device-width : 1024px)    {
@@ -134,6 +175,30 @@ margin-left: 14px;
   .del{
     left: 10.3%;
    
+}
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.edf{
+  margin-top: -1%;
+}
+.exp2{
+  height: 32%;
+}
+.icon{
+  margin-top: 1%;
 }
 }
  
@@ -148,6 +213,24 @@ margin-left: 14px;
     
   padding: 0px;
 
+  }
+  .modal-dialog {
+    max-width: 600px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 600px;
+  }
+  .modal-body{
+    height: 450px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  } 
+  .icon{
+    margin-top: 2%;
   }
 }
 /* Mobile Styles */

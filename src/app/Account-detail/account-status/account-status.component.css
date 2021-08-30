@@ -10,7 +10,9 @@
 .exp{
   height: 13%;
 }
-
+.modal-height1{
+  height:400px ;
+  }
 .k{
   height: 350px;
 }
@@ -60,7 +62,9 @@ fieldset
   }
 
 label{
-  font-size: smaller;
+  font-size: small;
+  font-family: "Open Sans", sans-serif;
+
 }
 
 .edf{
@@ -82,9 +86,6 @@ label{
 }
 .modal-centered{
   text-align: center;
-}
-.label{
-  font-size: smaller;
 }
 
 .head{
@@ -115,7 +116,7 @@ margin-right: -2.4%;
 .textsize{
   font-weight: bold;
 }
-.modal-body{
+.modal-height{
 height: 650px;
 overflow: hidden;
 }
@@ -139,7 +140,7 @@ transition: opacity is linear;
 .head{
   text-align: center;
 }
-.modal-body{
+.modal-height{
   height: 600px;
   overflow: hidden;
 }
@@ -177,6 +178,22 @@ transition: opacity is linear;
   .tag{
     margin-left: -12%;
   }
+  .modal-dialog {
+    max-width: 700px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 700px;
+  }
+  .modal-body{
+    height: 500px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  } 
+  
 }
 /*  Laptop Styles */
 @media only screen and (max-device-width : 1024px)    {
@@ -187,6 +204,24 @@ transition: opacity is linear;
   .del{
     left: 11.3%;
    
+}
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.icon{
+  margin-top: -4%;
 }
 }
  
@@ -200,6 +235,24 @@ transition: opacity is linear;
     left: 7.9%;
   padding: 0px;
 
+  }
+  .modal-dialog {
+    max-width: 550px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 550px;
+  }
+  .modal-body{
+    height: 400px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  } 
+  .icon{
+    margin-top: -5%;
   }
 }
 /* Mobile Styles */
