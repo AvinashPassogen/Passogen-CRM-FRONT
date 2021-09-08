@@ -26,13 +26,12 @@ Present:boolean = true;
   isPresent:boolean = true;
   editProfileForm: FormGroup;
   opportunities:Opportunity;
-  opportunity:Opportunity;
   error: string;
   id:number;
   public show: boolean=false;
   public hide: boolean = true;
   public buttonName :any ='';
-  stage = '';
+  opportunity = '';
   tutorials: any;
   public n2;
   public n1;
@@ -41,7 +40,7 @@ Present:boolean = true;
 
   selectedPolicy : Opportunity = {
     id: null,
-    opportunity_name: null,
+    opportunity: null,
     opportunity_owner: null,
     type: null,
     primary_csource: null,
@@ -61,7 +60,7 @@ Present:boolean = true;
 
   editForm = new FormGroup({
     id: new FormControl(''),
-    opportunity_name: new FormControl(''),
+    opportunity: new FormControl(''),
     opportunity_owner: new FormControl(''),
     type: new FormControl(''),
     primary_csource: new FormControl(''),
@@ -92,7 +91,7 @@ Present:boolean = true;
 
   ngOnInit(): void {
 
-    this.opportunity = new Opportunity();
+    this.opportunities = new Opportunity();
 
     this.retrieveTutorials();
 
@@ -100,7 +99,7 @@ Present:boolean = true;
     this.oppoService.getOpportunityById(this.router.snapshot.params.id).subscribe((result)=>{
       this.editForm = new FormGroup({
         id : new FormControl(result['id']),
-        opportunity_name: new FormControl(result['opportunity_name']),
+        opportunity: new FormControl(result['opportunity']),
         opportunity_owner: new FormControl(result['opportunity_owner']),
         type: new FormControl(result['type']),
         primary_csource: new FormControl(result['primary_csource']),
@@ -127,7 +126,7 @@ Present:boolean = true;
     this.retrieveTutorials();
     this.addForm = this.formBuilder.group({
       id: [''],
-      opportunity_name: [''],
+      opportunity: [''],
         opportunity_owner: [''],
         type: [''],
         primary_csource: [''],
@@ -148,7 +147,7 @@ Present:boolean = true;
     this.editProfileForm = this.fb.group({
       id: [''],
 
-      opportunity_name: [''],
+      opportunity: [''],
         opportunity_owner: [''],
         type: [''],
         primary_csource: [''],
@@ -179,7 +178,7 @@ Present:boolean = true;
   this.oppoService.getOpportunityById(this.router.snapshot.params.id).subscribe((result)=>{
     this.editProfileForm.patchValue({
       id: opportunity.id,
-      opportunity_name: opportunity.opportunity_name,
+      opportunity: opportunity.opportunity,
         opportunity_owner: opportunity.opportunity_owner,
         type: opportunity.type,
         primary_csource: opportunity.primary_csource,
@@ -207,7 +206,7 @@ Present:boolean = true;
   
   reloadData() {
     this.oppoService.getAllOppo().subscribe(
-      (data:Opportunity) => this.opportunity=data,
+      (data:Opportunity) => this.opportunities=data,
       error=>this.error=error
     );
   }
@@ -377,8 +376,8 @@ Present:boolean = true;
         });
   }
 
-  searchStage() {
-    this.oppoService.findByStage(this.stage)
+  searchOpportunity() {
+    this.oppoService.findByOpportunity(this.opportunity)
       .subscribe(
         data => {
           this.tutorials = data;

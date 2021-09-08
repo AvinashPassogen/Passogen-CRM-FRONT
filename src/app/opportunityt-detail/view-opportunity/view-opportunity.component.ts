@@ -25,7 +25,7 @@ export class ViewOpportunityComponent implements OnInit {
 
   selectedPolicy : Opportunity = {
     id: null,
-    opportunity_name: null,
+    opportunity: null,
     opportunity_owner: null,
     type: null,
     primary_csource: null,
@@ -57,7 +57,7 @@ export class ViewOpportunityComponent implements OnInit {
 
       this.reloadData();
       this.opportunityForm = this.formBuilder.group({
-        opportunity_name: [''],
+        opportunity: [''],
         opportunity_owner: [''],
         type: [''],
         primary_csource: [''],
@@ -76,7 +76,7 @@ export class ViewOpportunityComponent implements OnInit {
       });
 
       this.editProfileForm = this.formBuilder.group({
-        opportunity_name: [''],
+        opportunity: [''],
         opportunity_owner: [''],
         type: [''],
         primary_csource: [''],

@@ -16,8 +16,8 @@
                                 
                                 <div class="input-group" id="searchbar">
                                     <input (keypress)="searchTitle()" (keyup)="searchTitle()" type="text"
-                                     class="form-control" placeholder="Search by Title"
-                                        [(ngModel)]="title" />
+                                     class="form-control" placeholder="Search by company"
+                                        [(ngModel)]="company" />
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary bg-blue dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,7 +64,7 @@
                                         <label
                                             class=" font-13 mb-0 text-muted">Company Name</label>
                                             <div>
-                                             <h5>     {{leads.company_Name}}</h5>
+                                             <h5>     {{leads.company}}</h5>
                                             </div>
                                     </h5>
                                 </div>
@@ -137,9 +137,9 @@
                                                     <mat-form-field class="col-sm-3">
                                                         <h5><label
                                                                 class="text-muted font-13 mb-0 text-truncate">Company</label><input
-                                                                matInput formControlName="company_Name"
-                                                                [(ngModel)]="selectedPolicy.company_Name"
-                                                                name="company_Name" parsley-type="company_Name"> </h5>
+                                                                matInput formControlName="company"
+                                                                [(ngModel)]="selectedPolicy.company"
+                                                                name="company" parsley-type="company"> </h5>
                                                     </mat-form-field>
                                                     <mat-form-field class="col-sm-3">
                                                         <h5><label
@@ -258,7 +258,7 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Company</label>
-                                                                        <input type="text" formControlName="company_Name" [(ngModel)] = "selectedPolicy.company_Name" required="true" name="company_Name" class="input demo ml-2" required
+                                                                        <input type="text" formControlName="company" [(ngModel)] = "selectedPolicy.company" required="true" name="company" class="input demo ml-2" required
                                                                             placeholder="Type something"/>
                                                                     </div>
                                                                 </div>
@@ -596,8 +596,8 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Company</label>
-                                                                        <input type="text" formControlName="company_Name"
-                                                                            [(ngModel)]="selectedPolicy.company_Name" name="company_Name"
+                                                                        <input type="text" formControlName="company"
+                                                                            [(ngModel)]="selectedPolicy.company" name="company"
                                                                             class="form-control input" required placeholder="Type something" />
                                                                     </div>
                                                                 </div>
@@ -746,9 +746,9 @@
                  class="form-horizontal"  class="form">
                     <div class="form-group">
                         <label for="name">Company Name</label>
-                        <input type="text" class="form-control" formControlName="company_Name"
-                        [(ngModel)]="selectedPolicy.company_Name"
-                        name="company_Name" id="name" >
+                        <input type="text" class="form-control" formControlName="company"
+                        [(ngModel)]="selectedPolicy.company"
+                        name="company" id="name" >
                     </div>
                     <div class="form-group">
                         <label class="label" for="heard">Lead Source</label>
@@ -891,8 +891,8 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Company</label>
-                                        <input type="text" formControlName="company_Name"
-                                            [(ngModel)]="selectedPolicy.company_Name" name="company_Name"
+                                        <input type="text" formControlName="company"
+                                            [(ngModel)]="selectedPolicy.company" name="company"
                                             class="form-control input" required placeholder="Type something" />
                                     </div>
                                 </div>
@@ -1127,9 +1127,9 @@
                                                                
                                                                 <div class="form-group">
                                                                     <label class="label" for="name">Account Name</label>
-                                                                    <input type="text" class="form-control" formControlName="company_Name"
-                                                                        [(ngModel)]="selectedPolicy.company_Name"
-                                                                        name="company_Name" id="name" >
+                                                                    <input type="text" class="form-control" formControlName="company"
+                                                                        [(ngModel)]="selectedPolicy.company"
+                                                                        name="company" id="name" >
                                                                 </div>
                                                                
                                                         </div>
@@ -1251,9 +1251,9 @@
                                                                
                                                                 <div class="form-group">
                                                                     <label class="label" for="name">Opportunity Name</label>
-                                                                    <input type="text" class="form-control" formControlName="company_Name"
-                                                                    [(ngModel)]="selectedPolicy.company_Name"
-                                                                    name="company_Name" id="name" >
+                                                                    <input type="text" class="form-control" formControlName="company"
+                                                                    [(ngModel)]="selectedPolicy.company"
+                                                                    name="company" id="name" >
                                                                 </div>
                                                                 
  

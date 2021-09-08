@@ -20,7 +20,7 @@ export class ContactSplitViewComponent implements OnInit {
   error: string;
   id: number;
   tutorials: any;
- title = '';
+ account = '';
   public show: boolean = false;
   public hide: boolean = true;
   public buttonName: any = '';
@@ -212,7 +212,7 @@ export class ContactSplitViewComponent implements OnInit {
   }
 
   searchTitle() {
-    this.contactsService.findByTitle(this.title)
+    this.contactsService.findByTitle(this.account)
       .subscribe(
         data => {
           this.tutorials = data;

@@ -12,6 +12,7 @@ import { Account } from '../models/account';
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 import { TaskService } from '../servies/task.service';
 import { Tasks } from '../models/tasks';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-lead-status',
@@ -44,7 +45,7 @@ export class LeadStatusComponent implements OnInit {
   middle_Name: null,
   last_Name: null,
   title: null,
-  company_Name: null,
+  company: null,
   industry: null,
   phone_Number: null,
   mobile_Number: null,
@@ -58,7 +59,9 @@ export class LeadStatusComponent implements OnInit {
   country: null,
   state: null,
   city: null,
-  rating: null};
+  rating: null,
+  creationDate: null
+};
 
   editForm = new FormGroup({
     plid: new FormControl(''),
@@ -67,7 +70,7 @@ export class LeadStatusComponent implements OnInit {
         middle_Name:new FormControl(''),
         last_Name:new FormControl(''),
         title:new FormControl(''),
-        company_Name:new FormControl(''),
+        company:new FormControl(''),
         industry:new FormControl(''),
         phone_Number:new FormControl(''),
         mobile_Number:new FormControl(''),
@@ -91,7 +94,7 @@ export class LeadStatusComponent implements OnInit {
         middle_Name:new FormControl(''),
         last_Name:new FormControl(''),
         title:new FormControl(''),
-        company_Name:new FormControl(''),
+        company:new FormControl(''),
         industry:new FormControl(''),
         phone_Number:new FormControl(''),
         mobile_Number:new FormControl(''),
@@ -114,7 +117,7 @@ export class LeadStatusComponent implements OnInit {
         website:new FormControl(''),
         parent_account:new FormControl(''),
   })
-  constructor(private router: Router, private contactService: ContactsService,
+  constructor(private router: Router, private contactService: ContactsService,private alertmsg: AlertService,
     private opportunityService: OpportunityService, private fb: FormBuilder,private taskService:TaskService,
      private accountService: AccountService, private lead: LeadService,private apiService: ApiService, private route: ActivatedRoute) {
 
@@ -131,7 +134,7 @@ export class LeadStatusComponent implements OnInit {
         middle_Name:[''],
         last_Name:['', Validators.required],
         title:[''],
-        company_Name:['', Validators.required],
+        company:['', Validators.required],
         industry:[''],
         phone_Number:[''],
         mobile_Number:[''],
@@ -177,7 +180,7 @@ export class LeadStatusComponent implements OnInit {
         middle_Name:new FormControl(result['middle_Name']),
         last_Name:new FormControl(result['last_Name']),
         title:new FormControl(result['title']),
-        company_Name:new FormControl(result['company_Name']),
+        company:new FormControl(result['company']),
         industry:new FormControl(result['industry']),
         phone_Number:new FormControl(result['phone_Number']),
         mobile_Number:new FormControl(result['mobile_Number']),
@@ -203,7 +206,7 @@ export class LeadStatusComponent implements OnInit {
         middle_Name:new FormControl(result['middle_Name']),
         last_Name:new FormControl(result['last_Name']),
         title:new FormControl(result['title']),
-        company_Name:new FormControl(result['company_Name']),
+        company:new FormControl(result['company']),
         industry:new FormControl(result['industry']),
         phone_Number:new FormControl(result['phone_Number']),
         mobile_Number:new FormControl(result['mobile_Number']),
@@ -218,9 +221,9 @@ export class LeadStatusComponent implements OnInit {
         state:new FormControl(result['state']),
         city:new FormControl(result['city']),
         rating:new FormControl(result['rating']),
-        account_name:new FormControl(result['company_Name']),
-        opportunity_name:new FormControl(result['company_Name']),
-        account_Name:new FormControl(result['company_Name']),
+        account_name:new FormControl(result['company']),
+        opportunity_name:new FormControl(result['company']),
+        account_Name:new FormControl(result['company']),
         employee:new FormControl(result['no_Of_Employees']),
         lead_source:new FormControl(result['lead_Source']),
         account_owner:new FormControl(result['owner']),
@@ -251,7 +254,8 @@ export class LeadStatusComponent implements OnInit {
   newTast()
   {
     this.taskService.createTask(this.editForm.value).subscribe(data => {
-      console.log("Submitted");})
+      this.TaskMsg();
+    })
   }
   newcontacts(): void {
     this.contacts = new Contacts();
@@ -303,7 +307,6 @@ export class LeadStatusComponent implements OnInit {
     if(this.n1>1){
       data['lead_Status']=0;
       console.log(data['lead_Status']);
-      this.onClickSubmit(data);
 
     }
   }
@@ -317,14 +320,12 @@ export class LeadStatusComponent implements OnInit {
       this.n = this.n1-1;
       data['lead_Status']=this.n1-this.n;
       console.log(data['lead_Status']);
-      this.onClickSubmit(data);
 
     }
     else{
     
       data['lead_Status']=1;
       console.log(data['lead_Status']);
-      this.onClickSubmit(data);
 
     }
   }
@@ -338,13 +339,11 @@ export class LeadStatusComponent implements OnInit {
       this.n = this.n1-2;
       data['lead_Status']=this.n1-this.n;
       console.log(data['lead_Status']);
-      this.onClickSubmit(data);
 
     }
     else{
       data['lead_Status']=2;
       console.log(data['lead_Status']);
-      this.onClickSubmit(data);
 
     }
   }
@@ -358,12 +357,10 @@ export class LeadStatusComponent implements OnInit {
       this.n = this.n1-3;
       data['lead_Status']=this.n1-this.n;
       console.log(data['lead_Status']);
-      this.onClickSubmit(data);
     }
     else{
       data['lead_Status']=3;
       console.log(data['lead_Status']);
-      this.onClickSubmit(data);
 
     }
   }
@@ -380,8 +377,8 @@ export class LeadStatusComponent implements OnInit {
   }
 
   onClickSubmit(data) {
-    console.log(data);
     this.lead.Update(data.plid,data).subscribe(()=>{
+      this.updateMsg();
     });
   }
 
@@ -617,6 +614,12 @@ this.onClickSubmit(data);
 }
 );
 }
+updateMsg(){
+  this.alertmsg.showSuccess("Status Change Successfully !!", "Passogen Technology");
+}
 
+TaskMsg(){
+  this.alertmsg.showSuccess("Task Assign Successfully!!", "Passogen Technology");
+}
 }
 

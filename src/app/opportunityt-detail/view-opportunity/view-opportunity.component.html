@@ -64,7 +64,7 @@
 
                             <div class="table-responsive">
                                 <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
-                                    data-page-size="10">
+                                    data-page-size="7">
                                     <thead>
                                         <tr>
                                             <th data-toggle="true">Opportunity Name</th>
@@ -82,7 +82,7 @@
 
                                             <td><a routerLink="/oppoStatus/{{opp.id}}" 
                                                     routerLinkActive="active">
-                                                    {{opp.opportunity_name}}</a></td>
+                                                    {{opp.opportunity}}</a></td>
                                             <!-- <td>{{task.subject}}</td> -->
                                             <td>{{opp.account_name}}</td>
                                             <td>{{opp.type}}</td>
@@ -147,7 +147,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Opportunity Name</label>
-                                        <input type="text" formControlName="opportunity_name" [(ngModel)] = "selectedPolicy.opportunity_name" required="true" name="opportunity_name" class="form-control input" required
+                                        <input type="text" formControlName="opportunity" [(ngModel)] = "selectedPolicy.opportunity" required="true" name="opportunity" class="form-control input" required
                                             placeholder="Type something"/>
                                     </div>
                                     

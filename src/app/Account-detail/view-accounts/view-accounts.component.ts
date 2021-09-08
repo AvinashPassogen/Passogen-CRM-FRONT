@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../servies/account.service';
 import { ApiService } from 'src/app/api.service';
+import { AlertService } from 'src/app/services/alert.service';
 declare var $: any;
 @Component({
   selector: 'app-view-accounts',
@@ -22,7 +23,7 @@ export class ViewAccountsComponent implements OnInit {
   cities: {};
   selectedPolicy:  Account  = { 
     id: null,
-    account_name: null,
+    name: null,
 	  account_owner: null,
 	  type: null,
 	  website: null,
@@ -39,7 +40,7 @@ export class ViewAccountsComponent implements OnInit {
 };
  constructor(
     private formBuilder: FormBuilder,
-    private route:Router,
+    private route:Router,private alertmsg: AlertService,
     private fb: FormBuilder,
     private modalService: NgbModal,
     private router:ActivatedRoute,private apiService: ApiService,
@@ -53,7 +54,7 @@ export class ViewAccountsComponent implements OnInit {
       this.account = new Account();
       this.reloadData();
       this.editProfileForm = this.formBuilder.group({
-        account_name:['',Validators.required],
+        name:['',Validators.required],
         industry:[''],
         phone_Number:['', [Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]],
         account_owner:['',Validators.required],
@@ -158,8 +159,17 @@ export class ViewAccountsComponent implements OnInit {
       if(this.submitted)
       {
         this.accountService.updateAccount(id, this.selectedPolicy).subscribe(()=>{
+          this.updateMsg();
         });
         $("#modal").modal("hide");
       }
      }
+
+     updateMsg(){
+      this.alertmsg.showSuccess("Data Updated Successfully !!", "Passogen Technology");
+    }
+    
+    ErrorMsg(){
+      this.alertmsg.showError("Error While Updating Data !!", "Passogen Technology");
+    }
 }

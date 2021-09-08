@@ -16,8 +16,8 @@
                                 <h4 class="header-title mb-1 bg-light label all">All Contact</h4>
                                 <div class="input-group mb-3" id="searchbar">
                                     <input (keypress)="searchTitle()" (keyup)="searchTitle()" type="text"
-                                     class="form-control" placeholder="Search by title"
-                                        [(ngModel)]="title" />
+                                     class="form-control" placeholder="Search by Account Name"
+                                        [(ngModel)]="account" />
                                         <div class="btn-group mb-1">
                                             <button type="button" class="btn dropdown-toggle back1"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,9 +56,9 @@
                                     <div class="col-sm-6">
                                         <h5>
                                             <label
-                                                class="text-muted font-13 mb-0 text-truncate ">Title</label>
+                                                class="text-muted font-13 mb-0 text-truncate ">Account</label>
                                                 <div>
-                                                   <h5 class="f1"> {{contacts.title}}</h5>
+                                                   <h5 class="f1"> {{contacts.account_Name}}</h5>
                                                 </div>
                                         </h5>
                                      </div>

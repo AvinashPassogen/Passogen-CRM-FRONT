@@ -5,7 +5,7 @@ export class Leads {
     middle_Name:string;
     last_Name:string;
     title:string;
-    company_Name:string
+    company:string
     industry:string;
     phone_Number:string;
     mobile_Number:string;
@@ -20,5 +20,5 @@ export class Leads {
     state:string;
     city:string;
     rating:string;
-
+    creationDate:Date;
 }

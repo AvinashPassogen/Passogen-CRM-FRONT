@@ -98,7 +98,7 @@
                 <app-graph></app-graph>
                 <div class="card">
                   <div class="card-body">
-                    <h4>All Leads as Per Status</h4>
+                    <h4>Leads of Current Month as Per Status</h4>
                     <div class="mt-1 chartjs-chart">
                       <canvas id="bar-chart-example"></canvas>
                     </div>
@@ -113,7 +113,7 @@
                     <hr>
                     <div *ngFor="let leads of leads" class="divv">
                       <p class="size dropdown-item "><a href="" routerLinkActive="active" data-toggle="modal" data-target="#basicExampleModal"  (click)="selectLeads(leads)" id="b1" >
-                        <img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="35">&nbsp;{{leads.salutation}}&nbsp;&nbsp;&nbsp;{{leads.first_Name}}&nbsp;&nbsp;&nbsp;{{leads.last_Name}}</a>
+                        <img _ngcontent-ylc-c45 src= "assets/images/cpl.png" alt height="35">&nbsp;{{leads.salutation}}&nbsp;&nbsp;&nbsp;{{leads.first_Name}}&nbsp;&nbsp;&nbsp;{{leads.last_Name}}</a>
                       </p>
                       <hr class="hrt"> 
                     </div>
@@ -127,7 +127,7 @@
                       <div class="inbox-item inbox-height">
                         <span class="spa" *ngIf="(task.date2 | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM')">
                           <p class="size dropdown-item "><a href="" (click)="selectTask(task)" routerLinkActive="active" data-toggle="modal" data-target="#myModal1" >
-                            <img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="35">&nbsp;{{task.subject}}</a><br>
+                            <img _ngcontent-ylc-c45 src= "assets/images/icons/task.png" alt height="35">&nbsp;{{task.subject}}</a><br>
                             Assigned To {{task.assigned}}
                           </p>
                           
@@ -138,7 +138,7 @@
                   </div>
                 </div>
                 <div class="card mb-2 pie">
-                  <h4 class="ml-2">All Opportunity as Per Stage</h4>
+                  <h4 class="ml-2">Opportunities of Current Month as Per Stage</h4>
                   <div class="chartjs-chart">
                       <canvas id="pie-chart-example" height="300" class="mt-2"></canvas>
                   </div>
@@ -169,9 +169,9 @@
                                   <div class="col-sm-6">
                                     <h5><label
                                       class="text-muted font-13 mb-0 text-truncate">Company</label><input
-                                      matInput formControlName="company_Name"
-                                      [(ngModel)]="selectedLeads.company_Name"
-                                      name="company_Name" parsley-type="company_Name">
+                                      matInput formControlName="company"
+                                      [(ngModel)]="selectedLeads.company"
+                                      name="company" parsley-type="company">
                                     </h5>
                                   </div>
                                   <div class="col-sm-6">
@@ -255,7 +255,7 @@
                                     parsley-type="comments">
                         </h5>
                     </mat-form-field>
-                        <mat-form-field class="p-1 ">
+                    <mat-form-field class="p-1">
                         <h5>
                             <label class="text-muted font-13 mb-0 text-truncate">Priority</label>
                                 <input matInput formControlName="priority" name="priority" [(ngModel)]="selectedTask.priority"

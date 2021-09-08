@@ -21,7 +21,7 @@ export class AccountSplitViewComponent implements OnInit {
   account: Account;
   error: string;
   id: number;
-  type ='';
+  name ='';
   tutorials: any;
   public show: boolean = false;
   public hide: boolean=  true;
@@ -30,7 +30,7 @@ export class AccountSplitViewComponent implements OnInit {
 
   selectedPolicy : Account = {
     id: null,
-    account_name: null,
+    name: null,
 	  account_owner: null,
 	  type: null,
 	  website: null,
@@ -49,7 +49,7 @@ export class AccountSplitViewComponent implements OnInit {
 
   editForm = new FormGroup({
     id: new FormControl(''),
-    account_name: new FormControl(''),
+    name: new FormControl(''),
     account_owner: new FormControl(''),
 	  type: new FormControl(''),
 	  website: new FormControl(''),
@@ -87,7 +87,7 @@ export class AccountSplitViewComponent implements OnInit {
     this.accountService.getAccount(this.router.snapshot.params.id).subscribe((result) => {
       this.editForm = new FormGroup({
         id: new FormControl(result['id']),
-          account_name: new FormControl(result['account_name']),
+          name: new FormControl(result['name']),
           account_owner: new FormControl(result['account_owner']),
           type: new FormControl(result['type']),
           website: new FormControl(result['website']),
@@ -146,7 +146,7 @@ export class AccountSplitViewComponent implements OnInit {
       console.log("Submitted");})
   }
   searchTitle() {
-    this.accountService.findByTitle(this.type)
+    this.accountService.findByAccount(this.name)
       .subscribe(
         data => {
           this.tutorials = data;

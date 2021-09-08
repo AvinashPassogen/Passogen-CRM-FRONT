@@ -21,8 +21,8 @@
                                          
                                         <div class="row">
                                             <div class="col-md-7">
-                                                <h4> <input matInput formControlName="opportunity_name" name="opportunity_name" [(ngModel)]="selectedPolicy.opportunity_name"
-                                                    parsley-type="opportunity_name"></h4>
+                                                <h4> <input matInput formControlName="opportunity" name="opportunity" [(ngModel)]="selectedPolicy.opportunity"
+                                                    parsley-type="opportunity"></h4>
                                             </div>
                                             <div class="col-md-2 btn1">
                                                
@@ -505,10 +505,11 @@
                                                             <div class="col-sm-3">
                                                                 <div class="form-group">
                                                                     <label class="label"> Name<small class="req">*</small></label>
-                                                                    <h5 id="work1"></h5>
+                                                                    <input type="text" formControlName="opportunity" [(ngModel)]="selectedPolicy.opportunity"
+                                                                        name="opportunity" class="form-control input" required
+                                                                        placeholder="Type something" />
                                                                     
                                                                 </div>
-                                                                    <!-- <small class="text-danger" *ngIf="LeadForm.get('first_Name').hasError('required') && LeadForm.get('first_Name').touched">First Name is Required</small> -->
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="form-group">
@@ -588,7 +589,9 @@
                                                             <div class="col-sm-3">
                                                                 <div class="form-group">
                                                                     <label class="label"> Name<small class="req">*</small></label>
-                                                                    <h5 id="work2"></h5>
+                                                                    <input type="text" formControlName="opportunity" [(ngModel)]="selectedPolicy.opportunity"
+                                                                        name="opportunity" class="form-control input" required
+                                                                        placeholder="Type something" />
                                                                     
                                                                 </div>
                                                             </div>
@@ -628,8 +631,8 @@
                                                             <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="label">Opportunity Name</label>
-                                                                    <input type="text" formControlName="opportunity_name" [(ngModel)]="selectedPolicy.opportunity_name"
-                                                                        name="opportunity_name" class="form-control input" required
+                                                                    <input type="text" formControlName="opportunity" [(ngModel)]="selectedPolicy.opportunity"
+                                                                        name="opportunity" class="form-control input" required
                                                                         placeholder="Type something" />
                                                                 </div>
                                                                 
@@ -975,25 +978,24 @@
             <div class="modal-body p-4">
                 <form [formGroup]="editForm"
                  class="form-horizontal"  class="form">
-                  
-                
                     <div class="form-group">
-                        <label class="label" for="heard">Stage</label>
-                        <select  class="form-control input" formControlName="loss_reason" [(ngModel)] = "selectedPolicy.loss_reason" name="loss_reason" required="">
+                        <label class="label">Stage</label>
+                        <select  class="form-control input" [(ngModel)] = "selectedPolicy.stage" formControlName="stage" name="stage" required="">
                             <option value="">--None--</option>
-                            <option value="Open">Closed Won</option>
-                            <option value="Completed">Closed Lost</option>
-                            
-
+                            <option value="1">Qualification</option>
+                            <option value="2">Needs Analysis</option>
+                            <option value="3">Proposal</option>
+                            <option value="4">Negotiation</option>
+                            <option value="5">Closed Won</option>
+                            <option value="6">Closed Lost</option>
                         </select>
                     </div>
-                    
                 
-                 <div class="text-right">
+                    <div class="text-right">
                         <div class="row">
                             <div class="form-group mb-0 button">
                                 <div>
-                                    <button type="submit"  data-dismiss="modal"  class="btn btn-primary waves-effect waves-light button">
+                                    <button type="submit" (click)="convert(editForm.value)"  data-dismiss="modal"  class="btn btn-primary waves-effect waves-light button">
                                         Update
                                     </button>
 
@@ -1034,7 +1036,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Opportunity Name</label>
-                                        <input type="text" formControlName="opportunity_name" [(ngModel)] = "selectedPolicy.opportunity_name" required="true" name="opportunity_name" class="form-control input" required
+                                        <input type="text" formControlName="opportunity" [(ngModel)] = "selectedPolicy.opportunity" required="true" name="opportunity" class="form-control input" required
                                             placeholder="Type something"/>
                                     </div>
                                     

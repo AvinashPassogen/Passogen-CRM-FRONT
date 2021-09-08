@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { LoginService } from '../login.service';
 import { User } from '../models/user';
+import { AlertService } from '../services/alert.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
   forgotPass: any = {};
   veriotp: any = {};
  
-  constructor( private loginService: LoginService, private apiService: ApiService,private router: Router ) { }
+  constructor( private loginService: LoginService,private alertmsg: AlertService, private apiService: ApiService,private router: Router ) { }
 
 
   ngOnInit() {
@@ -165,7 +166,8 @@ export class LoginComponent implements OnInit {
   loginUser(){
     this.loginService.loginUserFromRemote(this.user).subscribe(
       data => {console.log("response received");
-      this.router.navigate(['dashboard'])
+      this.loginMsg();
+      this.router.navigate(['dashboard']);
     },
       error => {console.log("exception occured");
       this.msg="EmailId or Password is not Valid";
@@ -206,8 +208,7 @@ export class LoginComponent implements OnInit {
         },
         error=>{
           console.log(error);
-          this.msg1="EmailId or Password is not Valid";
-
+          this.ErrorMsg();
         }
       )
     }else{
@@ -240,5 +241,12 @@ export class LoginComponent implements OnInit {
 
     }
     );
+  }
+  ErrorMsg(){
+    this.alertmsg.showError("Username or Password is not valid", "Passogen Technology");
+  }
+
+  loginMsg(){
+    this.alertmsg.showSuccess("Your Login Successfully !!", "Passogen Technology");
   }
 }

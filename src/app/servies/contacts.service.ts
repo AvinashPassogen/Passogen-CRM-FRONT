@@ -35,8 +35,8 @@ export class ContactsService {
     return this.http.post(`${this.baseUrl}`, contacts);
   }
 
-  findByTitle(title) {
-    return this.http.get(`${this.baseUrl}?title=${title}`);
+  findByTitle(account) {
+    return this.http.get(`${this.baseUrl}?account=${account}`);
   }
 
   getCount(){

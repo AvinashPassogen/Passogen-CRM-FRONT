@@ -26,7 +26,7 @@ export class AccountStatusComponent implements OnInit {
 
   selectedPolicy : Account = {
     id: null,
-    account_name: null,
+    name: null,
 	  account_owner: null,
 	  type: null,
 	  website: null,
@@ -45,7 +45,7 @@ export class AccountStatusComponent implements OnInit {
 
   editForm = new FormGroup({
     id: new FormControl(''),
-    account_name: new FormControl(''),
+    name: new FormControl(''),
     account_owner: new FormControl(''),
 	  type: new FormControl(''),
 	  website: new FormControl(''),
@@ -92,7 +92,7 @@ export class AccountStatusComponent implements OnInit {
       this.reloadData();
       this.addForm = this.formBuilder.group({
         id: [''],
-        account_name: [''],
+        name: [''],
         account_owner: [''],
         type: [''],
         website: [''],
@@ -110,7 +110,7 @@ export class AccountStatusComponent implements OnInit {
   
       this.editProfileForm = this.fb.group({
         id: [''],
-        account_name: [''],
+        name: [''],
         account_owner: [''],
         type: [''],
         website: [''],
@@ -131,7 +131,7 @@ export class AccountStatusComponent implements OnInit {
   
         this.editForm = new FormGroup({
           id: new FormControl(result['id']),
-          account_name: new FormControl(result['account_name']),
+          name: new FormControl(result['name']),
           account_owner: new FormControl(result['account_owner']),
           type: new FormControl(result['type']),
           website: new FormControl(result['website']),
@@ -168,7 +168,7 @@ export class AccountStatusComponent implements OnInit {
     this.accountService.getAccount(this.router.snapshot.params.id).subscribe((result)=>{
       this.editProfileForm.patchValue({
         id: accounts.id,
-        account_name: accounts.account_name,
+        name: accounts.name,
           account_owner: accounts.account_owner,
           type: accounts.type,
           website: accounts.website,

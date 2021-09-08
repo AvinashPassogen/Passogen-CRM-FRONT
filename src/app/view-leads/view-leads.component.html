@@ -58,7 +58,7 @@
 
                             <div class="table-responsive">
                                 <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
-                                    data-page-size="20">
+                                    data-page-size="7">
                                     <thead>
                                         <tr>
                                             <th data-toggle="true">Name </th>
@@ -76,7 +76,7 @@
                                             <td><a routerLink="/lead-status/{{leads.plid}}"
                                                     routerLinkActive="active">{{leads.salutation}}&nbsp;{{leads.first_Name}}&nbsp;{{leads.last_Name}}</a>
                                             <td>{{leads.title}}</td>
-                                            <td>{{leads.company_Name}}</td>
+                                            <td>{{leads.company}}</td>
                                             <td>{{leads.mobile_Number}}</td>
                                             <td>{{leads.email}}</td>
                                             <td>{{leads.address}}</td>
@@ -95,9 +95,7 @@
                                         <tr class="active">
                                             <td colspan="7">
                                                 <div class="text-right">
-                                                    <ul
-                                                        class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0">
-                                                    </ul>
+                                                    <ul class="pagination pagination-rounded justify-content-end footable-pagination m-t-10 mb-0"></ul>
                                                 </div>
                                             </td>
                                         </tr>
@@ -221,8 +219,8 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Company</label>
-                                        <input type="text" formControlName="company_Name"
-                                            [(ngModel)]="selectedPolicy.company_Name" name="company_Name"
+                                        <input type="text" formControlName="company"
+                                            [(ngModel)]="selectedPolicy.company" name="company"
                                             class="form-control input" required placeholder="Type something" />
                                     </div>
                                 </div>

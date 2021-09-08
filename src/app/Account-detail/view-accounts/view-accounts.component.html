@@ -51,7 +51,7 @@
                             </div>
                             <div class="table-responsive">
                                 <table id="demo-foo-filtering" class="table table-bordered toggle-circle mb-0"
-                                    data-page-size="20">
+                                    data-page-size="7">
                                     <thead>
                                         <tr>
                                             <th data-toggle="true">Account Name </th>
@@ -63,7 +63,7 @@
                                     <tbody>
                                         <tr *ngFor="let account of account">
                                             <td><a routerLink="/Account-status/{{account.id}}"
-                                                    routerLinkActive="active">{{account.account_name}}&nbsp;</a>
+                                                    routerLinkActive="active">{{account.name}}&nbsp;</a>
                                             <td>{{account.phone_Number}}</td>
                                             <td>{{account.account_owner}}</td>
                                             <td>
@@ -125,10 +125,10 @@
                                         <label class="label">
                                             Account name
                                         </label>
-                                        <input type="text" formControlName="account_name" [(ngModel)] = "selectedPolicy.account_name" required="true" name="account_name" class="form-control input"  [ngClass]="{ 'is-invalid': submitted && a.account_name.errors }"
+                                        <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" required="true" name="name" class="form-control input"  [ngClass]="{ 'is-invalid': submitted && a.name.errors }"
                                             placeholder="Type something"/>
-                                            <div *ngIf="submitted && a.account_name.errors" class="invalid-feedback">
-                                                <div *ngIf="a.account_name.errors.required">Account name is required</div>
+                                            <div *ngIf="submitted && a.name.errors" class="invalid-feedback">
+                                                <div *ngIf="a.name.errors.required">Account name is required</div>
                                           </div>
                                     </div>
                                 </div>

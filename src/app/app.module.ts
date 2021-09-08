@@ -42,6 +42,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { ChartsModule } from 'ng2-charts';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { GraphComponent } from './graph/graph.component';
+import { ToastrModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,9 +81,10 @@ import { GraphComponent } from './graph/graph.component';
     ReactiveFormsModule,MatInputModule,
     FormsModule,BrowserAnimationsModule,
     NgbModule,MatIconModule,MatButtonModule,MatCardModule,
-    ChartsModule
+    ChartsModule,ToastrModule.forRoot()
+
   ],
-  providers: [ LoginService, AuthGuard, { provide: HTTP_INTERCEPTORS, 
+  providers: [ LoginService, AuthGuard,DatePipe, { provide: HTTP_INTERCEPTORS, 
     useClass: TokenInterceptorService, 
     multi: true} ],
   bootstrap: [AppComponent]

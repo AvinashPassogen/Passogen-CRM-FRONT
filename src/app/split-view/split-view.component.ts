@@ -11,6 +11,7 @@ import { ContactsService } from '../servies/contacts.service';
 import { OpportunityService } from '../servies/opportunity.service';
 import { TaskService } from '../servies/task.service';
 import { Tasks } from '../models/tasks';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-split-view',
@@ -33,6 +34,8 @@ export class SplitViewComponent implements OnInit {
   public hide: boolean = true;
   public buttonName: any = '';
   title = '';
+  company = '';
+  email = '';
   //first_Name = '';
   public myColor:string = 'blue';
   public n1;
@@ -45,7 +48,7 @@ export class SplitViewComponent implements OnInit {
   middle_Name: null,
   last_Name: null,
   title: null,
-  company_Name: null,
+  company: null,
   industry: null,
   phone_Number: null,
   mobile_Number: null,
@@ -59,7 +62,9 @@ export class SplitViewComponent implements OnInit {
   country: null,
   state: null,
   city: null,
-  rating: null};
+  rating: null,
+  creationDate: null
+};
 
   editForm = new FormGroup({
     plid: new FormControl(''),
@@ -68,7 +73,7 @@ export class SplitViewComponent implements OnInit {
     middle_Name:new FormControl(''),
     last_Name:new FormControl(''),
     title:new FormControl(''),
-    company_Name:new FormControl(''),
+    company:new FormControl(''),
     industry:new FormControl(''),
     phone_Number:new FormControl(''),
     mobile_Number:new FormControl(''),
@@ -94,7 +99,7 @@ export class SplitViewComponent implements OnInit {
     middle_Name:new FormControl(''),
     last_Name:new FormControl(''),
     title:new FormControl(''),
-    company_Name:new FormControl(''),
+    company:new FormControl(''),
     industry:new FormControl(''),
     phone_Number:new FormControl(''),
     mobile_Number:new FormControl(''),
@@ -118,7 +123,7 @@ export class SplitViewComponent implements OnInit {
     parent_account:new FormControl(''),
 })
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, private alertmsg: AlertService,
     private route:Router,private contactService: ContactsService,
     private opportunityService: OpportunityService, private fb: FormBuilder,public taskService: TaskService,
 
@@ -143,7 +148,7 @@ export class SplitViewComponent implements OnInit {
         middle_Name:new FormControl(result['middle_Name']),
         last_Name:new FormControl(result['last_Name']),
         title:new FormControl(result['title']),
-        company_Name:new FormControl(result['company_Name']),
+        company:new FormControl(result['company']),
         industry:new FormControl(result['industry']),
         phone_Number:new FormControl(result['phone_Number']),
         mobile_Number:new FormControl(result['mobile_Number']),
@@ -171,7 +176,7 @@ export class SplitViewComponent implements OnInit {
         middle_Name:[''],
         last_Name:['', Validators.required],
         title:[''],
-        company_Name:['', Validators.required],
+        company:['', Validators.required],
         industry:[''],
         phone_Number:[''],
         mobile_Number:[''],
@@ -194,9 +199,9 @@ export class SplitViewComponent implements OnInit {
         middle_Name:new FormControl(result['middle_Name']),
         last_Name:new FormControl(result['last_Name']),
         title:new FormControl(result['title']),
-        account_name:new FormControl(result['company_Name']),
-        opportunity_name:new FormControl(result['company_Name']),
-        account_Name:new FormControl(result['company_Name']),
+        account_name:new FormControl(result['company']),
+        opportunity_name:new FormControl(result['company']),
+        account_Name:new FormControl(result['company']),
         industry:new FormControl(result['industry']),
         phone_Number:new FormControl(result['phone_Number']),
         mobile_Number:new FormControl(result['mobile_Number']),
@@ -213,9 +218,7 @@ export class SplitViewComponent implements OnInit {
         state:new FormControl(result['state']),
         city:new FormControl(result['city']),
         rating:new FormControl(result['rating']),
-        
         account_owner:new FormControl(result['owner']),
-      
         description:new FormControl(result['description']),
         type:new FormControl(result['type']),
         website:new FormControl(result['website']),
@@ -265,7 +268,8 @@ export class SplitViewComponent implements OnInit {
   newTast()
   {
     this.taskService.createTask(this.editForm.value).subscribe(data => {
-      console.log("Submitted");})
+      this.TaskMsg();
+    })
   }
   getAllCountries(){
     this.apiService.getAllCountries().subscribe(
@@ -281,7 +285,7 @@ export class SplitViewComponent implements OnInit {
   }
 
   searchTitle() {
-    this.leadService.findByTitle(this.title)
+    this.leadService.findByTitle(this.company)
       .subscribe(
         data => {
           this.tutorials = data;
@@ -642,5 +646,9 @@ this.onClickSubmit(data);
 );
 }
 
+
+TaskMsg(){
+  this.alertmsg.showSuccess("Task Assign Successfully!!", "Passogen Technology");
+}
 
 }

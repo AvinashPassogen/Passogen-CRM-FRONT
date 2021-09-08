@@ -1,7 +1,7 @@
 export class Opportunity {
 
     id: number;
-    opportunity_name:string;
+    opportunity:string;
     opportunity_owner:string;
     type:string;
     primary_csource:string;

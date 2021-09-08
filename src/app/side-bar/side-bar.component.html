@@ -18,7 +18,7 @@
                         <a routerLink="/Account-view" class="nav-link dropdown-toggle arrow-none" href="#"
                             id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            <i class="fe-airplay mr-1"> </i> Account <div class="arrow-down"></div>
+                            <i class="far fa-user"></i> Account <div class="arrow-down"></div>
                         </a>
   
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
@@ -44,7 +44,7 @@
                     <li class="nav-item dropdown">
                         <a routerLink="/view" class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fe-airplay mr-1"> </i> Leads <div class="arrow-down"></div>
+                            <i class="fas fa-users"></i> Leads <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             <a href="#" data-toggle="modal" data-target="#custom-modal" class="dropdown-item">Add
@@ -210,10 +210,10 @@
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label class="label">Company<small class="req">*</small></label>
-                                                                <input type="text" formControlName="company_Name" name="company_Name" class="form-control input" [ngClass]="{ 'is-invalid': submitted && f.company_Name.errors && LeadForm.get('company_Name').touched}"
+                                                                <input type="text" formControlName="company" name="company" class="form-control input" [ngClass]="{ 'is-invalid': submitted && f.company.errors && LeadForm.get('company').touched}"
                                                                     placeholder="Type something"/>
-                                                                    <div *ngIf="submitted && f.company_Name.errors" class="invalid-feedback">
-                                                                        <div *ngIf="f.company_Name.errors.required && LeadForm.get('company_Name').touched">Company name is required</div>
+                                                                    <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.company.errors.required && LeadForm.get('company').touched">Company name is required</div>
                                                                   </div>
                                                             </div>
                                                         </div>
@@ -947,7 +947,7 @@
     <div class="modal-dialog modal-dialog-centered modal-size">
         <div class="modal-content" >
             <div class="modal-header bg-light popupheader">
-                <h4 class="modal-centered" id="myCenterModalLabel">New Opportunity</h4>
+                <h4 class="modal-centered" id="myCenterModalLabel">Add New Opportunity</h4>
                 <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4 lead">
@@ -969,10 +969,10 @@
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label class="label">Opportunity Name<small class="req">*</small></label>
-                                                                <input type="text" formControlName="opportunity_name" required="true" name="opportunity_name" class="form-control input" [ngClass]="{ 'is-invalid': submitted && o.opportunity_name.errors && OpportunityForm.get('opportunity_name').touched}"
+                                                                <input type="text" formControlName="opportunity" required="true" name="opportunity" class="form-control input" [ngClass]="{ 'is-invalid': submitted && o.opportunity.errors && OpportunityForm.get('opportunity').touched}"
                                                                     placeholder="Type something"/>
-                                                                    <div *ngIf="submitted && o.opportunity_name.errors" class="invalid-feedback">
-                                                                        <div *ngIf="o.opportunity_name.errors && OpportunityForm.get('opportunity_name').touched">Opportunity name is required</div>
+                                                                    <div *ngIf="submitted && o.opportunity.errors" class="invalid-feedback">
+                                                                        <div *ngIf="o.opportunity.errors && OpportunityForm.get('opportunity').touched">Opportunity name is required</div>
   
                                                                      </div>
                                                             </div>

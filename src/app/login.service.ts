@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from './models/user';
+import { AlertService } from './services/alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,11 @@ export class LoginService {
 
   private Url = 'http://localhost:8080/register'
   private baseUrl = 'http://localhost:8080'
-  constructor(private http: HttpClient,public router: Router) { }
+  constructor(private http: HttpClient,public router: Router, private alertmsg: AlertService,) { }
 
 generateToken(credentials: any){
-  return this.http.post(`${this.baseUrl}/token`, credentials);
+  return this.http.post(`${this.baseUrl}/token`, credentials);  
+  this.loginMsg();
 }
 
 public loginUserFromRemote(user: User):Observable<any>{
@@ -25,12 +27,6 @@ public loginUserFromRemote(user: User):Observable<any>{
     console.log(user);  
     return this.http.post(`${this.baseUrl}/register`, user);
   }
-
-  // loginUser(token){
-  //   localStorage.setItem("token",token)
-  //   return true;
-  //   this.router.navigate(['/logout']);
-  // }
 
   getUser(){
     return this.http.get<User>("http://localhost:8080/getUser");
@@ -84,4 +80,8 @@ public loginUserFromRemote(user: User):Observable<any>{
     return this.http.post<any>("http://localhost:8080/new-password",user);
   }
 
+  
+  loginMsg(){
+    this.alertmsg.showSuccess("LogIn Successfully !!", "Passogen Technology");
+  }
 }

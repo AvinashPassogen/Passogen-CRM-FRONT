@@ -14,6 +14,7 @@ import { Account } from '../models/account';
 import { AccountService } from '../servies/account.service';
 import { LoginService } from '../login.service';
 import { User } from '../models/user';
+import { AlertService } from '../services/alert.service';
   declare var $: any;
 
 
@@ -32,7 +33,7 @@ export class SideBarComponent implements OnInit {
   count: any;
   user: any;
   constructor(
-    public route:Router,
+    public route:Router,private alertmsg: AlertService,
     public formBuilder: FormBuilder,private loginService: LoginService,
     public router: Router, private apiService: ApiService,
     public TaskService:TaskService,
@@ -176,7 +177,7 @@ export class SideBarComponent implements OnInit {
       middle_Name: ['',Validators.required],
       last_Name: ['', Validators.required],
       title: [''],
-      company_Name: ['', Validators.required],
+      company: ['', Validators.required],
       industry: [''],
       phone_Number: ['', [ Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]],
       mobile_Number: ['', [Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]],
@@ -194,7 +195,7 @@ export class SideBarComponent implements OnInit {
     });
 
     this.OpportunityForm = this.formBuilder.group({
-      opportunity_name: ['',Validators.required],
+      opportunity: ['',Validators.required],
       opportunity_owner: ['',Validators.required],
       type: [''],
       primary_csource: [''],
@@ -284,9 +285,8 @@ export class SideBarComponent implements OnInit {
     {
       this._leadService.createLead(this.LeadForm.value)
       .subscribe(data => {
-        this.router.navigate(['/view']);
+        this.insertLead();
       });
-      this.refresh();
       $("#custom-modal").modal("hide");
     }
     
@@ -475,5 +475,8 @@ export class SideBarComponent implements OnInit {
     location.reload();
   }
 
-           
+       
+  insertLead(){
+    this.alertmsg.showSuccess("New Lead Added Successfully !!", "Passogen Technology");
+  }
 }

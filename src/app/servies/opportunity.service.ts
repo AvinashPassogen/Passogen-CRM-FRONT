@@ -12,7 +12,7 @@ export class OpportunityService {
 
   
   private baseUrl = 'http://localhost:8080/api/Oppo'
-
+  private Url = 'http://localhost:8080/api/insertSales'
   constructor(private http: HttpClient) { }
 
 
@@ -37,8 +37,14 @@ export class OpportunityService {
     return this.http.post(`${this.baseUrl}`, opportunity);
   }
 
-  findByStage(stage) {
-    return this.http.get(`${this.baseUrl}?stage=${stage}`);
+  findByOpportunity(opportunity) {
+    return this.http.get(`${this.baseUrl}?opportunity=${opportunity}`);
+  }
+
+  Totalsales(sales: any): Observable<Object> {
+    console.log(sales);
+    return this.http.post(`${this.Url}`, sales);
+
   }
   
 }

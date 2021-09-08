@@ -40,8 +40,8 @@ export class LeadService {
     return this.http.post(`${this.baseUrl}`, leads);
   }
 
-  findByTitle(title) {
-    return this.http.get(`${this.baseUrl}?title=${title}`);
+  findByTitle(company) {
+    return this.http.get(`${this.baseUrl}?company=${company}`);
   }
 
   getCount(){

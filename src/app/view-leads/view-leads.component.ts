@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-view-leads',
@@ -33,7 +34,7 @@ export class ViewLeadsComponent implements OnInit {
   middle_Name: null,
   last_Name: null,
   title: null,
-  company_Name: null,
+  company: null,
   industry: null,
   phone_Number: null,
   mobile_Number: null,
@@ -47,10 +48,12 @@ export class ViewLeadsComponent implements OnInit {
   country: null,
   state: null,
   city: null,
-  rating: null};
+  rating: null,
+  creationDate: null
+};
   obj: number;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,private alertmsg: AlertService,
     private route:Router,private fb: FormBuilder,private modalService: NgbModal,private router:ActivatedRoute,
     private leadService:LeadService, private apiService: ApiService) {}
   
@@ -65,7 +68,7 @@ export class ViewLeadsComponent implements OnInit {
         middle_Name: [''],
         last_Name: ['', Validators.required],
         title: [''],
-        company_Name: ['', Validators.required],
+        company: ['', Validators.required],
         industry: [''],
         phone_Number: [''],
         mobile_Number: [''],
@@ -91,7 +94,7 @@ export class ViewLeadsComponent implements OnInit {
         middle_Name:[''],
         last_Name:['', Validators.required],
         title:[''],
-        company_Name:['', Validators.required],
+        company:['', Validators.required],
         industry:[''],
         phone_Number:[''],
         mobile_Number:[''],
@@ -116,7 +119,7 @@ export class ViewLeadsComponent implements OnInit {
         middle_Name:[''],
         last_Name:[''],
         title:[''],
-        company_Name:[''],
+        company:[''],
         industry:[''],
         phone_Number:[''],
         mobile_Number:[''],
@@ -182,6 +185,7 @@ export class ViewLeadsComponent implements OnInit {
   
     Update(plid){
        this.leadService.UpdateLeads(plid, this.selectedPolicy).subscribe(()=>{
+         this.updateMsg();
         });
       }
       
@@ -233,10 +237,8 @@ export class ViewLeadsComponent implements OnInit {
 
     upplead(plid: number, leads) {
       this.ngOnInit();
-      //this.lead.getLeads(this.route.snapshot.params.id)
       this.route.navigate(['/lead-status',plid]);
   
-      //this.lead.filter('click');
     }
 
     onSubmit() {
@@ -257,5 +259,11 @@ export class ViewLeadsComponent implements OnInit {
         });
     }
   
+    updateMsg(){
+      this.alertmsg.showSuccess("Data Updated Successfully !!", "Passogen Technology");
+    }
     
+    ErrorMsg(){
+      this.alertmsg.showError("Error While Updating Data !!", "Passogen Technology");
+    }
 }

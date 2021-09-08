@@ -1,7 +1,7 @@
 export class Account {
 
       id: number;
-	account_name: string;
+	name: string;
 	account_owner: string;
 	type: string;
 	website: string;

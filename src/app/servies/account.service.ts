@@ -35,13 +35,8 @@ export class AccountService {
     return this.http.post(`${this.baseUrl}`, account);
   }
 
-
-  findByType(type) {
-    return this.http.get(`${this.baseUrl}?type=${type}`);
-  }
-
-  findByTitle(account_name) {
-    return this.http.get(`${this.baseUrl}?type=${account_name}`);
+  findByAccount(name) {
+    return this.http.get(`${this.baseUrl}?name=${name}`);
   }
 
   getCount(){

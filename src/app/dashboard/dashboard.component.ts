@@ -14,6 +14,7 @@ import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
 import { Chart } from 'chart.js';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
     responsive: true,
   };
 
+  creation_date = [];
   close_date = [];
   amount = [];
   stage = [];
@@ -59,6 +61,7 @@ export class DashboardComponent implements OnInit {
   public buttonName: any = '';
   public myColor:string = 'blue';
   public n1;
+  public parts;
   countries: {};
   states: {};
   cities: {};
@@ -66,7 +69,7 @@ export class DashboardComponent implements OnInit {
   account:Account;
   selectedPolicy:  Account  = {
     id: null,
-    account_name: null,
+    name: null,
 	  account_owner: null,
 	  type: null,
 	  website: null,
@@ -109,7 +112,7 @@ selectedPolicyc: Contacts = {
     middle_Name:new FormControl(''),
     last_Name:new FormControl(''),
     title:new FormControl(''),
-    company_Name:new FormControl(''),
+    company:new FormControl(''),
     industry:new FormControl(''),
     phone_Number:new FormControl(''),
     mobile_Number:new FormControl(''),
@@ -148,6 +151,7 @@ editForm = new FormGroup({
   tasks:Tasks;
   task:Tasks;
   today = new Date();
+  
   today1 = new Date();
   tmrwDate = new Date(new Date().setDate(new Date().getDate() + 1));
   selectedTask : Tasks = {
@@ -168,7 +172,7 @@ editForm = new FormGroup({
   middle_Name: null,
   last_Name: null,
   title: null,
-  company_Name: null,
+  company: null,
   industry: null,
   phone_Number: null,
   mobile_Number: null,
@@ -182,24 +186,37 @@ editForm = new FormGroup({
   country: null,
   state: null,
   city: null,
-  rating: null};
+  rating: null,
+  creationDate:null};
   
-  constructor(private formBuilder: FormBuilder,private fb: FormBuilder,private accountService:AccountService,private taskService:TaskService,private TaskService:TaskService,
-    private router: Router,private leadService:LeadService,private http: HttpClient,private ContactsService:ContactsService,private route: ActivatedRoute,private apiService: ApiService,
+  constructor(private formBuilder: FormBuilder,private fb: FormBuilder,private accountService:AccountService,
+    private taskService:TaskService,private TaskService:TaskService,private alertmsg: AlertService,
+    private router: Router,private leadService:LeadService,private http: HttpClient,
+    private ContactsService:ContactsService,private route: ActivatedRoute,private apiService: ApiService,
     
     ) { 
       this.http.get('http://localhost:8080/api/OppoAll').subscribe(data => {
+        var currentDate = new Date(); 
+        var cur_month = currentDate.getMonth() + 1;
+        var cur_year = currentDate.getFullYear();  
         for(let i in data){
+          const dateTime = data[i].close_date;
+          const parts = dateTime.split(/[- :]/);
+          var month = parts[1];
+          var year = parts[0];
           this.stage.push(data[i].stage);   
-          if((data[i].stage) == 5){
-            this.won = ++this.won;
+          if (cur_month == month && year == cur_year) {
+            if((data[i].stage) == 5){
+              this.won = ++this.won;
+            }
+            else if((data[i].stage) == 6){
+              this.lost = ++this.lost;
+            }  
+            else if((data[i].stage) !== 5 && (data[i].stage) !== 6){
+              this.painding = ++this.painding;
+            }
           }
-          else if((data[i].stage) == 6){
-            this.lost = ++this.lost;
-          }  
-          else if((data[i].stage) !== 5 && (data[i].stage) !== 6){
-            this.painding = ++this.painding;
-          }         
+                   
         }
         let chartdata = {
         labels: ["Won","Lost","Pending"],
@@ -226,23 +243,33 @@ editForm = new FormGroup({
     }, error => console.error(error));
 
     this.http.get(`http://localhost:8080/api/leadsAll`).subscribe(data=> {
+      var currentDate = new Date(); 
+      var cur_month = currentDate.getMonth() + 1;
+      var cur_year = currentDate.getFullYear();  
       for(let i in data){
+        const dateTime = data[i].creationDate;
+        const parts = dateTime.split(/[- :]/);
+        var month = parts[1];
+        var year = parts[0];
         this.status.push(data[i].lead_Status);   
-        if((data[i].lead_Status) == 1){
-          this.unqualified = ++this.unqualified;
+        if (cur_month == month && year == cur_year) {
+          if((data[i].lead_Status) == 1){
+            this.unqualified = ++this.unqualified;
+          }
+          else if((data[i].lead_Status) == 2){
+            this.new = ++this.new;
+          }  
+          else if((data[i].lead_Status) == 3){
+            this.working = ++this.working;
+          } 
+          else if((data[i].lead_Status) == 4){
+            this.nurturing = ++this.nurturing;
+          }
+          else if((data[i].lead_Status) == 5){
+            this.qualified = ++this.qualified;
+          }  
         }
-        else if((data[i].lead_Status) == 2){
-          this.new = ++this.new;
-        }  
-        else if((data[i].lead_Status) == 3){
-          this.working = ++this.working;
-        } 
-        else if((data[i].lead_Status) == 4){
-          this.nurturing = ++this.nurturing;
-        }
-        else if((data[i].lead_Status) == 5){
-          this.qualified = ++this.qualified;
-        }        
+              
       }
       let chartdata = {
       labels: ["Unqualified","New","Working","Nurturing","Qualified"],
@@ -277,7 +304,7 @@ editForm = new FormGroup({
   addForm: FormGroup;
     submitted = false;
     ngOnInit(): void {
-
+      this.loginMsg();
       this.taskService.getAllCount().subscribe(
         data =>{
           this.taskCount = data;
@@ -338,7 +365,7 @@ editForm = new FormGroup({
           middle_Name:new FormControl(result['middle_Name']),
           last_Name:new FormControl(result['last_Name']),
           title:new FormControl(result['title']),
-          company_Name:new FormControl(result['company_Name']),
+          company:new FormControl(result['company']),
           industry:new FormControl(result['industry']),
           phone_Number:new FormControl(result['phone_Number']),
           mobile_Number:new FormControl(result['mobile_Number']),
@@ -406,7 +433,7 @@ editForm = new FormGroup({
           middle_Name:new FormControl(result['middle_Name']),
           last_Name:new FormControl(result['last_Name']),
           title:new FormControl(result['title']),
-          company_Name:new FormControl(result['company_Name']),
+          company:new FormControl(result['company']),
           industry:new FormControl(result['industry']),
           phone_Number:new FormControl(result['phone_Number']),
           mobile_Number:new FormControl(result['mobile_Number']),
@@ -421,9 +448,9 @@ editForm = new FormGroup({
           state:new FormControl(result['state']),
           city:new FormControl(result['city']),
           rating:new FormControl(result['rating']),
-          account_name:new FormControl(result['company_Name']),
-          opportunity_name:new FormControl(result['company_Name']),
-          account_Name:new FormControl(result['company_Name']),
+          account_name:new FormControl(result['company']),
+          opportunity_name:new FormControl(result['company']),
+          account_Name:new FormControl(result['company']),
           employee:new FormControl(result['no_Of_Employees']),
           lead_source:new FormControl(result['lead_Source']),
           account_owner:new FormControl(result['owner']),
@@ -522,5 +549,9 @@ editForm = new FormGroup({
       this.leadService.createLead(this.LeadForm.value)
         .subscribe(data => {
         });
+    }
+
+    loginMsg(){
+      this.alertmsg.showSuccess("Your Login Successfully !!", "Passogen Technology");
     }
 }

@@ -12,7 +12,7 @@
                                 <h4 class="header-title mb-1 bg-light label">All Accounts</h4>
                                 <div class="input-group mb-3" id="searchbar">
                                     <input (keypress)="searchTitle()" (keyup)="searchTitle()" type="text"
-                                        class="form-control" placeholder="Search by type" [(ngModel)]="type" />
+                                        class="form-control" placeholder="Search by Account Name" [(ngModel)]="name" />
                                         <div class="btn-group mtb-1">
                                             <button type="button" class="btn  dropdown-toggle back1"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +48,7 @@
                                             <label
                                                 class="text-muted font-13 mb-0 text-truncate">Account Name</label>
                                                 <div>
-                                             <h5 class="f1">   <a href="" (click)="toggle(account)">{{account.account_name}}</a> </h5>
+                                             <h5 class="f1">   <a href="" (click)="toggle(account)">{{account.name}}</a> </h5>
                                                 </div>
                                         </h5>
                                     </div>
@@ -95,8 +95,8 @@
                                         <form [formGroup]="editForm">
                                                 <div class="row ">
                                                     <div class="col-sm-7">
-                                                        <h4 class="f1"><input type="text" matInput formControlName="account_name" name="account_name"
-                                                            [(ngModel)]="selectedPolicy.account_name"></h4>
+                                                        <h4 class="f1"><input type="text" matInput formControlName="name" name="name"
+                                                            [(ngModel)]="selectedPolicy.name"></h4>
                                                     </div>
                                                     <div class="col-sm-2 btn1">
                                                         <button class="btn  d-flex align-items-center bt2 back1" data-toggle="modal" data-target="#editmodal"><i class="mdi mdi-square-edit-outline mr-1 fcolor"></i><span class="fcolor">Edit</span></button>
@@ -213,7 +213,7 @@
                                                                   <div class="col-sm-3">
                                                                       <div class="form-group">
                                                                           <label class="label"> Name<small class="req">*</small></label>
-                                                                          <input type="text" formControlName="account_name" [(ngModel)] = "selectedPolicy.account_name" required="true" name="account_name" class="form-control input" required
+                                                                          <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" required="true" name="name" class="form-control input" required
                                                                               placeholder="Type something"/>
                                                                           
                                                                       </div>
@@ -295,7 +295,7 @@
                                                                   <div class="col-sm-3">
                                                                       <div class="form-group">
                                                                           <label class="label"> Name<small class="req">*</small></label>
-                                                                          <input type="text" formControlName="account_name" [(ngModel)] = "selectedPolicy.account_name" required="true" name="account_name" class="form-control input" required
+                                                                          <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" required="true" name="name" class="form-control input" required
                                                                               placeholder="Type something"/>
                                                                           
                                                                       </div>
@@ -333,8 +333,8 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Account Name</label>
-                                                                        <input type="text" formControlName="account_name" [(ngModel)]="selectedPolicy.account_name"
-                                                                            name="account_name" class="form-control input" required
+                                                                        <input type="text" formControlName="name" [(ngModel)]="selectedPolicy.name"
+                                                                            name="name" class="form-control input" required
                                                                             placeholder="Type something" />
                                                                     </div>
                                                                     
@@ -416,16 +416,8 @@
                                       </div>
                                   </div>
                               </div>
-                            
                              </ng-container>
-        
                     </div>
-
-
-
-
-
-
                 </div>
                 <!---- End page content -->
             </div> <!-- container -->
@@ -456,7 +448,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="label" for="heard">Account Name</label>
-                                        <input type="text" formControlName="account_name" [(ngModel)] = "selectedPolicy.account_name" name="account_name" class="form-control input" required
+                                        <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" name="name" class="form-control input" required
                                 >
                                     </div>
 
@@ -464,7 +456,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="label">Account Owner</label>
-                                        <input type="text" formControlName="account_owner" [(ngModel)] = "selectedPolicy.account_owner" name="account_name" class="form-control input" required
+                                        <input type="text" formControlName="account_owner" [(ngModel)] = "selectedPolicy.account_owner" name="name" class="form-control input" required
                                 >
                                     </div>
 
@@ -494,7 +486,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="label">Phone Number</label>
-                                        <input type="text" formControlName="phone_Number" [(ngModel)] = "selectedPolicy.phone_Number" name="account_name" class="form-control input" required
+                                        <input type="text" formControlName="phone_Number" [(ngModel)] = "selectedPolicy.phone_Number" name="name" class="form-control input" required
                                 >
                                     </div>
 
@@ -554,7 +546,7 @@
                                         <label class="label">
                                             Account name
                                         </label>
-                                        <input type="text" formControlName="account_name" [(ngModel)] = "selectedPolicy.account_name" required="true" name="account_name" class="form-control input" required
+                                        <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" required="true" name="name" class="form-control input" required
                                             placeholder="Type something"/>
                                     </div>
                                 </div>

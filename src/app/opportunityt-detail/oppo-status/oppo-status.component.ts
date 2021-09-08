@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 import { OpportunityService } from '../../servies/opportunity.service';
 import { TaskService } from 'src/app/servies/task.service';
 import { Tasks } from 'src/app/models/tasks';
+import { Sales } from 'src/app/models/sales';
+import { DatePipe } from '@angular/common'
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-oppo-status',
@@ -19,19 +22,21 @@ export class OppoStatusComponent implements OnInit
   secondFormGroup: FormGroup;
   editProfileForm: FormGroup;
   opportunity:Opportunity;
+  sales: Sales = new Sales();
   error: string;
   id:number;
   public n1;
   public n;
   public status ='';
   tasks: Tasks = new Tasks();
-
+  public month;
+  public total_sales;
   public show: boolean=false;
   public buttonName :any ='';
   public myColor:string = 'blue';
   selectedPolicy : Opportunity = {
     id: null,
-    opportunity_name: null,
+    opportunity: null,
     opportunity_owner: null,
     type: null,
     primary_csource: null,
@@ -52,7 +57,7 @@ export class OppoStatusComponent implements OnInit
 
   editForm = new FormGroup({
     id: new FormControl(''),
-    opportunity_name: new FormControl(''),
+    opportunity: new FormControl(''),
     opportunity_owner: new FormControl(''),
     type: new FormControl(''),
     primary_csource: new FormControl(''),
@@ -75,8 +80,8 @@ export class OppoStatusComponent implements OnInit
 
   })
 
-  constructor(private formBuilder: FormBuilder,private taskService:TaskService,
-  private route: Router, private fb: FormBuilder,private modalService: NgbModal,
+  constructor(private formBuilder: FormBuilder,private taskService:TaskService,public datepipe: DatePipe,
+  private route: Router, private fb: FormBuilder,private modalService: NgbModal,private alertmsg: AlertService,
   private router: ActivatedRoute, private oppoService: OpportunityService
   )
   { }
@@ -93,7 +98,7 @@ export class OppoStatusComponent implements OnInit
         this.addForm = this.formBuilder.group({
           
           id: [''],
-          opportunity_name: [''],
+          opportunity: [''],
           opportunity_owner: [''],
           type: [''],
           primary_csource: [''],
@@ -115,7 +120,7 @@ export class OppoStatusComponent implements OnInit
         this.editProfileForm = this.fb.group({
           
           id: [''],
-          opportunity_name: [''],
+          opportunity: [''],
           opportunity_owner: [''],
           type: [''],
           primary_csource: [''],
@@ -145,7 +150,7 @@ export class OppoStatusComponent implements OnInit
         this.oppoService.getOpportunityById(this.router.snapshot.params.id).subscribe((result)=>{
           this.editForm = new FormGroup({
             id: new FormControl(result['id']),
-            opportunity_name: new FormControl(result['opportunity_name']),
+            opportunity: new FormControl(result['opportunity']),
             opportunity_owner: new FormControl(result['opportunity_owner']),
             type: new FormControl(result['type']),
             primary_csource: new FormControl(result['primary_csource']),
@@ -172,7 +177,6 @@ export class OppoStatusComponent implements OnInit
 
   uptasks(id: number,task){
     this.ngOnInit();
-   // this.TaskService.getTask(this.router.snapshot.params.id);
     this.route.navigate(['/tasks-status',id]);
   }
 
@@ -185,7 +189,7 @@ export class OppoStatusComponent implements OnInit
   this.oppoService.getOpportunityById(this.router.snapshot.params.id).subscribe((result)=>{
     this.editProfileForm.patchValue({
       id:opportunity.id,
-      opportunity_name:opportunity.opportunity_name,
+      opportunity:opportunity.opportunity,
       opportunity_owner:opportunity.opportunity_owner,
       type:opportunity.opportunity.type,
       primary_csource:opportunity.primary_csource,
@@ -227,7 +231,13 @@ export class OppoStatusComponent implements OnInit
   onClickSubmit(data) {
     console.log("fun",data);
     this.oppoService.updateOpportunity(data.id, data).subscribe(()=>{
-      
+      this.updateMsg();
+    });
+    
+  }
+  update(data) {
+    console.log("fun",data);
+    this.oppoService.updateOpportunity(data.id, data).subscribe(()=>{
     });
     
   }
@@ -240,7 +250,7 @@ export class OppoStatusComponent implements OnInit
       this.n = this.n1-1;
       data['stage']=this.n1-this.n;
       console.log(data['stage']);
-      this.onClickSubmit(data);
+      this.update(data);
     }
   }
 
@@ -253,13 +263,13 @@ export class OppoStatusComponent implements OnInit
       this.n = this.n1-2;
       data['stage']=this.n1-this.n;
       console.log(data['stage']);
-      this.onClickSubmit(data);
+      this.update(data);
     }
     else{
     
       data['stage']=2;
       console.log(data['stage']);
-      this.onClickSubmit(data);      
+      this.update(data);      
       
     }
   }
@@ -273,13 +283,13 @@ export class OppoStatusComponent implements OnInit
       this.n = this.n1-3;
       data['stage']=this.n1-this.n;
       console.log(data['stage']);
-      this.onClickSubmit(data);
+      this.update(data);
 
     }
     else{
       data['stage']=3;
       console.log(data['stage']);
-      this.onClickSubmit(data);      
+      this.update(data);      
 
     }
   }
@@ -293,13 +303,13 @@ export class OppoStatusComponent implements OnInit
       this.n = this.n1-4;
       data['stage']=this.n1-this.n;
       console.log(data['stage']);
-      this.onClickSubmit(data);
+      this.update(data);
 
     }
     else{
       data['stage']=4;
       console.log(data['stage']);
-      this.onClickSubmit(data);
+      this.update(data);
     }
   }
 
@@ -310,7 +320,8 @@ export class OppoStatusComponent implements OnInit
   newTast()
   {
     this.taskService.createTask(this.editForm.value).subscribe(data => {
-      console.log("Submitted");})
+      this.TaskMsg();
+    })
   }
 
   UpdateOppo(data){
@@ -335,6 +346,36 @@ export class OppoStatusComponent implements OnInit
    refresh(): void {
     window.location.reload();
    }
+
+   convert(data){
+     if(this.editForm.value.stage == 5){
+      const dateTime =this.editForm.value.close_date;
+      const parts = dateTime.split(/[- :]/);
+      var month = parts[1];
+      var year = parts[0];
+      const d = new Date();
+      d.setMonth(month-1);
+      const monthName = d.toLocaleString("default", {month: "long"});
+      this.sales.month = monthName;
+      this.sales.totalSales = this.editForm.value.amount;
+      
+      this.oppoService.Totalsales(this.sales).subscribe(()=>{
+      },
+      error=>{
+        this.updateMsgs();
+      }
+      
+      )
+      this.Update(data);
+     }
+   }
+
+   getMonthName(month){
+    const d = new Date();
+    d.setMonth(month-1);
+    const monthName = d.toLocaleString("default", {month: "long"});
+    console.log(monthName)
+  }
 
   toggle(opportunity:Opportunity){
     this.selectedPolicy=opportunity;
@@ -429,18 +470,31 @@ export class OppoStatusComponent implements OnInit
          this.onClickSubmit(data);
          
 }
-else if(this.n1==5){
-  document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
-  document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
-  document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
-  document.getElementById('negotiation').style.backgroundColor = "#689f38";
-  document.getElementById('close_lost').style.backgroundColor = "#3C69C9";
+          else if(this.n1==5){
+            document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
+            document.getElementById('negotiation').style.backgroundColor = "#689f38";
+            document.getElementById('close_lost').style.backgroundColor = "#3C69C9";
 
-  
-  console.log(n1,data);
-  this.onClickSubmit(data);
- 
-}
+            
+            console.log(n1,data);
+            this.onClickSubmit(data);
+          
+          }
+
+          else if(this.n1==6){
+            document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
+            document.getElementById('negotiation').style.backgroundColor = "#689f38";
+            document.getElementById('close_lost').style.backgroundColor = "#3C69C9";
+
+            
+            console.log(n1,data);
+            this.onClickSubmit(data);
+          
+          }
  
 }
 );
@@ -500,7 +554,7 @@ public changeStatus(data)
            console.log(n1,data);
            this.onClickSubmit(data);
             
-        }
+          }
          else if(this.n1==4){
           
           document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
@@ -508,26 +562,54 @@ public changeStatus(data)
           document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
           document.getElementById('negotiation').style.backgroundColor = "#689f38";
           document.getElementById('close_lost').style.backgroundColor = "#3C69C9";
-         data['stage']=++n1;
-         console.log(n1,data);
-         this.onClickSubmit(data);
+          data['stage']=++n1;
+          console.log(n1,data);
+          this.onClickSubmit(data);
          
-}
-else if(this.n1==5){
-  
-  document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
-  document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
-  document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
-  document.getElementById('negotiation').style.backgroundColor = "#689f38";
-  document.getElementById('close_lost').style.backgroundColor = "#3C69C9";
+          }
+          else if(this.n1==5){
+            
+            document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
+            document.getElementById('negotiation').style.backgroundColor = "#689f38";
+            document.getElementById('close_lost').style.backgroundColor = "#3C69C9";
 
-  
-  console.log(n1,data);
-  this.onClickSubmit(data);
- 
-}
+            
+            console.log(n1,data);
+            this.onClickSubmit(data);
+          
+          }
+          else if(this.n1==6){
+            document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
+            document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
+            document.getElementById('negotiation').style.backgroundColor = "#689f38";
+            document.getElementById('close_lost').style.backgroundColor = "#3C69C9";
+
+            
+            console.log(n1,data);
+            this.onClickSubmit(data);
+
+          }
  
 }
 );
+}
+
+updateMsg(){
+  this.alertmsg.showSuccess("Status Change Successfully !!", "Passogen Technology");
+}
+
+updateMsgs(){
+  this.alertmsg.showSuccess("Data Update Successfully !!", "Passogen Technology");
+}
+
+TaskMsg(){
+  this.alertmsg.showSuccess("Task Assign Successfully!!", "Passogen Technology");
+}
+
+ErrorMsg(){
+  this.alertmsg.showError("Username or Password is not valid", "Passogen Technology");
 }
 }

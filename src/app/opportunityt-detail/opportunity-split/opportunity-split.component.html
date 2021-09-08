@@ -11,8 +11,8 @@
                             <div class="card-body ex">
                                 <h4 class="header-title bg-light label">All Opportunity</h4>
                                 <div class="input-group mb-3" id="searchbar">
-                                        <input (keypress)="searchStage()" (keyup)="searchStage()" type="text"
-                                            class="form-control" placeholder="Search by stage" [(ngModel)]="stage" />
+                                        <input (keypress)="searchOpportunity()" (keyup)="searchOpportunity()" type="text"
+                                            class="form-control" placeholder="Search by Opportunity Name" [(ngModel)]="opportunity" />
 
                                    
                                             <div class="btn-group mb-1">
@@ -66,7 +66,7 @@
                                         <label
                                             class=" text-muted font-13 mb-0 text-truncate ">Opportunity Name</label>
                                             <div>
-                                             <h5>{{opportunity.opportunity_name}}</h5>
+                                             <h5>{{opportunity.opportunity}}</h5>
                                             </div>
                                     </h5>
                                     
@@ -626,8 +626,8 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="form-group">
                                                                         <label class="label">Opportunity Name</label>
-                                                                        <input type="text" formControlName="opportunity_name" [(ngModel)]="selectedPolicy.opportunity_name"
-                                                                            name="opportunity_name" class="form-control input" required
+                                                                        <input type="text" formControlName="opportunity" [(ngModel)]="selectedPolicy.opportunity"
+                                                                            name="opportunity" class="form-control input" required
                                                                             placeholder="Type something" />
                                                                     </div>
                                                                     
@@ -755,9 +755,9 @@
                  class="form-horizontal"  class="form">
                     <div class="form-group">
                         <label for="name">Opportunity Name</label>
-                        <input type="text" class="form-control" formControlName="opportunity_name"
-                        [(ngModel)]="selectedPolicy.opportunity_name"
-                        name="opportunity_name" id="name" >
+                        <input type="text" class="form-control" formControlName="opportunity"
+                        [(ngModel)]="selectedPolicy.opportunity"
+                        name="opportunity" id="name" >
                     </div>
                     <div class="form-group">
                         <label for="name">Account Name</label>
@@ -1134,7 +1134,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="label">Opportunity Name</label>
-                                        <input type="text" formControlName="opportunity_name" [(ngModel)] = "selectedPolicy.opportunity_name" required="true" name="opportunity_name" class="form-control input" required
+                                        <input type="text" formControlName="opportunity" [(ngModel)] = "selectedPolicy.opportunity" required="true" name="opportunity" class="form-control input" required
                                             placeholder="Type something"/>
                                     </div>
                                     
