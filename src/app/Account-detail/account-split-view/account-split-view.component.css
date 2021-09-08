@@ -1,0 +1,333 @@
+.form{
+  font-family: "Open Sans", sans-serif;
+}
+.rw{
+  font-family: "Open Sans", sans-serif;
+}
+.ex{
+height: 400px;
+}
+.textsize{
+  font-weight: bold;
+}
+.card-body{
+  height: 100px;
+}
+.aa{
+  height: 500px;
+}
+fieldset 
+{
+  border: 1px solid #ddd !important;
+  margin: 0;
+   
+  padding: 15px;       
+  position: relative;
+  border-radius:4px;
+  background-color:#f5f5f5;
+  padding-left:10px!important;
+}	
+
+  legend
+  {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom: 0px; 
+    width: 15%; 
+    border: 1px solid #ddd;
+    border-radius: 4px; 
+    padding: 5px 5px 5px 10px; 
+    background-color: #ffffff;
+  }
+
+
+label{
+  font-size: smaller;
+}
+#lab{
+  color: white;
+  margin-left: 3  px;
+}
+  .button{
+    border-radius: 5px;
+    margin-top: 10px;    
+}
+.back1{
+  background-color: #4176e7;
+}
+ .fcolor{
+  color: white;
+}
+
+.data{ 
+  opacity: 0.5;
+  height: 60%;
+  margin-top: 8%;
+}
+.ex1{
+  height: 790px;
+  overflow: scroll;
+  background:white;
+  /* margin-left: -2%; */
+
+}
+#abc{
+  margin-top:0px;
+}
+.icon {
+  text-align: right;
+  margin-right: 0%;
+  margin-top: -5%;
+}
+#searchbar{
+  width: 97%;
+}
+
+
+#butt{
+
+  margin-top: -50px;
+}
+
+.mdi-eye{
+  color:cornflowerblue;
+}
+
+#b2 {
+  margin-left: 10px;
+}
+#bt{
+  margin-right: -100%;
+}
+.backcolor{
+  color: green;
+}
+.tableview{
+  
+  margin-left: -65px;
+}
+ 
+.exp2{
+  width: 104%;
+  height: 11.5%;
+}
+.edf{
+  margin-top: -2%;
+}
+.expl2{
+  width: 104%;
+  height: 10.5%;
+}
+.expp2{
+  width: 104%;
+}
+.uln{
+  margin-top: -1%;
+}
+
+hr.new1 {
+  border-top: 1px solid rgba(134, 126, 126, 0.548);
+  margin-top: 1%;
+}
+.dat{
+  margin-top: -5%;
+  margin-left: 3%;
+  margin-bottom: 2%;
+}
+.new1{
+  margin-top: -1.5%;
+}
+.head{
+  margin-top: -2.4%;
+
+}
+
+.button{
+  margin-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  
+}
+
+  #btn{
+    position: relative;
+    left: 920px;
+}
+
+.modal-size{
+    max-width: 800px;
+}
+.modal-centered{
+    text-align: center;
+}
+
+.modal-body{
+  height: 650px;
+  overflow: hidden;
+}
+.modal-body:hover{
+  overflow-y: auto;
+}
+.popupheader{
+  color: white;
+}
+.fade{
+  opacity: 1;
+  -webkit-transition: opacity is linear;
+  transition: opacity is linear;
+}
+
+
+@media only screen and (max-width: 1366px){
+  .btn1{
+    left: 15.5%;
+   
+}
+.del{
+  left: 8.8%;
+ 
+}
+}
+/* Desktop Styles */
+@media only screen and (min-width: 1370px) and (max-width: 1605px)    {
+  .btn1{
+      left: 14.5%;
+     
+  }
+  .del{
+    left: 8%;
+   
+  }
+  .tag{
+    margin-left: -12%;
+  }
+.modal-dialog {
+  max-width: 700px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 700px;
+}
+.modal-body{
+  height: 500px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.icon{
+  margin-top: -4%;
+}
+}
+/*  Laptop Styles */
+@media only screen and (max-device-width : 1024px)    {
+  .btn1{
+      left: 7.8%;
+     
+  }
+  .del{
+    left: 5.3%;
+   
+}
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 450px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.margin{
+  margin-right: 10px;
+}
+.icon{
+  margin-top: -6%;
+}
+}
+ 
+/* Tablet Styles */
+@media only screen and (max-width: 768px) {
+  .btn1{
+      left: 8%;
+      
+  }
+  .del{
+    left: 6.2%;
+    
+  padding: 0px;
+
+  }
+  .dat{
+    margin-top: 0.2%;
+  }
+  .modal-dialog {
+    max-width: 550px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 550px;
+  }
+  .modal-body{
+    height: 400px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  }
+  .icon{
+    margin-top: -5%;
+  }
+}
+/* Mobile Styles */
+@media screen and (max-width: 320px) {
+  .btn1{
+      left: 0.1%;
+     
+  }
+  .bt2{
+    width: 42.5%;
+    
+  }
+   
+  .del{
+    left: 5%;
+    margin-top: 2%;
+  }
+.expl2{
+  height: 15%;
+}
+.exp2{
+  height: 25%;
+
+}
+
+ 
+/* Tablet Styles */
+@media only screen and (max-width: 1440px) {
+  .modal-dialog {
+    max-width: 550px;
+    margin: 1.75rem auto;
+  }
+  .modal-size{
+    max-width: 550px;
+  }
+  .modal-body{
+    height: 400px;
+    overflow: hidden;
+  }
+  
+   .modal-body:hover{
+      overflow-y: auto;
+  }
+}
+
+}

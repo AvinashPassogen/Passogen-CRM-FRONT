@@ -1,0 +1,201 @@
+<div class="navbar-custom rw">
+    <div class="container-fluid">
+        <ul class="list-unstyled topnav-menu float-right mb-0">
+
+            <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-grid noti-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-lg dropdown-menu-right">
+
+                    <div class="p-lg-1">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="../assets/images/brands/slack.png" alt="slack">
+                                    <span>Slack</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="../assets/images/brands/github.png" alt="Github">
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="../assets/images/brands/dribbble.png" alt="dribbble">
+                                    <span>Dribbble</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="../assets/images/brands/bitbucket.png" alt="bitbucket">
+                                    <span>Bitbucket</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="../assets/images/brands/dropbox.png" alt="dropbox">
+                                    <span>Dropbox</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="../assets/images/brands/g-suite.png" alt="G Suite">
+                                    <span>G Suite</span>
+                                </a>
+                            </div>
+                
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list topbar-dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-bell noti-icon"></i>
+                    <span class="badge badge-danger rounded-circle noti-icon-badge">{{count}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                    <!-- item-->
+                    <div class="dropdown-item noti-title">
+                        <h5 class="m-0">
+                            <span class="float-right">
+                                <a href="" class="text-dark">
+                                    <small>Clear All</small>
+                                </a>
+                            </span>Notification
+                        </h5>
+                    </div>
+
+                    <div class="noti-scroll" data-simplebar>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        
+                            <p class="heading"><u> Your Today's work</u></p>
+                
+                            <div *ngFor="let task of tasks">
+                
+                                <div class="notify-details name1" *ngIf="(task.date2 | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM')">
+                                    <hr class="hrt">
+                                    <h5><img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="40">&nbsp; <b><u>{{task.t_name}}</u></b></h5>
+                                    <h6>Your Today's work is <u>{{task.subject}}</u> And assigned<br>by
+                                    <u>{{task.assigned}} </u> sir and your status is <u> {{task.status}}.</u></h6>
+                
+                                </div>
+                            </div>
+                        </a>
+                        <hr class="hrw">
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                
+                                <p class="heading1"><u> Your Tomorrow's Work</u></p>
+                                <hr>
+                                <div *ngFor="let task of tasks">
+                
+                                <div class="notify-details name1" *ngIf=" (task.date2 | date:'EEEE d MMMM') == (tmrwDate | date:'EEEE d MMMM')">
+                                <h5><img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="40">&nbsp;<b><u>{{task.t_name}}</u></b></h5>
+                                    <h6>Your Tomorrow's work is <u>{{task.subject}}</u> And assigned <br> by
+                                    <u>{{task.assigned}} </u> sir and your status is <u> {{task.status}}.</u></h6>
+                                    <hr>
+                
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- All-->
+                    <a routerLink="/notification" class="dropdown-item text-center text-primary notify-item notify-all">
+                        View all
+                        <i class="fe-arrow-right"></i>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list topbar-dropdown" *ngIf="loggedIn">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-user rounded-circle"></i>
+                    <span class="pro-user-name ml-1">
+                        {{ user.username }} <i class="mdi mdi-chevron-down"></i> 
+                    </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                    <!-- item-->
+                    <div class="dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome !</h6>
+                    </div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-user"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a routerLink="/setting" class="dropdown-item notify-item">
+                        <i class="fe-settings"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" (click)="logout()" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Logout</span>
+                    </a>
+
+                </div>
+            </li>
+
+        </ul>
+        <!-- LOGO -->
+        <div class="logo-box">
+            <a href="index.html" class="logo logo-dark text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/logo2.jpg" alt="" height="22">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo2.jpg" alt="" height="20">
+                </span>
+            </a>
+            <a href="index.html" class="logo logo-light text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/logo.jpeg" alt="" height="45">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo.jpeg" alt="" height="45">
+                </span>
+            </a>
+        </div>
+
+        <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+            <li>
+                <button class="button-menu-mobile waves-effect waves-light">
+                    <i class="fe-menu"></i>
+                </button>
+            </li>
+
+            <li>
+                <!-- Mobile menu toggle (Horizontal Layout)-->
+                <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+                <!-- End mobile menu toggle-->
+            </li>   
+
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- end Topbar -->

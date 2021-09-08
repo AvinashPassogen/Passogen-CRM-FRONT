@@ -1,0 +1,101 @@
+.modal-size{
+  max-width: 800px;
+}
+.rw{
+  font-family: "Open Sans", sans-serif;
+}
+.modal-centered{
+  text-align: center;
+}
+.label{
+  font-size: smaller;
+}
+
+.bor{
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.req{
+  color:rgb(231, 25, 25);
+  font-size: 18px;
+
+}
+.form{
+  font-family: "Open Sans", sans-serif;
+}
+.head{
+  text-align: center;
+}
+.modal-body{
+  height: 600px;
+  overflow: hidden;
+}
+.modal-body:hover{
+  overflow-y: auto;
+}
+.popupheader{
+  color: white;
+}
+.fade{
+  opacity: 1;
+  -webkit-transition: opacity is linear;
+  transition: opacity is linear;
+}
+.notify{
+  left: 62%;
+}
+.left{
+  margin-left: 45%;
+}
+
+.heading{
+margin-right: 20%;
+margin-top: -2%;
+text-align: center;
+}
+.heading1{
+  margin-right: 20%;
+margin-top: -9%;
+text-align: center;
+}
+
+.notify-details
+{
+font-size: 50%;
+}
+.data1{
+margin-left: 35%;
+}
+.not{
+  margin-left: -5%;
+}
+.name1{
+  margin-top: -9%;
+}
+.hrt{
+  max-width: 100%;
+  margin-left: -3%;
+}
+.hrw{
+  margin-top: -2%;
+}
+
+
+@media only screen and (max-width: 1024px){
+
+  .data1{
+    margin-left: 0%;
+    }
+  
+  }
+
+  @media only screen and (max-width: 768px){
+
+    .us{
+      margin-left: -1%;
+      }
+    .dow{
+      margin-left: 90.5%;
+    }
+    
+    }

@@ -1,0 +1,286 @@
+<!-- Begin page -->
+<div id="wrapper" class="rw">
+  <div class="content-page">
+      <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid"><br>
+              <div class="row">
+                   
+                    <div class="col-sm-6">
+                      
+                      <ng-container *ngIf="hide">
+                        <div class="card-box">
+                          <!-- title-->
+                          <h4 class="mt-0 text-center">Sign In</h4>
+                          <p class="text-muted mb-4 text-center">Enter your user name and password to access account.</p>
+                          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            
+                            <h6 class="text-danger text-sm-center">{{msg}}</h6>
+                            <h6 class="text-danger text-sm-center">{{msg1}}</h6>
+  
+                            <div class="form-group">
+                              <label>User Name</label>
+                              <input type="text" class="form-control" formControlName="username" required [(ngModel)]="credentials.username" placeholder="enter your username">
+                            <span class="error" *ngIf="username.invalid && username.touched">Username is required</span>
+                            </div>
+                            <div class="form-group">
+                              <a href="javascript: void(0" class="text-muted float-right" (click)="forgot()"><small>Forgot your password?</small></a>
+                              <label>Password</label>
+                              <input type="password" class="form-control" formControlName="password" required [(ngModel)]="credentials.password" placeholder="enter your password">
+                              <span class="error" *ngIf="password.invalid && password.touched">Password is required</span>
+                              
+                            </div>
+                            <div class="form-group mb-3">
+                              <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="checkbox-signin">
+                                  <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                              </div>
+                            </div>
+
+                            <div class="form-group mb-0 text-center">
+                              <button class="btn btn-primary btn-block" type="submit">Log In </button>
+                            </div>
+                          </form>
+                          <!-- Footer-->
+                          <footer class="text-center">
+                            <p class="text-muted mt-1">Don't have an account? <a href="javascript: void(0" (click)="toggle()" class="text-muted ml-1"><b>Sign Up</b></a></p>
+                          </footer>
+                        </div>
+                      </ng-container>
+
+                      <ng-container *ngIf="show">
+                        <div class="card-box">
+
+                          <h4 class="text-center">Sign Up</h4>
+                          <p class="text-muted text-center mb-4 mt-3">Don't have an account? Create your account, it takes less than a minute</p>
+                          <h6 class="text-danger text-sm-center">{{emailexists}}</h6>
+                          
+                          <form [formGroup]="singupForm" (ngSubmit)="submit()">
+                            <div class="row">
+                              
+                                <div class="col-sm-6">
+                                  
+                            <div class="form-group">
+                              <label>First Name</label>
+                              <input type="text" class="form-control" formControlName="first_name" placeholder="Enter your first name" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"> 
+                            <!-- <span class="error" *ngIf="first_Name.invalid && first_Name.touched">First name is required</span> -->
+                            <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+                              <div *ngIf="f.first_name.errors.required">First name is required</div>
+                        </div>  
+                            </div>
+                            </div>
+                            <div class="col-sm-6">
+                            <div class="form-group">
+                              <label>Last Name</label>
+                              <input type="text" class="form-control" formControlName="last_name" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors}" placeholder="Enter your last name">
+                              <!-- <span class="error" *ngIf="last_Name.invalid && last_Name.touched">Last name is required</span> -->
+                              <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                                <div *ngIf="f.last_name.errors.required">Last name is required</div>
+                          </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input type="text" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors}" placeholder="enter your email">
+                            <!-- <span class="error" *ngIf="email.invalid && email.touched">Email is required</span> -->
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Email is required</div>
+                        </div>
+                          </div>
+                            </div>
+                            <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="label" for="heard">Job Title<small>*</small></label>
+                                <select  formControlName="job_title" class="form-control input" name="job_title" [ngClass]="{ 'is-invalid': submitted && f.job_title.errors}">
+                                    <option value="">--None--</option>
+                                    <option value="Sales Manager">Sales Manager</option>
+                                    <option value="Marketing / PR Manager">Marketing / PR Manager</option>                                                                  
+                                    <option value="Customer Service Manager">Customer Service Manager</option>
+                                    <option value="CxO / General Manager">CxO / General Manager </option>
+                                    <option value="IT Manager">IT Manager</option>
+                                    <option value="Operations Manager">Operations Manager</option>
+                                    <option value="Developer / Software Manager/ Analyst">Developer / Software Manager/ Analyst</option>
+                                    <option value="Student / Personal Interest">Student / Personal Interest</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                <div *ngIf="submitted && f.job_title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.job_title.errors.required">Job tilte is required</div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" class="form-control" formControlName="company" [ngClass]="{ 'is-invalid': submitted && f.company.errors}" placeholder="enter your company name">
+                                <!-- <span class="error" *ngIf="company.invalid && company.touched">Company is required</span> -->
+                                <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+                                  <div *ngIf="f.company.errors.required">Company is required</div>
+                            </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="label" for="heard">Employees<small>*</small></label>
+                                <select  formControlName="employees" class="form-control input" name="employees" [ngClass]="{ 'is-invalid': submitted && f.employees.errors}">
+                                    <option value="">Employees</option>
+                                    <option value="1 - 15 employees">1 - 15 employees</option>
+                                    <option value="15 - 100 employees">15 - 100 employees</option>                                                                  
+                                    <option value="101 - 500 employees">101 - 500 employees</option>
+                                    <option value="501 - 1500 employees">501 - 1500 employees </option>
+                                    <option value="1501+ employees">1501+ employees</option>
+                                    
+                                </select>
+                                <div *ngIf="submitted && f.employees.errors" class="invalid-feedback">
+                                  <div *ngIf="f.employees.errors.required">Employees is required</div>
+                            </div>
+    
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-6">
+                            <div class="form-group">
+                              <label>Phone</label>
+                              <input type="text" class="form-control" formControlName="phone_number" placeholder="Enter your phone number" [ngClass]="{ 'is-invalid': submitted && f.phone_number.errors}">
+                            <!-- <span class="error" *ngIf="phone_Number.invalid && phone_Number.touched">Phone number is required</span> -->
+                            <div *ngIf="submitted && f.phone_number.errors" class="invalid-feedback">
+                              <div *ngIf="f.phone_number.errors.required">Phone number is required</div>
+                        </div>
+                          </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label class="label" for="heard">Country<small>*</small></label>
+                                  <select  formControlName="country" class="form-control input" name="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors}">
+                                    <option value="">country...</option>
+                                    <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                                  </select>
+                                  <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                    <div *ngIf="f.country.errors.required">Country is required</div>
+                                  </div>
+  
+                              </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Password</label>
+                                  <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors}" placeholder="Enter your password">
+                                  <!-- <span class="error" *ngIf="phone_Number.invalid && phone_Number.touched">Phone number is required</span> -->
+                                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Username</label>
+                                  <input type="text" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors}" placeholder="Enter your username">
+                                  <!-- <span class="error" *ngIf="last_Name.invalid && last_Name.touched">Last name is required</span> -->
+                                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required">Username is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group mb-0 text-center">
+                              <button class="btn btn-primary btn-block" type="submit">Log In </button>
+                            </div>  
+                        </form>
+                        <!-- Footer-->
+                        <footer class="text-center">
+                          <p class="text-muted mt-1">Already have account? <a href="javascript: void(0" (click)="toggle()" class="text-muted ml-1"><b>Sign In</b></a></p>
+                        </footer>
+                        </div>
+                      </ng-container>
+                  <ng-container *ngIf="showForgot">
+                    <div class="card-box">
+                      
+                      <h4 class="text-center">Send OTP</h4>
+                      <p class="text-muted mb-4 text-center">Enter your email address and we'll send you an email with OTP to reset your password.</p>
+                      <form [formGroup]="forgotForm" (ngSubmit)="onForgot()">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" formControlName="email" required [(ngModel)]="forgotPass.email" placeholder="enter your email">
+                          <span class="error" *ngIf="email.invalid && email.touched">Email Id is required</span>
+                        </div>
+                        
+                        <div class="form-group mb-0 text-center">
+                          <button class="btn btn-primary btn-block" type="submit">Send OTP</button>
+                        </div>
+                      </form>
+                      <!-- Footer-->
+                      <footer class="text-center">
+                        <p class="text-muted mt-1">Back to <a href="javascript: void(0" (click)="forgot()" class="text-muted ml-1"><b>Log in</b></a></p>
+                      </footer>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="showOtp">
+                    <div class="card-box">
+                      
+                      <h4 class="text-center">Verify OTP</h4>
+                      <h6 class="text-sm-center p-1 mb-1 bg-info text-dark">We Have Sent OTP to your Email..</h6>
+                      <p class="text-dark mb-4 text-center">Enter sent OTP to verify.</p>
+                      <form [formGroup]="otpForm" (ngSubmit)="sentotp()">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" formControlName="email" required [(ngModel)]="forgotPass.email" placeholder="enter your email">
+                          <span class="error" *ngIf="email.invalid && email.touched">Email Id is required</span>
+                        </div>
+                        <div class="form-group">
+                          <label>Otp</label>
+                          <input type="text" class="form-control" formControlName="userotp" required [(ngModel)]="forgotPass.userotp" placeholder="enter your otp">
+                          <span class="error" *ngIf="userotp.invalid && userotp.touched">Otp is required</span>
+                        </div>
+                        
+                        <div class="form-group mb-0 text-center">
+                          <button class="btn btn-primary btn-block" type="submit">Checked OTP</button>
+                        </div>
+                      </form>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="showPassword">
+                    <div class="card-box">
+                      
+                      <h4 class="text-center">New Password</h4>
+                      <h6 class="text-sm-center p-1 mb-1 bg-info text-dark">Your OTP successfully verified..!</h6>
+                      <p class="text-muted mb-4 text-center">Enter your new password to change.</p>
+
+                      <form [formGroup]="passwordFrom" (ngSubmit)="sentpass()">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" formControlName="email" required [(ngModel)]="forgotPass.email" placeholder="enter your email">
+                          <span class="error" *ngIf="email.invalid && email.touched">Email Id is required</span>
+                        </div>
+                        <div class="form-group">
+                          <label>New Password</label>
+                          <input type="text" class="form-control" formControlName="password" required [(ngModel)]="forgotPass.password" placeholder="enter your otp">
+                        </div>
+                        
+                        <div class="form-group mb-0 text-center">
+                          <button class="btn btn-primary btn-block" type="submit">Submit Password </button>
+                        </div>
+                      </form>
+                    </div>
+                  </ng-container>
+                    </div>
+                    <div class="col-sm-6">
+                      <ng-container >
+                        <div class="demo">
+                        <div class="container mt-1">
+                            <div class="row">
+                              <div class="col text-center">
+                                <img src="assets/images/what-is-crm.jpg" alt="" class="img-fluid data">
+                                <!-- <h4 class="text-primary">Please select any data from the list</h4> -->
+                              </div>
+                            </div>
+                        </div>
+                        </div>
+                    </ng-container>
+                      
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+</div>

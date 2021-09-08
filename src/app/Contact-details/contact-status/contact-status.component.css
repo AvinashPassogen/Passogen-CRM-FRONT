@@ -1,0 +1,346 @@
+.input-form{
+  position: relative;
+  border:none;
+  border-color: transparent;
+  outline: none; 
+  border-bottom: 1px solid #CCC;
+  color: #555;
+  width: 300px; 
+}
+.expl2{
+  height: 10%;
+}
+.icon{
+  text-align: right;
+  margin-right:0%;
+  margin-top: -3%;
+  }
+.aa{
+  height: 350px;
+}
+.exp2{
+  height: 12%;
+}
+.lei{
+  margin-top: -1%;
+}
+.rw{
+  font-family: "Open Sans", sans-serif;
+}
+.form{
+  font-family: "Open Sans", sans-serif;
+}
+.button{
+  border-radius: 5px;
+  margin-top: 10px;    
+}
+.edf{
+  margin-top: -1%;
+}
+.content-page {
+margin-left: 40px;
+margin-right: 5px;
+overflow: hidden;
+padding: 0 15px 65px 15px;
+min-height: 80vh;
+margin-top: 100px;
+}
+
+.card-box-2 {
+background-color: #fff;
+padding: 1.5rem;
+box-shadow: 0 0.75rem 6rem rgba(56,65,74,.03);
+margin-bottom: 24px;
+border-radius: .25rem;
+}
+fieldset 
+{
+  border: 1px solid #ddd !important;
+  margin: 0;
+  padding: 10px;       
+  position: relative;
+  border-radius:4px;
+  background-color:#f5f5f5;
+  padding-left:10px!important;
+}	
+
+  legend
+  {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom: 0px; 
+    width: 8%; 
+    border: 1px solid #ddd;
+    border-radius: 4px; 
+    padding: 5px 5px 5px 10px; 
+    background-color: #ffffff;
+  }
+
+label{
+  font-size: small;
+  font-family: "Open Sans", sans-serif;
+}
+
+#btn{
+position: relative;
+left:72%;
+}
+
+#b1{
+margin-left: 10px;
+}
+
+#b2{
+margin-left: 14px;
+}
+.back1{
+  background-color: #4176e7;
+}
+ .fcolor{
+  color: white;
+}
+#E2{
+margin-left:340px; 
+}
+
+.input-form{
+  position: relative;
+  border:none;
+  border-color: transparent;
+  outline: none; 
+  border-bottom: 1px solid #CCC;
+  color: #555;
+  width: 300px; 
+}
+
+
+.button{
+  border-radius: 5px;
+  margin-top: 10px;    
+}
+
+.content-page {
+margin-left: 40px;
+margin-right: 5px;
+overflow: hidden;
+padding: 0 15px 65px 15px;
+min-height: 80vh;
+margin-top: 100px;
+}
+
+.card-box-2 {
+background-color: #fff;
+padding: 1.5rem;
+box-shadow: 0 0.75rem 6rem rgba(56,65,74,.03);
+margin-bottom: 24px;
+border-radius: .25rem;
+}
+
+#btn{
+position: relative;
+left:72%;
+}
+
+#b1{
+margin-left: 10px;
+}
+
+#b2{
+margin-left: 14px;
+}
+
+#E2{
+margin-left:340px; 
+}
+
+.icon{
+text-align: right;
+margin-right:-0%;
+}
+
+.le{
+ margin-left: 2%;
+}
+.sal{
+ margin-left: 1.2%;
+
+}
+.fir{
+ margin-right: -4%;
+ margin-left: -6.0%;
+}
+.head{
+ margin-top: -1.4%;
+ margin-left: -2.4%;
+margin-right: -2.4%;
+}
+.modal-dialog {
+  max-width: 800px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 800px;
+}
+.modal-body{
+  height: 650px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+
+.contacts{
+  height: 400px;
+}
+#b1{
+margin-left: 10px;
+}
+
+#b2{
+margin-left: 14px;
+}
+
+@media only screen and (max-device-width : 1024px)    {
+  .btn1{
+      left: 19.3%;
+  }
+  .del{
+    left: 11.3%;
+}
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 600px;
+}
+.modal-body{
+  height: 350px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.divv{
+  margin-top: -2%;
+}
+.icon{
+  margin-top: -4%;
+}
+}
+
+
+@media only screen and (max-device-width : 1440px)    {
+  .btn1{
+      left: 19.3%;
+  }
+  .del{
+    left: 11.3%;
+}
+.modal-dialog {
+  max-width: 700px;
+  margin: 1.75rem auto;
+}
+.modal-size{
+  max-width: 700px;
+}
+.modal-body{
+  height: 550px;
+  overflow: hidden;
+}
+
+ .modal-body:hover{
+    overflow-y: auto;
+} 
+.divv{
+  margin-top: -1%;
+}
+.icon{
+  margin-top: -3%;
+}
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 1200px)  {
+  .btn1{
+      left: 26.5%; 
+  }
+  .del{
+    left: 16.3%;
+}
+.fir{
+  margin-right: 4%;
+  margin-left: -6%;
+}
+.last{
+  margin-left: -16%;
+}
+
+}
+ 
+/* Tablet Styles */
+@media only screen and (max-width: 768px) {
+  .btn1{
+      left: 12%; 
+  }
+  .del{
+    left: 9%;
+  padding: 0px;
+  }
+  .fir{  
+    margin-left: -4%;
+  }
+  .last{
+    margin-left: -4%;
+  }
+  .icon{
+    text-align: right;
+    margin-right:0%;
+    margin-top: -7%;
+    }
+    .exp2{
+      height: 13%;
+    }
+    .modal-dialog {
+      max-width: 550px;
+      margin: 1.75rem auto;
+    }
+    .modal-size{
+      max-width: 550px;
+    }
+    .modal-body{
+      height: 400px;
+      overflow: hidden;
+    }
+    
+     .modal-body:hover{
+        overflow-y: auto;
+    } 
+    .icon{
+      margin-top: -5%;
+    }
+    .edf{
+      margin-top: -2%;
+    }
+}
+/* Mobile Styles */
+@media screen and (max-width: 320px) {
+  .btn1{
+      left: 0.1%;
+  }
+  .bt2{
+    width: 42%;
+  }
+  .fir{ 
+    margin-left: -1%;
+  }
+  .last{
+    margin-left: -1%;
+  }
+  .del{
+    left: 5%;
+    margin-top: 2%;
+  }
+}

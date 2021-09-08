@@ -1,0 +1,606 @@
+<!-- Begin page -->
+<div id="wrapper" class="rw">
+  
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid"><br>
+                <div class="row">
+                        <div class="col-12">
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-lg-12 order-lg-1 order-1">
+                            <div class="card-box expl2">
+                                
+                                <h4 class="header-title bg-light mb-1">Account</h4>
+                                    <form [formGroup]="editForm">
+                                        
+                                        <div class="row ">
+                                            <div class="col-sm-7">
+                                                <h4 class="f1"><input type="text" matInput formControlName="name" name="name"
+                                                    [(ngModel)]="selectedPolicy.name"></h4>
+                                            </div>
+                                            <div class="col-sm-2 btn1">
+                                                <button  class="btn d-flex align-items-center bt2 back1" data-toggle="modal" data-target="#modal"><i class="mdi mdi-square-edit-outline mr-1 fcolor"></i><span class="fcolor">Edit</span></button>
+                                            </div>
+                                            <div class="col-sm-2 del">
+                                                <button class="btn  d-flex align-items-center back1" (click)="deleteAccount(editForm.value)"><i class="mdi mdi-delete mr-1 fcolor"></i><span class="fcolor">Delete</span></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                
+                            </div>
+
+                            <div class="card-box exp">
+                                <h4 class="header-title bg-light">Account Information</h4>
+                                <form [formGroup]="editForm">
+                                    <div class="form-group form-row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                
+                                                <mat-form-field class="col-sm-3">
+                                                    <h5 class="f1">
+                                                            <label class="text-muted font-13 mb-0 text-truncate">Phone Number</label>
+                                                            <input matInput formControlName="phone_Number" name="phone_Number" [(ngModel)]="selectedPolicy.phone_Number"
+                                                                parsley-type="phone_Number">
+                                                    </h5>
+                                                </mat-form-field>
+                                                
+                                            
+                                                <mat-form-field class="col-sm-3">
+                                                    <h5 class="f1">
+                                                            <label class="text-muted font-13 mb-0 text-truncate">Website</label>
+                                                            <input type="url" matInput formControlName="website" name="website" [(ngModel)]="selectedPolicy.website">
+                                                                                                                                
+                                                    </h5>
+                                                </mat-form-field>
+                                               
+                                                
+                                                <mat-form-field class="col-sm-3">
+                                                    <h5 class="f1">
+                                                            <label class="text-muted font-13 mb-0 text-truncate">Type</label>
+                                                            <input matInput formControlName="type" name="type" [(ngModel)]="selectedPolicy.type"
+                                                                parsley-type="type">
+                                                    </h5>
+                                                </mat-form-field >
+                                                
+                                                
+                                                <mat-form-field class="col-sm-3"> 
+                                                    <h5 class="f1">
+                                                            <label class="text-muted font-13 mb-0 text-truncate">Address</label>
+                                                            <input matInput formControlName="address" name="address" [(ngModel)]="selectedPolicy.address"
+                                                                parsley-type="address">
+                                                    </h5>
+                                                </mat-form-field>
+                                               
+                                                <div class="icon">
+                                                 
+                                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#mod"
+                                                    class="action-icon">
+                                                    <i class="mdi mdi-square-edit-outline col-lg-12" ></i></a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-box">            
+                                <ul class="nav nav-tabs nav-bordered">
+                                    <li class="nav-item">
+                                        <a href="#home-b1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            Log a Call
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#profile-b1" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                            New Task
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#messages-b1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            Details
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="home-b1">
+                                        <div class="card-box exp2 k">
+                                            <form [formGroup]="editForm" class="edf">
+                                                <fieldset>
+                                                    <div class="form-group form-row">
+                                                        <div class="col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label class="label" for="heard">Subject</label>
+                                                                        <select matInput class="form-control input" formControlName="subject"
+                                                                            name="subject" required="">
+                                                                            <option value="">--None--</option>
+                                                                            <option value="Call">Call</option>
+                                                                            <option value="Send Letter">Send Letter</option>
+                                                                            <option value="Send Quote">Send Quote</option>
+                                                                            <option value="Other">Other</option>
+                                                                            
+                                                                        </select>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                
+                                                            </div>
+                                                            
+                                                            <div class="row">
+                                                            
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Comments</label>
+                                                                        <textarea type="text" formControlName="comments" name="comments" class="form-control input" placeholder="Comment"></textarea>      
+
+                                                                    </div>
+                                                                </div>
+                    
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label"> Name<small class="req">*</small></label>
+                                                                        <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" required="true" name="name" class="form-control input" required
+                                                                            placeholder="Type something"/>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Related To<small class="req">*</small></label>
+                                                                        <input type="text" formControlName="middle_Name" name="middle_Name" class="form-control input" 
+                                                                            placeholder="Type something"/>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 btn2">
+                                                                
+                                                                <button class="btn align-items-center note-link bt2 back1"   (click)="newTast()" ><span
+                                                                    class="fcolor">Save</span></button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane show active" id="profile-b1">
+                                        <div class="card-box exp2 k">                        
+                                            <form [formGroup]="editForm" class="edf">
+                                                <fieldset>
+                                                    <div class="form-group form-row">
+                                                        <div class="col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label class="label" for="heard">Subject</label>
+                                                                        <select matInput class="form-control input" formControlName="subject"
+                                                                            name="subject" required="">
+                                                                            <option value="">--None--</option>
+                                                                            <option value="Call">Call</option>
+                                                                            <option value="Send Letter">Send Letter</option>
+                                                                            <option value="Send Quote">Send Quote</option>
+                                                                            <option value="Other">Other</option>
+                                                                            
+                                                                        </select>
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            
+                                                                
+                                                            </div>
+                                                            <div class="row">
+                                                            
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Due Date<small class="req">*</small></label>
+                                                                        <input type="date" formControlName="date1" name="date1"
+                                                                            class="form-control input" 
+                                                                            placeholder="Type something"/>
+                                                                    
+                                                                            
+                                                                    </div>
+                    
+                                                                </div>
+                    
+                    
+                                                            
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Assigned To</label>
+                                                                        <input type="text" class="form-control input" formControlName="assigned"  name="assigned"  required
+                                                                            placeholder="Type something" />
+                                                                    </div>
+                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label"> Name<small class="req">*</small></label>
+                                                                        <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" required="true" name="name" class="form-control input" required
+                                                                            placeholder="Type something"/>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Related To<small class="req">*</small></label>
+                                                                        <input type="text" formControlName="middle_Name" name="middle_Name" class="form-control input" 
+                                                                            placeholder="Type something"/>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                    
+                                                            </div>
+                                                            <div class="col-md-2 btn2">
+                                                                
+                                                                <button class="btn align-items-center note-link bt2 back1"   (click)="newTast()" ><span
+                                                                    class="fcolor">Save</span></button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="messages-b1">
+                                        <div class="card-box exp2 k">
+                                            <form [formGroup]="editForm" class="edf">
+                                                <fieldset>
+                                                    <div class="form-group form-row">
+                                                        <div class="col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Account Name</label>
+                                                                        <input type="text" formControlName="name" [(ngModel)]="selectedPolicy.name"
+                                                                            name="name" class="form-control input" required
+                                                                            placeholder="Type something" />
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Account Owner</label>
+                                                                        <input type="text" formControlName="account_owner"
+                                                                            [(ngModel)]="selectedPolicy.account_owner" name="account_owner"
+                                                                            class="form-control input" required placeholder="Type something" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Type</label>
+                                                                        <input type="text" formControlName="type" [(ngModel)]="selectedPolicy.type"
+                                                                            name="type" class="form-control input" required
+                                                                            placeholder="Type something" />
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Parent Account</label>
+                                                                        <input type="text" formControlName="parent_account" [(ngModel)] = "selectedPolicy.parent_account"   name="parent_account" class="form-control input" 
+                                                                            placeholder="Type something"/>
+                                                                            
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Website</label>
+                                                                        <input type="text" formControlName="website" [(ngModel)]="selectedPolicy.website"
+                                                                            name="website" class="form-control input" required
+                                                                            placeholder="Type something" />
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Industry</label>
+                                                                        <input type="text" formControlName="industry"
+                                                                            [(ngModel)]="selectedPolicy.industry" name="industry"
+                                                                            class="form-control input" required placeholder="Type something" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Description</label>
+                                                                        <input type="text" formControlName="description" [(ngModel)]="selectedPolicy.description"
+                                                                            name="description" class="form-control input" required
+                                                                            placeholder="Type something" />
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Phone Number</label>
+                                                                        <input type="text" formControlName="phone_Number"
+                                                                            [(ngModel)]="selectedPolicy.phone_Number" name="phone_Number"
+                                                                            class="form-control input" required placeholder="Type something" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <label class="label">Employee</label>
+                                                                        <input type="text" formControlName="employee"
+                                                                            [(ngModel)]="selectedPolicy.employee" name="employee"
+                                                                            class="form-control input" required placeholder="Type something" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    
+                </div>
+            </div>
+        </div>                
+    </div>
+</div>    
+                    
+
+<!-- Modal -->
+<div class="modal fade aaa" id="mod" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title" id="myCenterModalLabel">Edit Accounts Information</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body p-4 modal-height1">
+                <form [formGroup]="editForm" class="form-horizontal"  class="form">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="label" for="heard">Account Name</label>
+                                        <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" name="name" class="form-control input" required
+                                >
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="label">Account Owner</label>
+                                        <input type="text" formControlName="account_owner" [(ngModel)] = "selectedPolicy.account_owner" name="name" class="form-control input" required
+                                >
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="label">Account Type</label>
+                                        <input type="text" formControlName="type" [(ngModel)] = "selectedPolicy.type" name="type" class="form-control input" required
+                                >
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="label"> Website</label>
+                                        <input type="text" formControlName="website" [(ngModel)] = "selectedPolicy.website" name="website" class="form-control input" required
+                                >
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="label">Phone Number</label>
+                                        <input type="number" formControlName="phone_Number" [(ngModel)] = "selectedPolicy.phone_Number" name="name" class="form-control input" required
+                                >
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="label">Address</label>
+                                        <input type="text-area" formControlName="address" [(ngModel)] = "selectedPolicy.address" name="address" class="form-control input" required
+                                >
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-0 button">
+                                    <div>
+                                        <button type="submit"
+                                    (click)="onClickSubmit(editForm.value)"
+                                    class="close" data-dismiss="modal"
+                                        aria-hidden="true"
+                                        class="btn btn-primary button">Update</button>
+
+                                    <button type="reset" class="close"
+                                        id="b2" data-dismiss="modal" aria-hidden="true"
+                                        class="btn btn-secondary waves-effect m-l-5 button">
+                                        Cancel
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="modal" *ngIf="selectedPolicy" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-size">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title" id="myCenterModalLabel">Update Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body p-4 modal-height">
+              
+                <form class="form-horizontal" class="form" [formGroup]="editForm">
+                    <div>
+                        <p class="header-title bg-light label textsize">Account Information</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">
+                                            Account name
+                                        </label>
+                                        <input type="text" formControlName="name" [(ngModel)] = "selectedPolicy.name" required="true" name="name" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Accont Owner</label>
+                                        <input type="text" formControlName="account_owner" required="true" [(ngModel)] = "selectedPolicy.account_owner" name="account_owner" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Website</label>
+                                        <input type="text" formControlName="website" required="true" [(ngModel)] = "selectedPolicy.website" name="website" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Phone</label>
+                                        <input type="text" formControlName="phone_Number" required="true" [(ngModel)] = "selectedPolicy.phone_Number" name="phone_Number" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Description</label>
+                                        <textarea type="text" name="description" formControlName="description" [(ngModel)] = "selectedPolicy.description" class="form-control input" placeholder="Description..."></textarea>                            
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Industry</label>
+                                        <input type="text" formControlName="industry" [(ngModel)] = "selectedPolicy.industry" required="true" name="industry" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Employees</label>
+                                        <input type="text" formControlName="employee" [(ngModel)] = "selectedPolicy.employee" required="true" name="employee" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="header-title bg-light label textsize">Address Information</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Address</label>
+                                        <input type="text" formControlName="address" [(ngModel)] = "selectedPolicy.address" required="true" name="address" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">City</label>
+                                        <input type="text" formControlName="city" [(ngModel)] = "selectedPolicy.city" required="true" name="city" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">State</label>
+                                        <input type="text" formControlName="state" [(ngModel)] = "selectedPolicy.state" required="true" name="state" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Pin Code</label>
+                                        <input type="text" formControlName="pincode" [(ngModel)] = "selectedPolicy.pincode" required="true" name="pincode" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="label">Country</label> 
+                                        <input type="text" formControlName="country" [(ngModel)] = "selectedPolicy.country" required="true" name="country" class="form-control input" required
+                                            placeholder="Type something"/>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group mb-0 button">
+                                    <div>
+                                        <button type="submit"  data-dismiss="modal" (click)="modal.dismiss()"  class="close" (click)="onClickSubmit(editForm.value)"  class="btn btn-primary waves-effect waves-light button">
+                                            Update
+                                        </button>
+                                        &nbsp;&nbsp;
+                                        <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary waves-effect m-l-5 button">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div> 
+                            </div>
+                            
+                        </div>
+                    </div>        
+                </form>
+                              
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+                            
+                            
