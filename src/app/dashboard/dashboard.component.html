@@ -1,0 +1,305 @@
+<!-- Begin page -->
+<div id="wrapper" class="rw">
+  <div class="content-page">
+      <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid "><br>
+            <!-- start page title -->
+            <div class="row">
+              <div class="col-12">
+                  
+              </div>
+            </div>     
+            <!-- end page title --> 
+            <div class="row">
+              <div class="col-md-6 col-xl-3">
+                  <div class="card bg-pattern">
+                    <div class="card-body">
+                      <a routerLink="/Account-view" routerLinkActive="active">
+                        <div class="row">
+                          <div class="col-6">
+                              <div class="avatar-sm rounded">
+                                <img _ngcontent-ylc-c45 src= "assets/images/icons/account.png" alt height="50">
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="text-right">
+                                  <h3 class="text-dark my-1"><span data-plugin="counterup">{{accCount}}</span></h3>
+                                  <p class="text-muted mb-1 text-truncate">All Accounts</p>
+                              </div>
+                          </div>
+                      </div>
+                      </a>
+                      
+                    </div> <!-- end card-box-->
+                  </div>
+              </div> <!-- end col -->
+
+              <div class="col-md-6 col-xl-3">
+                  <div class="card bg-pattern">
+                    <div class="card-body">
+                      <a routerLink="/contact-view" routerLinkActive="active">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="avatar-sm rounded">
+                                  <img _ngcontent-ylc-c45 src= "assets/images/icons/contact.png" alt height="50">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-right">
+                                    <h3 class="text-dark my-1"><span data-plugin="counterup">{{contactCount}}</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">All Contacts</p>
+                                </div>
+                            </div>
+                        </div>
+                      </a>
+                  </div> <!-- end card-box-->
+                  </div>
+              </div> <!-- end col -->
+
+              <div class="col-md-6 col-xl-3">
+                  <div class="card bg-pattern">
+                    <div class="card-body">
+                      <a routerLink="/view" routerLinkActive="active">
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="avatar-sm rounded">
+                                  <img _ngcontent-ylc-c45 src= "assets/images/icons/lead.png" alt height="50">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-right">
+                                    <h3 class="text-dark my-1"><span data-plugin="counterup">{{leadCount}}</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">All Leads</p>
+                                </div>
+                            </div>
+                        </div>
+                      </a>
+                    </div> <!-- end card-box-->
+                  </div>
+              </div> <!-- end col -->
+
+              <div class="col-md-6 col-xl-3">
+                <div class="card bg-pattern">
+                  <div class="card-body">
+                    <a routerLink="/Task-view" routerLinkActive="active">
+
+                      <div class="row">
+                          <div class="col-6">
+                              <div class="avatar-sm rounded">
+                                <img _ngcontent-ylc-c45 src= "assets/images/icons/task.png" alt height="50">
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="text-right">
+                                  <h3 class="text-dark my-1"><span data-plugin="counterup">{{taskCount}}</span></h3>
+                                  <p class="text-muted mb-1 text-truncate">All Tasks</p>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                  </div> <!-- end card-box-->
+                </div>
+              </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+            <div class="row">
+              <div class="col-lg-8 order-lg-1 order-1">
+                <div class="card">
+                  <div class="card-body">
+                    <h4>Leads of Current Month as Per Status</h4>
+                    <div class="mt-1 chartjs-chart">
+                      <canvas id="bar-chart-example"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <app-graph></app-graph>
+                
+              </div>
+              <div class="col-lg-4 order-lg-1 order-2">
+                <div class="card mb-2 search assh">
+                  <div class="card-body">
+                    <h4 class="header-title mb-1">Assistatant</h4>
+                    <p>New lead assigned to you today</p>
+                    <hr>
+                    <div *ngFor="let leads of leads" class="divv">
+                      <p class="size dropdown-item "><a data-toggle="modal" data-target="#basicExampleModal"  (click)="selectLeads(leads)" id="b1"><img _ngcontent-ylc-c45 src= "assets/images/cpl.png" alt height="35"></a>
+                        <a href="" routerLink="/lead-status/{{leads.plid}}" routerLinkActive="active">
+                        &nbsp;{{leads.salutation}}&nbsp;&nbsp;&nbsp;{{leads.first_Name}}&nbsp;&nbsp;&nbsp;{{leads.last_Name}}</a>
+                      </p>
+                      <hr class="hrt"> 
+                    </div>
+                  </div>
+                </div> <!-- end card -->
+                <div class="card mb-2 assh">
+                  <div class="card-body">
+                    <h4 class="header-title mb-3">Today's Task</h4>
+                    <hr>
+                    <div class="inbox-widget divvv" data-simplebar style="max-height: 470px;" *ngFor="let task of tasks">
+                      <div class="inbox-item inbox-height">
+                        <span class="spa" *ngIf="(task.date2 | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM')">
+                          <p class="size dropdown-item "><a href="" (click)="selectTask(task)" routerLinkActive="active" data-toggle="modal" data-target="#myModal1" >
+                            <img _ngcontent-ylc-c45 src= "assets/images/icons/task.png" alt height="35">&nbsp;{{task.subject}}</a><br>
+                            Assigned To {{task.assigned}}
+                          </p>
+                          
+                        </span>
+                        <hr class="hrt">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-2 pie">
+                  <h4 class="ml-2">Opportunities of Current Month as Per Stage</h4>
+                  <div class="chartjs-chart">
+                      <canvas id="pie-chart-example" height="300" class="mt-2"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+            
+<!-- Assistatant/lead model -->
+<div class="modal fade test"  id="basicExampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1" role="dialog">
+  <div class="modal-dialog " role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header bg-light popupheader">
+        <h4 class="modal-title" id="myCenterModalLabel">Assistant</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body" class=" border">
+        <form [formGroup]="editProfileForm" class="edf modal-height">
+            <div class="form-group form-row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                    <div class="sm-3 paddi ml-4">
+                                <div class="row demo">
+                                  <div class="col-sm-6">
+                                    <h5><label
+                                      class="text-muted font-13 mb-0 text-truncate">Company</label><input
+                                      matInput formControlName="company"
+                                      [(ngModel)]="selectedLeads.company"
+                                      name="company" parsley-type="company">
+                                    </h5>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <h5 > <label
+                                      class="text-muted font-13 mb-0 text-truncate">Title</label><input
+                                      matInput formControlName="title"
+                                      [(ngModel)]="selectedLeads.title"
+                                      name="title" parsley-type="title"> </h5>
+                                  </div>
+                                  
+                                </div>
+                                <div class="row demo">
+                                  <div class="col-sm-6">
+                                    <h5 > <label
+                                      class="text-muted font-13 mb-0 text-truncate">Mobile</label><input
+                                      matInput formControlName="mobile_Number"
+                                      [(ngModel)]="selectedLeads.mobile_Number"
+                                      name="mobile_Number" parsley-type="mobile_Number"> </h5>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <h5> <label
+                                      class="text-muted font-13 mb-0 text-truncate">Phone Number</label><input
+                                      matInput formControlName="phone_Number" name="phone_Number"
+                                      [(ngModel)]="selectedLeads.phone_Number" parsley-type="phone_Number">
+                                    </h5>
+                                  </div>
+                                </div>
+                                <div class="row demo">
+                                  <div class="col-sm-12">
+                                    <h5> <label
+                                      class="text-muted font-13 mb-0 text-truncate">Email</label><input
+                                      matInput formControlName="email" name="email"
+                                      [(ngModel)]="selectedLeads.email" parsley-type="email">
+                                    </h5>
+                                  </div>
+                                </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer bg-light">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- Task modal -->
+<div class="modal fade test1" id="myModal1" role="dialog">
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header bg-light popupheader">
+      <h4 class="modal-title" id="myCenterModalLabel">Today's Task</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    <div class="modal-body" class=" border">
+        <form [formGroup]="editForm" class="edf">
+           <div class="form-group">
+             <div class="row">
+              <div class="col-sm-6 ml-2">
+                <mat-form-field>
+                  <h5 ><label class="text-muted font-13 mb-0 text-truncate">Assinged To</label>
+                    <input matInput formControlName="assigned" name="assigned" [(ngModel)]="selectedTask.assigned"
+                        parsley-type="assigned">
+                  </h5>
+
+                </mat-form-field>
+
+              </div>
+              <div class="col-sm-5">
+                <mat-form-field>
+                  <h5>
+                    <label class="text-muted font-13 mb-0 text-truncate">Name</label>
+                    <input matInput formControlName="t_name" name="t_name" [(ngModel)]="selectedTask.t_name"
+                        parsley-type="t_name">
+                  </h5>
+
+                </mat-form-field>
+  
+              </div>
+
+             </div>
+             <div class="row">
+              <div class="col-sm-6 ml-2">
+                <mat-form-field>
+                  <h5>
+                    <label class="text-muted font-13 mb-0 text-truncate">Comments</label>
+                    <input matInput formControlName="comments" name="comments" [(ngModel)]="selectedTask.comments"
+                        parsley-type="comments">
+                  </h5>
+
+                </mat-form-field>
+
+              </div>
+              <div class="col-sm-5">
+                <mat-form-field>
+                  <h5>
+                    <label class="text-muted font-13 mb-0 text-truncate">Priority</label>
+                        <input matInput formControlName="priority" name="priority" [(ngModel)]="selectedTask.priority"
+                            parsley-type="priority">
+                  </h5>
+
+                </mat-form-field>
+  
+              </div>
+
+             </div>
+            
+           </div>
+        </form>
+    </div>
+    <div class="modal-footer bg-light">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>

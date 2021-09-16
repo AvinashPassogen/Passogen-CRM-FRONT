@@ -1,0 +1,95 @@
+.modal-dialog {
+    max-width: 800px;
+    margin: 1.75rem auto;
+}
+.modal-size{
+    max-width: 800px;
+}
+.modal-body{
+    height: 650px;
+    overflow: hidden;
+}
+.contacts:hover{
+    overflow-y: auto;
+}
+.form{
+    font-family: "Open Sans", sans-serif;
+  }
+.rw{
+    font-family: "Open Sans", sans-serif;
+  }
+.back1{
+    background-color: #4176e7;
+  }
+  .fcolor{
+    color: white;
+  }
+#b2{
+    margin-right: 10px;
+    }
+.card-box {
+    background-color: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 0.75rem 6rem rgba(56,65,74,.03);
+    margin-bottom: 24px;
+    border-radius: .25rem;
+}
+.content-page {
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+    padding: 0 15px 65px 15px;
+    min-height: 80vh;
+    margin-top: 70px;
+}
+.fade{
+    opacity: 1;
+    -webkit-transition: opacity is linear;
+    transition: opacity is linear;
+}
+#btn{
+    position: relative;
+    left:57%;
+}
+#b1{
+    margin-left: 10px;
+}
+.splitOp{
+    left: 5.8%;
+}
+#b2{
+  margin-left: 14px;
+}
+.backcolor{
+    color: green;
+}
+/* Desktop Styles */
+@media only screen and (max-width: 1440px) {
+    .splitOp{
+        left: 3.4%;
+        margin-top: -3%; 
+    }
+  }
+/* Laptop Styles */
+@media  screen and (max-device-width : 1024px) {
+    .splitOp{
+        left: 34.6%;
+        margin-top: -3.9%;
+    }
+  }
+/* Tablet Styles */
+@media screen and (max-device-width : 768px) {
+    .splitOp{
+        left: 35%;
+        margin-top: -5.5%;
+    }
+  }
+  /* Mobiles Styles */
+  @media only screen   
+  and (min-device-width : 320px)   
+  and (max-device-width : 480px)   {
+    .splitOp{
+        left:-11%;
+    }
+     
+  }
