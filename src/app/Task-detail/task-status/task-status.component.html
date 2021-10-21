@@ -20,8 +20,11 @@
                                             
                                             <div class="row">
                                                 <div class="col-sm-7 ">
-                                                    <h4>  <input matInput formControlName="subject" name="subject" [(ngModel)]="selectedPolicy.subject"
+                                                    <div class="row">
+                                                        <img class="ml-2" style="background-color: #6cca73;" _ngcontent-ylc-c45 src= "assets/images/task_120.png" alt height="30">
+                                                        <h4 class="ml-2">  <input matInput formControlName="subject" name="subject" [(ngModel)]="selectedPolicy.subject"
                                                         parsley-type="subject"></h4>
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-2 btn1">
                                                     <button class="btn  align-items-center bt2 back1" data-toggle="modal" data-target="#modal" >  <i class="mdi mdi-square-edit-outline mr-1 fcolor"></i><span class="fcolor">Edit</span></button>
@@ -194,9 +197,8 @@
                                                 <label class="label" for="heard">Status</label>
                                                     <select  class="form-control input" formControlName="status"  name="status" required="">
                                                         <option value="">--None--</option>
-                                                        <option value="Open">Open</option>
-                                                        <option value="Completed">Completed</option>
-                                                        <!-- <option value="cold">Cold</option> -->
+                                                        <option value="0">Open</option>
+                                                        <option value="1">Completed</option>
                                                     </select>
                                             </div>
                                         </div>
@@ -408,8 +410,8 @@
                                         <select class="form-control input" formControlName="status"
                                             [(ngModel)]="selectedPolicy.status" name="status" [ngClass]="{ 'is-invalid': submitted && t.status.errors }">
                                             <option value="">--None--</option>
-                                            <option value="Open">Open</option>
-                                            <option value="Completed">Completed</option>
+                                            <option value="0">Open</option>
+                                            <option value="1">Completed</option>
                                             <!-- <option value="cold">Cold</option> -->
                                         </select>
                                         <div *ngIf="submitted && t.status.errors" class="invalid-feedback">

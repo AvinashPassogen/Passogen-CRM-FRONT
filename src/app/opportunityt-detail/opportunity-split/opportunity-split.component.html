@@ -1,3 +1,4 @@
+<app-header *ngIf="loggedIn"></app-header>
 <!-- Begin page -->
 <div id="wrapper" class="rw">
     <div class="content-page">
@@ -101,10 +102,10 @@
                                             
                                             <div class="row">
                                                 <div class="col-sm-8">
-                                                    <h4> <input matInput formControlName="account_name"
+                                                    <h4> <input matInput formControlName="opportunity"
                                                         name="account_name"
-                                                        [(ngModel)]="selectedPolicy.account_name"
-                                                        parsley-type="account_name"></h4>
+                                                        [(ngModel)]="selectedPolicy.opportunity"
+                                                        parsley-type="opportunity"></h4>
                                                 </div>
                                                <div class="col-sm-2 btn1">
                                                 <button class="btn d-flex align-items-center bt2 back1" data-toggle="modal" data-target="#modal">  <i class="mdi mdi-square-edit-outline mr-1 fcolor"></i><span class="fcolor">Edit</span></button>

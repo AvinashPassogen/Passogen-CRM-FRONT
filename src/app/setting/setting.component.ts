@@ -9,7 +9,7 @@ import { User } from '../models/user';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent implements OnInit {
-
+  public loggedIn = false;
   public show: boolean = true;
   public hide: boolean=  false;
   public showprofile: boolean = false;
@@ -19,6 +19,7 @@ export class SettingComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loggedIn = this.loginService.isLoggedIn();
     this.userInfo();
   }
   

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener} from '@angular/core';
 import { LoginService } from './login.service';
 
 @Component({
@@ -9,11 +9,22 @@ import { LoginService } from './login.service';
 export class AppComponent {
   title = 'crm-website';
   public loggedIn=false;
-
-  constructor(private loginService: LoginService,){}
-
+  isRefreshed = false;
+  browserRefresh = false;
+  constructor(private loginService: LoginService,){
+    window.addEventListener('keydown', event => {
+      if (event.key == 'r' || event.key == 'F5' || event.key == 'unload' || event.key == 'reload') this.isRefreshed = true;
+  });
+  }
+  
   ngOnInit(): void {
     
     this.loggedIn=this.loginService.isLoggedIn();
   }
+  @HostListener('window:beforeunload', ['$event'])
+    onBeforeUnload(event: Event) {
+        if (!this.isRefreshed) {
+         // this.loginService.logout();
+        }
+    }
 }

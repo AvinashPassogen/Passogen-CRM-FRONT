@@ -8,6 +8,7 @@ import { OpportunityService} from '../../servies/opportunity.service';
 import { Tasks } from 'src/app/models/tasks';
 import { TaskService } from 'src/app/servies/task.service';
 import { HostListener } from '@angular/core';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-opportunity-split',
@@ -33,11 +34,12 @@ Present:boolean = true;
   public buttonName :any ='';
   opportunity = '';
   tutorials: any;
+  public hide1 = 0;
   public n2;
   public n1;
   public n;
   public status ='';
-
+  public loggedIn = false;
   selectedPolicy : Opportunity = {
     id: null,
     opportunity: null,
@@ -81,7 +83,7 @@ Present:boolean = true;
     date1:new FormControl('')
   })
   tasks: any;
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,private loginService: LoginService,
   private route: Router, private fb: FormBuilder,private modalService: NgbModal,
   private router: ActivatedRoute,private oppoService:OpportunityService, public taskService: TaskService,
 ){  this.getScreenSize();}
@@ -90,7 +92,7 @@ Present:boolean = true;
   addForm: FormGroup;
 
   ngOnInit(): void {
-
+    this.loggedIn = this.loginService.isLoggedIn();
     this.opportunities = new Opportunity();
 
     this.retrieveTutorials();
@@ -351,16 +353,24 @@ Present:boolean = true;
   }
 
   toggle(opportunity: Opportunity){
-    this.selectedPolicy=opportunity;
-    this.show=!this.show;
-    this.hide = !this.hide;
-    if(this.show)
-    {
-      this.buttonName = "";
+    if(this.hide1==0){
+      this.selectedPolicy=opportunity;
       this.changeStatus(this.editForm.value)
-    }
-    else(this.hide)
-      this.buttonName = "";
+      this.show=!this.show;
+      this.hide = !this.hide;
+      if(this.show)
+      {
+        this.buttonName = "";
+        this.changeStatus(this.editForm.value)
+      }
+      else (this.hide)
+        this.buttonName = "";
+        this.hide1=this.hide1+1;
+      }
+    else(this.hide1=1)
+    this.selectedPolicy=opportunity;
+    this.changeStatus(this.editForm.value)
+
   }
 
 

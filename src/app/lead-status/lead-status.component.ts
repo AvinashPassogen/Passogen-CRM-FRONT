@@ -13,6 +13,7 @@ import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_c
 import { TaskService } from '../servies/task.service';
 import { Tasks } from '../models/tasks';
 import { AlertService } from '../services/alert.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-lead-status',
@@ -20,7 +21,6 @@ import { AlertService } from '../services/alert.service';
   styleUrls: ['./lead-status.component.css']
 })
 export class LeadStatusComponent implements OnInit {
-
   leads: Leads;
   error: string;
   plid: number;
@@ -37,8 +37,6 @@ export class LeadStatusComponent implements OnInit {
   states: {};
   cities: {};
   tasks: Tasks = new Tasks();
-  
-
   selectedPolicy:  Leads  = { plid: null,
     salutation: null,
   first_Name: null,
@@ -118,14 +116,12 @@ export class LeadStatusComponent implements OnInit {
         parent_account:new FormControl(''),
   })
   constructor(private router: Router, private contactService: ContactsService,private alertmsg: AlertService,
-    private opportunityService: OpportunityService, private fb: FormBuilder,private taskService:TaskService,
-     private accountService: AccountService, private lead: LeadService,private apiService: ApiService, private route: ActivatedRoute) {
-
+    private opportunityService: OpportunityService, private fb: FormBuilder,private taskService:TaskService,private loginService: LoginService,
+    private accountService: AccountService, private lead: LeadService,private apiService: ApiService, private route: ActivatedRoute) {
    }
 
    addForm: FormGroup;
   ngOnInit(): void {
-    
     this.getAllCountries();
     this.changeStatus(this.editForm.value);
       this.addForm = this.fb.group({
@@ -169,8 +165,6 @@ export class LeadStatusComponent implements OnInit {
         }
         
       );
-      console.log(this.leads);
-    console.log(this.route.snapshot.params.id);
     this.lead.getLeads(this.route.snapshot.params.id).subscribe((result) => {
 
       this.editForm = new FormGroup({
@@ -546,6 +540,10 @@ public changeStatus(data)
        if(this.n1==0){
          
          document.getElementById('pills-home-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-profile-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-contact-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-nurturing-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-converted-tab').style.backgroundColor = "#3C69C9";
          ++n1;
          console.log(data['lead_Status']);
          console.log(n1);
@@ -556,6 +554,9 @@ public changeStatus(data)
         console.log(data['lead_Status']);
          document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-profile-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-contact-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-nurturing-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-converted-tab').style.backgroundColor = "#3C69C9";
         
          data['lead_Status']=++n1;
          console.log(n1,data);
@@ -568,6 +569,8 @@ public changeStatus(data)
          document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-contact-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-nurturing-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-converted-tab').style.backgroundColor = "#3C69C9";
         
          data['lead_Status']=++n1;
          console.log(n1,data);
@@ -580,6 +583,8 @@ public changeStatus(data)
          document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-nurturing-tab').style.backgroundColor = "#3C69C9";
+         document.getElementById('pills-converted-tab').style.backgroundColor = "#3C69C9";
+
         
          data['lead_Status']=++n1;
          console.log(n1,data);

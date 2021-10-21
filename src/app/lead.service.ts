@@ -23,7 +23,6 @@ export class LeadService {
   }
 
   UpdateLeads(id, data) {
-    console.log(id,data);
     return this.http.put(`${this.baseUrl}/${id}`, data);
   }
 

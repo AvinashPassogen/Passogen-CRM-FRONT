@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { AlertService } from '../services/alert.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-view-leads',
@@ -24,7 +25,7 @@ export class ViewLeadsComponent implements OnInit {
   countries: {};
   states: {};
   cities: {};
-
+public loggedIn = false;
   nleads: Leads = new Leads();
 
 
@@ -53,7 +54,7 @@ export class ViewLeadsComponent implements OnInit {
 };
   obj: number;
 
-  constructor(private formBuilder: FormBuilder,private alertmsg: AlertService,
+  constructor(private formBuilder: FormBuilder,private alertmsg: AlertService,private loginService: LoginService,
     private route:Router,private fb: FormBuilder,private modalService: NgbModal,private router:ActivatedRoute,
     private leadService:LeadService, private apiService: ApiService) {}
   
@@ -61,7 +62,7 @@ export class ViewLeadsComponent implements OnInit {
 
     ngOnInit() {
       this.getAllCountries();
-
+      this.loggedIn=this.loginService.isLoggedIn();
       this.LeadForm = this.formBuilder.group({
         salutation: [''],
         first_Name: ['', Validators.required],

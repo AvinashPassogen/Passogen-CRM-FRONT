@@ -1,3 +1,4 @@
+<app-header *ngIf="loggedIn"></app-header>
 <!-- Begin page -->
 <div id="wrapper" class="rw">
   <div class="content-page">
@@ -88,7 +89,7 @@
                       <div class="row">
                           <div class="col-6">
                               <div class="avatar-sm rounded">
-                                <img _ngcontent-ylc-c45 src= "assets/images/icons/task.png" alt height="50">
+                                <img _ngcontent-ylc-c45 src= "assets/images/icons/completed-task.png" alt height="50">
                               </div>
                           </div>
                           <div class="col-6">
@@ -111,7 +112,7 @@
                     <h4>Leads of Current Month as Per Status</h4>
                     <div class="mt-1 chartjs-chart">
                       <canvas id="bar-chart-example"></canvas>
-                    </div>
+                  </div>
                   </div>
                 </div>
                 <app-graph></app-graph>
@@ -124,7 +125,7 @@
                     <p>New lead assigned to you today</p>
                     <hr>
                     <div *ngFor="let leads of leads" class="divv">
-                      <p class="size dropdown-item "><a data-toggle="modal" data-target="#basicExampleModal"  (click)="selectLeads(leads)" id="b1"><img _ngcontent-ylc-c45 src= "assets/images/cpl.png" alt height="35"></a>
+                      <p class="size dropdown-item "><a data-toggle="modal" data-target="#basicExampleModal"  (click)="selectLeads(leads)" id="b1"><img style="background-color: #F1948A;" _ngcontent-ylc-c45 src= "assets/images/lead_ic.png" alt height="35"></a>
                         <a href="" routerLink="/lead-status/{{leads.plid}}" routerLinkActive="active">
                         &nbsp;{{leads.salutation}}&nbsp;&nbsp;&nbsp;{{leads.first_Name}}&nbsp;&nbsp;&nbsp;{{leads.last_Name}}</a>
                       </p>
@@ -132,24 +133,19 @@
                     </div>
                   </div>
                 </div> <!-- end card -->
-                <div class="card mb-2 assh">
+                <div class="card mb-2 search assh">
                   <div class="card-body">
-                    <h4 class="header-title mb-3">Today's Task</h4>
+                    <h4 class="header-title mb-1">Today's Task</h4>
                     <hr>
-                    <div class="inbox-widget divvv" data-simplebar style="max-height: 470px;" *ngFor="let task of tasks">
-                      <div class="inbox-item inbox-height">
-                        <span class="spa" *ngIf="(task.date2 | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM')">
-                          <p class="size dropdown-item "><a href="" (click)="selectTask(task)" routerLinkActive="active" data-toggle="modal" data-target="#myModal1" >
-                            <img _ngcontent-ylc-c45 src= "assets/images/icons/task.png" alt height="35">&nbsp;{{task.subject}}</a><br>
-                            Assigned To {{task.assigned}}
-                          </p>
-                          
-                        </span>
-                        <hr class="hrt">
-                      </div>
+                    <div *ngFor="let task of tasks" class="divv">
+                      <p class="size dropdown-item "><a href="" (click)="selectTask(task)" routerLinkActive="active" data-toggle="modal" data-target="#myModal1" >
+                        <img style="background-color: #6cca73;" _ngcontent-ylc-c45 src= "assets/images/task_120.png" alt height="30"></a><a href="" routerLink="/Task-status/{{task.id}}" routerLinkActive="active">&nbsp;{{task.subject}}<br>
+                        Assigned To {{task.assigned}}</a>
+                      </p>
+                      <hr class="hrt"> 
                     </div>
                   </div>
-                </div>
+                </div> <!-- end card -->
                 <div class="card mb-2 pie">
                   <h4 class="ml-2">Opportunities of Current Month as Per Stage</h4>
                   <div class="chartjs-chart">
@@ -169,8 +165,8 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header bg-light popupheader">
-        <h4 class="modal-title" id="myCenterModalLabel">Assistant</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-centered" id="myCenterModalLabel">Assistatant</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body" class=" border">
         <form [formGroup]="editProfileForm" class="edf modal-height">
@@ -227,9 +223,6 @@
             </div>
         </form>
     </div>
-    <div class="modal-footer bg-light">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
     </div>
   </div>
 </div>
@@ -239,8 +232,8 @@
   <!-- Modal content-->
   <div class="modal-content">
     <div class="modal-header bg-light popupheader">
-      <h4 class="modal-title" id="myCenterModalLabel">Today's Task</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h4 class="modal-centered" id="myCenterModalLabel">Today's Task</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     </div>
     <div class="modal-body" class=" border">
         <form [formGroup]="editForm" class="edf">
@@ -297,9 +290,6 @@
             
            </div>
         </form>
-    </div>
-    <div class="modal-footer bg-light">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
   </div>
 </div>

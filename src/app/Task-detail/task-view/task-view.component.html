@@ -1,3 +1,4 @@
+<app-header *ngIf="loggedIn"></app-header>
 <!-- Begin page -->
 <div id="wrapper" class="rw">
     <div class="content-page">
@@ -76,7 +77,6 @@
                                        
                                             <th data-toggle="true">Priority</th>
                                             
-                                            <!-- <th data-hide="phone">Contact Owner Alias</th> -->
                                             <th data-hide="phone">Action</th>
                                         </tr>
                                     </thead>
@@ -84,7 +84,7 @@
                                     <tbody>
                                         <tr *ngFor="let task of tasks">
 
-                                            <td><a routerLink="/Task-status" (click)="uptasks(task.id)"
+                                            <td><a routerLink="/Task-status/{{task.id}}" (click)="uptasks(task.id)"
                                                     routerLinkActive="active">
                                                     {{task.subject}}</a></td>
                                             <!-- <td>{{task.subject}}</td> -->
@@ -230,8 +230,8 @@
                                         <select class="form-control input" formControlName="status"
                                             [(ngModel)]="selectedPolicy.status" name="status" [ngClass]="{ 'is-invalid': submitted && t.status.errors }">
                                             <option value="">--None--</option>
-                                            <option value="Open">Open</option>
-                                            <option value="Completed">Completed</option>
+                                            <option value="0">Open</option>
+                                            <option value="1">Completed</option>
                                             <!-- <option value="cold">Cold</option> -->
                                         </select>
                                         <div *ngIf="submitted && t.status.errors" class="invalid-feedback">

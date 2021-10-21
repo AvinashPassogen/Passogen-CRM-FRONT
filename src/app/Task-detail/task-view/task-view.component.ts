@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../../servies/task.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { LoginService } from 'src/app/login.service';
 declare var $: any;
 @Component({
   selector: 'app-task-view',
@@ -15,7 +16,7 @@ declare var $: any;
 export class TaskViewComponent implements OnInit {
 
   editProfileForm: FormGroup;
-
+  public loggedIn = false;
   id: number;
   tasks:Tasks;
   task:Tasks;
@@ -35,7 +36,7 @@ export class TaskViewComponent implements OnInit {
   };
 
   constructor(private formBuilder: FormBuilder,
-    private route:Router,private alertmsg: AlertService,
+    private route:Router,private alertmsg: AlertService,private loginService: LoginService,
     private fb: FormBuilder,
     private modalService: NgbModal,
     private router:ActivatedRoute,
@@ -59,7 +60,7 @@ export class TaskViewComponent implements OnInit {
        
     }
   ngOnInit(): void {
-
+    this.loggedIn = this.loginService.isLoggedIn();
     this.tasks = new Tasks();
 
     this.reloadData();

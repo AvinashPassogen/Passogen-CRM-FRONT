@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from '../../servies/contacts.service';
 import { ApiService } from 'src/app/api.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { LoginService } from 'src/app/login.service';
 @Component({
   selector: 'app-view-contacts',
   templateUrl: './view-contacts.component.html',
@@ -21,7 +22,7 @@ export class ViewContactsComponent implements OnInit {
   countries: {};
   states: {};
   cities: {};
-
+public loggedIn = false;
   selectedPolicy: Contacts = { 
        id:null,
        salutation: null,
@@ -43,14 +44,14 @@ export class ViewContactsComponent implements OnInit {
        city: null,
        street: null
   };
-  constructor(private formBuilder: FormBuilder,private alertmsg: AlertService,
+  constructor(private formBuilder: FormBuilder,private alertmsg: AlertService,private loginService: LoginService,
     private route:Router,private fb: FormBuilder,private modalService: NgbModal,
     private router:ActivatedRoute,
     private ContactsService:ContactsService, private apiService: ApiService) { }
     addForm: FormGroup;
   ngOnInit(): void {
     this.contacts = new Contacts();
-
+    this.loggedIn = this.loginService.isLoggedIn();
     this.getAllCountries();
 
     this.reloadData();

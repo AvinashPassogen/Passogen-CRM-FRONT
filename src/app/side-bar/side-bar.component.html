@@ -754,7 +754,7 @@
     <div class="modal-dialog modal-dialog-centered modal-size">
         <div class="modal-content">
             <div class="modal-header bg-light popupheader">
-                <h4 class="modal-centered" id="myCenterModalLabel">New Tasks</h4>
+                <h4 class="modal-centered" id="myCenterModalLabel">Add New Tasks</h4>
                 <button type="button" class="close" (click)="resetForm();" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4 lead">
@@ -866,8 +866,8 @@
                                                             <select class="form-control input" formControlName="status"
                                                                 name="status" [ngClass]="{ 'is-invalid': submitted && t.status.errors && taskForm.get('status').touched}">
                                                                 <option value="">--None--</option>
-                                                                <option value="Open">Open</option>
-                                                                <option value="Completed">Completed</option>
+                                                                <option value="0">Open</option>
+                                                                <option value="1">Completed</option>
                                                             </select>
                                                             <div *ngIf="submitted && t.status.errors" class="invalid-feedback">
                                                                 <div *ngIf="t.status.errors.required && taskForm.get('status').touched">Status is required</div>

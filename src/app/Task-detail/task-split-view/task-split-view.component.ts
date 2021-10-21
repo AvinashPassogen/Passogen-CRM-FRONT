@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../../servies/task.service';
 import { FormControl,FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-task-split-view',
@@ -21,7 +22,8 @@ export class TaskSplitViewComponent implements OnInit {
   public show: boolean=false;
   public hide: boolean=true;
   public buttonName :any ='';
-
+  public hide1=0;
+  public loggedIn = false;
   tutorials: any;
  
   subject = '';
@@ -52,23 +54,18 @@ export class TaskSplitViewComponent implements OnInit {
     time1: new FormControl(''),
 
   })
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,private loginService: LoginService,
   private route: Router, 
   private fb: FormBuilder,
   private modalService: NgbModal,
   private router: ActivatedRoute,
   private taskService: TaskService)
   { 
-  // { this.taskService.listen().subscribe((m: any)=>{
-  //  console.log(m);
-  //  this.ngOnInit();
-
-  // })
   }
   addForm: FormGroup;
 
   ngOnInit() {
-
+    this.loggedIn = this.loginService.isLoggedIn();
     this.tasks = new Tasks();
     
         this.retrieveTutorials();
@@ -205,14 +202,21 @@ onSubmit() {
   }
 
   toggle(tasks:Tasks){
+    if(this.hide1==0){
+      this.selectedPolicy=tasks;
+      this.show=!this.show;
+      this.hide=!this.hide;
+      if(this.show)
+        this.buttonName = "";
+      else(this.hide)
+        this.buttonName = "";
+        this.hide1=this.hide1+1;
+    }
+    else(this.hide1==1)
     this.selectedPolicy=tasks;
-    this.show=!this.show;
-    this.hide=!this.hide;
-    if(this.show)
-      this.buttonName = "";
-    else(this.hide)
-      this.buttonName = "";
+
   }
+
   deleteTasks(id: number) {
     this.taskService.deletetasks(id)
     .subscribe(

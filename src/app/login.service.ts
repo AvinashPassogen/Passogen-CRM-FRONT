@@ -15,14 +15,9 @@ export class LoginService {
   constructor(private http: HttpClient,public router: Router, private alertmsg: AlertService,) { }
 
 generateToken(credentials: any){
-  return this.http.post(`${this.baseUrl}/token`, credentials);  
-  this.loginMsg();
+  return this.http.post(`${this.baseUrl}/token`, credentials);
+  
 }
-
-public loginUserFromRemote(user: User):Observable<any>{
-  return this.http.post<any>("http://localhost:8080/login",user)
-}
-
   createUser(user: any): Observable<Object> {  
     console.log(user);  
     return this.http.post(`${this.baseUrl}/register`, user);
@@ -42,6 +37,19 @@ public loginUserFromRemote(user: User):Observable<any>{
     else
     {
       return true;
+    }
+  }
+
+  isLoggedOut()
+  {
+    let token=localStorage.getItem("token");
+    if(token==undefined || token==='' ||  token==null)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
     }
   }
 

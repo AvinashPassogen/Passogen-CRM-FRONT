@@ -12,7 +12,6 @@ import { TaskStatusComponent } from './Task-detail/task-status/task-status.compo
 import { ViewAccountsComponent } from './Account-detail/view-accounts/view-accounts.component';
 import { AccountStatusComponent } from './Account-detail/account-status/account-status.component';
 import { AccountSplitViewComponent } from './Account-detail/account-split-view/account-split-view.component';
-
 import { ViewOpportunityComponent } from './opportunityt-detail/view-opportunity/view-opportunity.component';
 import { OpportunitySplitComponent } from './opportunityt-detail/opportunity-split/opportunity-split.component';
 import { OppoStatusComponent } from './opportunityt-detail/oppo-status/oppo-status.component';
@@ -24,16 +23,19 @@ import { SettingComponent } from './setting/setting.component';
 import { LogoutComponent } from './logout/logout.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { GraphComponent } from './graph/graph.component';
+import { LoginGuard } from './services/login-guard';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
     { path: 'setting', component: SettingComponent, canActivate:[AuthGuard] },
+
     { path: 'view', component: ViewLeadsComponent, canActivate:[AuthGuard] },
     { path: 'view/:id', component: ViewLeadsComponent, canActivate:[AuthGuard] },
     { path: 'split',component: SplitViewComponent, canActivate:[AuthGuard]},
     { path: 'lead-status',component: LeadStatusComponent, canActivate:[AuthGuard]},
     { path: 'lead-status/:id',component: LeadStatusComponent, canActivate:[AuthGuard]},
     { path: 'split/:id', component:SplitViewComponent, canActivate:[AuthGuard]},
+
     { path: 'contact-view', component: ViewContactsComponent,canActivate:[AuthGuard]},
     { path: 'contact/:id', component: ViewContactsComponent,canActivate:[AuthGuard]},
     { path: 'contact-split-view', component: ContactSplitViewComponent,canActivate:[AuthGuard]},
@@ -55,24 +57,20 @@ const routes: Routes = [
     { path: 'Account-status', component: AccountStatusComponent ,canActivate:[AuthGuard]},
     { path: 'Account-status/:id', component: AccountStatusComponent,canActivate:[AuthGuard] },
 
-
     { path: 'Opportunity-view', component: ViewOpportunityComponent,canActivate:[AuthGuard]},
     { path: 'Opportunity-view/:id', component: ViewOpportunityComponent,canActivate:[AuthGuard]},
-    
     { path: 'oppo-Split-view', component: OpportunitySplitComponent,canActivate:[AuthGuard]},
     { path: 'oppo-split/:id', component: OpportunitySplitComponent,canActivate:[AuthGuard]},
-
-     
     { path: 'oppoStatus', component: OppoStatusComponent,canActivate:[AuthGuard]},
     { path: 'oppoStatus/:id', component: OppoStatusComponent,canActivate:[AuthGuard]},
 
-    { path: '', component: LoginComponent },
+    { path: '', component: LoginComponent, canActivate:[LoginGuard]},
   
     { path: 'notifiation-view', component: NotificationComponent,canActivate:[AuthGuard]},
     { path: 'notification', component:NotificationComponent,canActivate:[AuthGuard] },
     { path: 'sidebar', component: SideBarComponent, canActivate:[AuthGuard] },
     { path: 'graph', component: GraphComponent, canActivate:[AuthGuard] },
-    { path: 'logout', component: LogoutComponent },
+    { path: 'logout', component: LogoutComponent, canActivate:[LoginGuard]},
 
 ];
 

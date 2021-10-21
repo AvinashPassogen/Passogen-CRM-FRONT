@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from '../../servies/contacts.service';
 import { TaskService } from 'src/app/servies/task.service';
 import { Tasks } from 'src/app/models/tasks';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-contact-split-view',
@@ -21,9 +22,11 @@ export class ContactSplitViewComponent implements OnInit {
   id: number;
   tutorials: any;
  account = '';
+ public loggedIn = false;
   public show: boolean = false;
   public hide: boolean = true;
   public buttonName: any = '';
+  public hide1 = 0;
   selectedPolicy: Contacts = {
     id: null,
     salutation: null,
@@ -70,7 +73,7 @@ export class ContactSplitViewComponent implements OnInit {
   })
   tasks: any;
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,private loginService: LoginService, 
     private route: Router,
     private fb: FormBuilder,
     private modalService: NgbModal,
@@ -79,6 +82,7 @@ export class ContactSplitViewComponent implements OnInit {
     private contactsService: ContactsService) { }
   addForm: FormGroup;
   ngOnInit() {
+    this.loggedIn = this.loginService.isLoggedIn();
     this.retrieveTutorials();
     this.contacts = new Contacts();
     this.reloadData();
@@ -255,16 +259,33 @@ export class ContactSplitViewComponent implements OnInit {
       error => console.log(error));
 }
 
+
   toggle(contacts: Contacts) {
-    this.selectedPolicy = contacts;
-    console.log(this.selectedPolicy.id);
-    this.show = !this.show;
-    this.hide = !this.hide;
-    if (this.show)
-      this.buttonName = "";
+    if(this.hide1==0){
+      this.selectedPolicy = contacts;
+      this.show = !this.show;
+      this.hide = !this.hide;
+      if (this.show)
+        this.buttonName = "";
       
-    else(this.hide)
-      this.buttonName = "";
+      else(this.hide)
+        this.buttonName = "";
+        this.contactsService.getContacts(this.selectedPolicy.id).subscribe(
+          (data:Contacts) => {
+            const str1 = data.salutation;
+              const str2 = data.first_Name;
+              const str3 = data.last_Name;
+              var fullname = str1.concat(' ', str2).concat(' ', str3);
+              console.log(fullname)
+              document.getElementById("work").innerHTML= fullname;
+              document.getElementById("work1").innerHTML= fullname;
+          }
+        );
+        this.hide1=this.hide1+1;
+
+      }
+    else(this.hide1==1)
+      this.selectedPolicy = contacts;
       this.contactsService.getContacts(this.selectedPolicy.id).subscribe(
         (data:Contacts) => {
           const str1 = data.salutation;
@@ -278,5 +299,4 @@ export class ContactSplitViewComponent implements OnInit {
         
       );
   }
-
 }

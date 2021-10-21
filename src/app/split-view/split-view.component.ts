@@ -12,6 +12,7 @@ import { OpportunityService } from '../servies/opportunity.service';
 import { TaskService } from '../servies/task.service';
 import { Tasks } from '../models/tasks';
 import { AlertService } from '../services/alert.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-split-view',
@@ -22,7 +23,7 @@ export class SplitViewComponent implements OnInit {
 
   addForm: FormGroup;
   isPresent:boolean = true;
-
+  public loggedIn = false;
   leads: Leads;
   tutorials: any;
   error: string;
@@ -36,7 +37,7 @@ export class SplitViewComponent implements OnInit {
   title = '';
   company = '';
   email = '';
-  //first_Name = '';
+  public hide1 = 0;
   public myColor:string = 'blue';
   public n1;
   public n;
@@ -124,16 +125,15 @@ export class SplitViewComponent implements OnInit {
 })
 
   constructor(private formBuilder: FormBuilder, private alertmsg: AlertService,
-    private route:Router,private contactService: ContactsService,
+    private route:Router,private contactService: ContactsService,private loginService: LoginService,
     private opportunityService: OpportunityService, private fb: FormBuilder,public taskService: TaskService,
-
      private accountService: AccountService,private modalService: NgbModal,private router:ActivatedRoute,
     private leadService:LeadService, private apiService: ApiService) {    
     
   }
 
   ngOnInit() {
-
+    this.loggedIn = this.loginService.isLoggedIn();
     this.getAllCountries();
     this.retrieveTutorials();
     
@@ -322,21 +322,19 @@ console.log(this.states);      }
      });
    }
 
-
-  //hide & show Button
-  toggle(leads: Leads) {
-
-    this.selectedPolicy = leads;
-    
-    this.show = !this.show;
-    this.hide = !this.hide;
-    // CHANGE THE NAME OF THE BUTTON.
-    if (this.show)
+   toggle(leads: Leads){
+    if(this.hide1==0){
+      this.selectedPolicy=leads;
+      this.changeStatus(this.editForm.value)
+      this.show=!this.show;
+      this.hide = !this.hide;
+      if(this.show)
+    {
       this.buttonName = "";
-    else (this.hide)
-      this.buttonName = "";
-      this.changeStatus(this.editForm.value);
-      
+      this.changeStatus(this.editForm.value)
+    }
+    else(this.hide)
+      this.buttonName = "";   
       this.leadService.getLeads(this.selectedPolicy.plid).subscribe(
         (data: Leads) => {
           const str1 = data.salutation;
@@ -346,7 +344,21 @@ console.log(this.states);      }
           document.getElementById("abc").innerHTML= fullname;
           document.getElementById("work").innerHTML= fullname;
         }
-        
+      );
+      this.hide1=this.hide1+1;
+    }
+    else(this.hide1=1)
+      this.selectedPolicy=leads;      
+      this.changeStatus(this.editForm.value)
+      this.leadService.getLeads(this.selectedPolicy.plid).subscribe(
+        (data: Leads) => {
+          const str1 = data.salutation;
+          const str2 = data.first_Name;
+          const str3 = data.last_Name;
+          var fullname = str1.concat(' ', str2).concat(' ', str3);
+          document.getElementById("abc").innerHTML= fullname;
+          document.getElementById("work").innerHTML= fullname;
+        }
       );
   }
 
@@ -570,81 +582,44 @@ public changeStatus(data)
       console.log(data);
       this.leadService.getLeads(this.router.snapshot.params.id).subscribe((result) => {
       this.n1=result['lead_Status'];
-     
-     
      var n1=this.n1;
-     console.log("n",this.n1);
        if(this.n1==0){
          
          document.getElementById('pills-home-tab').style.backgroundColor = "#3C69C9";
-         ++n1;
-         console.log(data['lead_Status']);
-         console.log(n1);
-         this.onClickSubmit(data);
        }
        else if(this.n1==1){
-       
-        console.log(data['lead_Status']);
          document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-profile-tab').style.backgroundColor = "#3C69C9";
-        
-         data['lead_Status']=++n1;
-         console.log(n1,data);
-         this.onClickSubmit(data);
-
        }
        else if(this.n1==2){
-      
-        console.log("gfdsfghfdsf",data['lead_Status']);
          document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-contact-tab').style.backgroundColor = "#3C69C9";
-        
-         data['lead_Status']=++n1;
-         console.log(n1,data);
-         this.onClickSubmit(data);
-
        }
       else if(this.n1==3){
-        
          document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
          document.getElementById('pills-nurturing-tab').style.backgroundColor = "#3C69C9";
-        
-         data['lead_Status']=++n1;
-         console.log(n1,data);
-         this.onClickSubmit(data);
-
       }
        else if(this.n1==4){
-        
        document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
        document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
        document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
        document.getElementById('pills-nurturing-tab').style.backgroundColor = "#689f38";
        document.getElementById('pills-converted-tab').style.backgroundColor = "#3C69C9";
-  
-       data['lead_Status']=++n1;
-       console.log(n1,data);
-       this.onClickSubmit(data);
 
-}
-else if(this.n1==5){
-        
-document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
-document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
-document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
-document.getElementById('pills-nurturing-tab').style.backgroundColor = "#689f38";
-document.getElementById('pills-converted-tab').style.backgroundColor = "#3C69C9";
+      }
+      else if(this.n1==5){
+        document.getElementById('pills-home-tab').style.backgroundColor = "#689f38";
+        document.getElementById('pills-profile-tab').style.backgroundColor = "#689f38";
+        document.getElementById('pills-contact-tab').style.backgroundColor = "#689f38";
+        document.getElementById('pills-nurturing-tab').style.backgroundColor = "#689f38";
+        document.getElementById('pills-converted-tab').style.backgroundColor = "#3C69C9";
 
-console.log(n1,data);
-this.onClickSubmit(data);
-
-}
-}
-);
-}
+      }
+    }
+  );}
 
 
 TaskMsg(){

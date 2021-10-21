@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -44,6 +43,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { GraphComponent } from './graph/graph.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { LoginGuard } from './services/login-guard';
 
 @NgModule({
   declarations: [
@@ -84,7 +84,7 @@ import { DatePipe } from '@angular/common';
     ChartsModule,ToastrModule.forRoot()
 
   ],
-  providers: [ LoginService, AuthGuard,DatePipe, { provide: HTTP_INTERCEPTORS, 
+  providers: [ LoginService, AuthGuard, LoginGuard, DatePipe, { provide: HTTP_INTERCEPTORS, 
     useClass: TokenInterceptorService, 
     multi: true} ],
   bootstrap: [AppComponent]

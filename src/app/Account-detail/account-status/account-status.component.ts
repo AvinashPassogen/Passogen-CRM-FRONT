@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../servies/account.service';
 import { TaskService } from 'src/app/servies/task.service';
 import { Tasks } from 'src/app/models/tasks';
+import { LoginService } from 'src/app/login.service';
 
 
 @Component({
@@ -15,7 +16,6 @@ import { Tasks } from 'src/app/models/tasks';
   styleUrls: ['./account-status.component.css']
 })
 export class AccountStatusComponent implements OnInit {
-
   editProfileForm: FormGroup;
   accounts:Account;
   account:Account;
@@ -39,8 +39,7 @@ export class AccountStatusComponent implements OnInit {
     country: null,
     state: null,
     city: null,
-    employee: null,
-   
+    employee: null, 
   };
 
   editForm = new FormGroup({
@@ -70,15 +69,13 @@ export class AccountStatusComponent implements OnInit {
   tasks: any;
 
   constructor (
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,private loginService: LoginService,
     private route: Router, 
     private fb: FormBuilder,
     public taskService: TaskService,
     private modalService: NgbModal,
     private router: ActivatedRoute,
     private accountService: AccountService  ){}
-  
-
     addForm: FormGroup;
 
     ngOnInit() {
@@ -126,7 +123,6 @@ export class AccountStatusComponent implements OnInit {
         employee: [''],
       });
         
-      console.log(this.router.snapshot.params.id);
       this.accountService.getAccount(this.router.snapshot.params.id).subscribe((result)=>{
   
         this.editForm = new FormGroup({
@@ -155,38 +151,6 @@ export class AccountStatusComponent implements OnInit {
   
       })
     };
-  
-    upcontacts(id: number){
-      this.route.navigate(['/contacts-status',id]);
-    }
-  
-    openMod(targetModal, accounts) {
-      this.modalService.open(targetModal, {size: 'lg',
-      centered: true,
-      backdrop: 'static'
-    });
-    this.accountService.getAccount(this.router.snapshot.params.id).subscribe((result)=>{
-      this.editProfileForm.patchValue({
-        id: accounts.id,
-        name: accounts.name,
-          account_owner: accounts.account_owner,
-          type: accounts.type,
-          website: accounts.website,
-          Parent_account: accounts.Parent_account,
-          description: accounts.description,
-          industry: accounts.industry,
-          phone_Number: accounts.phone_Number,
-          address: accounts.address,
-          pincode: accounts.pincode,
-          country: accounts.country,
-          state: accounts.state,
-          city: accounts.city,
-          employee: accounts.employee,
-      });
-    })
-  
-    }
-  
     onSubmit() {
       this.updateForm(this.id);
     }
@@ -200,7 +164,6 @@ export class AccountStatusComponent implements OnInit {
   
     createOrUpdatePolicy(id){
       this.accountService.updateAccount(id,this.selectedPolicy).subscribe(()=>{
-  
       });
     }
     newtasks(): void {
@@ -209,7 +172,7 @@ export class AccountStatusComponent implements OnInit {
     newTast()
     {
       this.taskService.createTask(this.editForm.value).subscribe(data => {
-        console.log("Submitted");})
+        })
     }
   
     selectPolicy(accounts: Account){
@@ -222,7 +185,6 @@ export class AccountStatusComponent implements OnInit {
     }
     
     onClickSubmit(data) {
-    
       this.accountService.updateAccount(data.id,data).subscribe(()=>{
       });
     }
@@ -240,10 +202,6 @@ export class AccountStatusComponent implements OnInit {
         .subscribe(
           data => {
             this.route.navigate(['/Account-view']);
-
-          },
-          error => console.log(error));
+          })
     }
-
-
 }

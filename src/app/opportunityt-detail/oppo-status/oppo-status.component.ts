@@ -10,6 +10,7 @@ import { Tasks } from 'src/app/models/tasks';
 import { Sales } from 'src/app/models/sales';
 import { DatePipe } from '@angular/common'
 import { AlertService } from 'src/app/services/alert.service';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-oppo-status',
@@ -82,14 +83,13 @@ export class OppoStatusComponent implements OnInit
 
   constructor(private formBuilder: FormBuilder,private taskService:TaskService,public datepipe: DatePipe,
   private route: Router, private fb: FormBuilder,private modalService: NgbModal,private alertmsg: AlertService,
-  private router: ActivatedRoute, private oppoService: OpportunityService
+  private router: ActivatedRoute, private oppoService: OpportunityService, private loginService: LoginService
   )
   { }
 
   addForm: FormGroup;
 
   ngOnInit(): void {
-  
     this.opportunity = new Opportunity();
     
     this.changeStatus(this.editForm.value);

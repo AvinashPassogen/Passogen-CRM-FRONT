@@ -11,21 +11,19 @@ export class TaskService {
   private baseUrl = 'http://localhost:8080/api/task'
   private basUrl = 'http://localhost:8080/api/countTask'
   url = 'http://localhost:8080/api/insertTask'
-  urlcount = 'http://localhost:8080/api/allcountTask'
-  
+  urlcount = 'http://localhost:8080/api/allcountTask' 
+  private todaysTask = 'http://localhost:8080/api/todaysTask'
   constructor(private http : HttpClient) { }
   getAllTasks(){
     return this.http.get<Tasks>(this.baseUrl).pipe();
   }
 
+  getTodaysTask(){
+    return this.http.get<Tasks>(this.todaysTask).pipe();
+  }
   deletetasks(id : number):Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`,{responseType: 'text'});
   }
-
-    // getTask(id: number): Observable<any> {
-    //   return this.http.get(`${this.baseUrl}/${id}`);
-    // }
-
   getTask(id: number){
     return this.http.get<Tasks>(this.baseUrl+'/'+id).pipe();
   }

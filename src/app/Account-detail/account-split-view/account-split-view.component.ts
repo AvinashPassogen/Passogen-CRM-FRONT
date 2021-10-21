@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../servies/account.service';
 import { TaskService } from 'src/app/servies/task.service';
 import { Tasks } from 'src/app/models/tasks';
+import { LoginService } from 'src/app/login.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { Tasks } from 'src/app/models/tasks';
   styleUrls: ['./account-split-view.component.css']
 })
 export class AccountSplitViewComponent implements OnInit {
-
+  public loggedIn=false;
   editProfileForm: FormGroup;
   accounts: Account;
   account: Account;
@@ -26,7 +27,7 @@ export class AccountSplitViewComponent implements OnInit {
   public show: boolean = false;
   public hide: boolean=  true;
   public buttonName: any = '';
-
+  public hide1 = 0;
 
   selectedPolicy : Account = {
     id: null,
@@ -44,7 +45,6 @@ export class AccountSplitViewComponent implements OnInit {
     state: null,
     city: null,
     employee: null,
-   
   };
 
   editForm = new FormGroup({
@@ -70,18 +70,17 @@ export class AccountSplitViewComponent implements OnInit {
   tasks: any;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,private loginService: LoginService,
     private route: Router,
     private fb: FormBuilder,
     private modalService: NgbModal,
     private router: ActivatedRoute,
     public taskService: TaskService,
     private accountService: AccountService) { }
-
-
   addForm: FormGroup;
-
+  
   ngOnInit() {
+    this.loggedIn=this.loginService.isLoggedIn();
     this.retrieveTutorials();
     console.log(this.router.snapshot.params.id);
     this.accountService.getAccount(this.router.snapshot.params.id).subscribe((result) => {
@@ -105,24 +104,25 @@ export class AccountSplitViewComponent implements OnInit {
         subject:new FormControl(result['subject']),
         date1:new FormControl(result['date1'])
       })
-      // console.log(result)
-
     })
   };
 
   selectPolicy(accounts: Account) {
     this.selectedPolicy = accounts;
   }
-
-
   toggle(accounts: Account) {
-    this.selectedPolicy = accounts;
-    this.show = !this.show;
-    this.hide = !this.hide;
-    if (this.show)
-      this.buttonName = "";
-    else(this.hide)
-      this.buttonName = "";
+    if(this.hide1==0){
+      this.selectedPolicy = accounts;
+      this.show = !this.show;
+      this.hide = !this.hide;
+      if (this.show)
+        this.buttonName = "";
+      else(this.hide)
+        this.buttonName = "";
+        this.hide1=this.hide1+1;
+      }
+    else(this.hide1==1)
+      this.selectedPolicy = accounts;
   }
 
   retrieveTutorials() {
@@ -157,7 +157,6 @@ export class AccountSplitViewComponent implements OnInit {
         });
   }
   deleteLeads(id: number) {
-    // alert("are you sure");
     this.accountService.deleteAccount(id)
       .subscribe(
         data => {

@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { OpportunityService } from '../../servies/opportunity.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { LoginService } from 'src/app/login.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class ViewOpportunityComponent implements OnInit {
   opportunities:Opportunity;
   opportunity:Opportunity;
   error:string;
-
+  public loggedIn = false;
   selectedPolicy : Opportunity = {
     id: null,
     opportunity: null,
@@ -47,7 +48,7 @@ export class ViewOpportunityComponent implements OnInit {
  constructor(
     private formBuilder: FormBuilder,
     private route:Router,private alertmsg: AlertService,
-    private fb: FormBuilder,
+    private fb: FormBuilder,private loginService: LoginService,
     private modalService: NgbModal,
     private router:ActivatedRoute,
     private oppoService:OpportunityService) { }
@@ -55,7 +56,7 @@ export class ViewOpportunityComponent implements OnInit {
 
     ngOnInit(): void {
       this.opportunity = new Opportunity();
-
+      this.loggedIn = this.loginService.isLoggedIn(); 
       this.reloadData();
       this.opportunityForm = this.formBuilder.group({
         opportunity: [''],

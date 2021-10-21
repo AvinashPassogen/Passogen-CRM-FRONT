@@ -1,10 +1,7 @@
 <!-- Begin page -->
 <div id="wrapper" class="rw">
-  
-
     <div class="content-page">
         <div class="content">
-
             <!-- Start Content-->
             <div class="container-fluid"><br>
                 <div class="row">
@@ -20,8 +17,11 @@
                                         
                                         <div class="row ">
                                             <div class="col-sm-7">
-                                                <h4 class="f1"><input type="text" matInput formControlName="name" name="name"
+                                                <div class="row">
+                                                    <img class="ml-2" style="background-color: #1a5394;" _ngcontent-ylc-c45 src= "assets/images/account_120.png" alt height="30">
+                                                    <h4 class="ml-1"><input type="text" matInput formControlName="name" name="name"
                                                     [(ngModel)]="selectedPolicy.name"></h4>
+                                                </div>
                                             </div>
                                             <div class="col-sm-2 btn1">
                                                 <button  class="btn d-flex align-items-center bt2 back1" data-toggle="modal" data-target="#modal"><i class="mdi mdi-square-edit-outline mr-1 fcolor"></i><span class="fcolor">Edit</span></button>

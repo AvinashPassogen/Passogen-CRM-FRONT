@@ -5,6 +5,8 @@ import { ApiService } from '../api.service';
 import { LoginService } from '../login.service';
 import { User } from '../models/user';
 import { AlertService } from '../services/alert.service';
+import { CookieService } from 'ngx-cookie-service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,7 +35,10 @@ export class LoginComponent implements OnInit {
   forgotPass: any = {};
   veriotp: any = {};
  
-  constructor( private loginService: LoginService,private alertmsg: AlertService, private apiService: ApiService,private router: Router ) { }
+  constructor( private loginService: LoginService,private alertmsg: AlertService, 
+    private apiService: ApiService,private router: Router, private cookieService: CookieService ) {
+      
+     }
 
 
   ngOnInit() {
@@ -47,6 +52,7 @@ export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
+    remember: new FormControl('')
   })
   forgotForm = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -163,33 +169,21 @@ export class LoginComponent implements OnInit {
     
     
   }
-  loginUser(){
-    this.loginService.loginUserFromRemote(this.user).subscribe(
-      data => {console.log("response received");
-      this.loginMsg();
-      this.router.navigate(['dashboard']);
-    },
-      error => {console.log("exception occured");
-      this.msg="EmailId or Password is not Valid";
-    }
-    );
-  }
+  
 
   onForgot(){
     if((this.forgotPass.email!='' )&& 
     (this.forgotPass.email!=null) ) 
     {
       this.loginService.forgotPassword(this.forgotPass).subscribe(
-        (response:any) =>{console.log(response);
+        (response:any) =>{
           this.otpContainer();
       },error=>{
-        console.log(error);
         this.emailmsg="EmailId is not Valid";
 
       }
       );
     }else{
-      console.log("Fields Are Empty");
       this.forgotmsg="Fields Are Empty";
 
     }
@@ -201,16 +195,21 @@ export class LoginComponent implements OnInit {
     {
       this.loginService.generateToken(this.credentials).subscribe(
         (response:any)=>{
-          console.log(response.token);
+          if(this.loginForm.value.remember == true){
+            this.cookieService.set('username',this.loginForm.value.username);
+            this.cookieService.set('password',this.loginForm.value.password);
+          }else{
+          }
+
           localStorage.setItem('token', response.token);
-         // this.loginService.loginUser(response.token)
           window.location.href="/dashboard"
         },
         error=>{
-          console.log(error);
           this.ErrorMsg();
         }
+        
       )
+      
     }else{
       console.log("Fields Are Empty");
       this.msg="Fields Are Empty";

@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../../servies/task.service';
 import { FormControl,FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
+import { LoginService } from 'src/app/login.service';
 declare var $: any;
 @Component({
   selector: 'app-task-status',
@@ -20,7 +21,6 @@ export class TaskStatusComponent implements OnInit {
   id:number;
   public show: boolean=false;
   public buttonName :any ='';
-
   selectedPolicy : Tasks = {
     id:null,
     subject: null,
@@ -48,21 +48,14 @@ export class TaskStatusComponent implements OnInit {
 
   })
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,private loginService: LoginService,
   private route: Router, private fb: FormBuilder,private modalService: NgbModal,
   private router: ActivatedRoute,
   private taskService: TaskService)
-  { 
-  // { this.taskService.listen().subscribe((m: any)=>{
-  //  console.log(m);
-  //  this.ngOnInit();
-
-  // })
-  }
+  {}
   submitted = false;
   get t() { return this.editForm.controls; }
   onSubmittasks() {
-   
       this.submitted = true;
       // stop here if form is invalid
       if (this.editForm.invalid) {
@@ -79,7 +72,6 @@ export class TaskStatusComponent implements OnInit {
   addForm: FormGroup;
 
   ngOnInit() {
-
     this.tasks = new Tasks();
     
         this.reloadData();
@@ -128,7 +120,6 @@ export class TaskStatusComponent implements OnInit {
           error => this.error=error
         );
 
-
         console.log(this.router.snapshot.params.id);
         this.taskService.getTask(this.router.snapshot.params.id).subscribe((result)=>{
           this.editForm = new FormGroup({
@@ -146,12 +137,6 @@ export class TaskStatusComponent implements OnInit {
     
     })
   };
-
-  uptasks(id: number,task){
-    this.ngOnInit();
-   // this.TaskService.getTask(this.router.snapshot.params.id);
-    this.route.navigate(['/tasks-status',id]);
-  }
 
   openMod(targetModal, tasks) {
     this.modalService.open(targetModal, {size: 'lg',
@@ -186,15 +171,6 @@ export class TaskStatusComponent implements OnInit {
     );
   }
 
-  // updateForm() {
-  //   this.TaskService.UpdateTasks(this.router.snapshot.params.id, this.editProfileForm.value)
-  //   .subscribe(data =>{
-  //     this.editProfileForm.reset();
-  //     this.route.navigate(['/view']);
-  //   },
-  //   error=>console.log(error));
-  // }
- 
 
   createOrUpdatePolicy(id){
     this.taskService.UpdateTasks(id,this.selectedPolicy).subscribe(()=>{

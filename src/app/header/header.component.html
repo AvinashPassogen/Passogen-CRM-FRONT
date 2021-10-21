@@ -67,7 +67,7 @@
                     <div class="dropdown-item noti-title">
                         <h5 class="m-0">
                             <span class="float-right">
-                                <a href="" class="text-dark">
+                                <a href="javascript:void(0);" (click)="ngOnDestroy()" class="text-dark">
                                     <small>Clear All</small>
                                 </a>
                             </span>Notification
@@ -75,38 +75,22 @@
                     </div>
 
                     <div class="noti-scroll" data-simplebar>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        
-                            <p class="heading"><u> Your Today's work</u></p>
-                
-                            <div *ngFor="let task of tasks">
-                
-                                <div class="notify-details name1" *ngIf="(task.date2 | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM')">
-                                    <hr class="hrt">
-                                    <h5><img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="40">&nbsp; <b><u>{{task.t_name}}</u></b></h5>
-                                    <h6>Your Today's work is <u>{{task.subject}}</u> And assigned<br>by
-                                    <u>{{task.assigned}} </u> sir and your status is <u> {{task.status}}.</u></h6>
-                
-                                </div>
-                            </div>
+
+                        <div *ngFor="let task of tasks">
+                            <!-- item-->
+                        <a href="javascript:void(0);" routerLink="/Task-status/{{task.id}}" class="dropdown-item notify-item">
+                            <div class="notify-icon">
+                                <img src= "assets/images/lead_icon2.png" class="img-fluid rounded-circle" alt="" /> </div>
+                                <p class="notify-details">{{task.t_name}}</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Your Today's work is <u class="font-weight-bold">{{task.subject}}</u> And assigned <br> by
+                                        <u class="font-weight-bold">{{task.assigned}} </u> 
+                                        sir and your status is <u class="font-weight-bold"> {{task.status}}.</u>
+                                    </small>
+                                </p>
+                            
                         </a>
-                        <hr class="hrw">
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                
-                                <p class="heading1"><u> Your Tomorrow's Work</u></p>
-                                <hr>
-                                <div *ngFor="let task of tasks">
-                
-                                <div class="notify-details name1" *ngIf=" (task.date2 | date:'EEEE d MMMM') == (tmrwDate | date:'EEEE d MMMM')">
-                                <h5><img _ngcontent-ylc-c45 src= "assets/images/lead_icon2.png" alt height="40">&nbsp;<b><u>{{task.t_name}}</u></b></h5>
-                                    <h6>Your Tomorrow's work is <u>{{task.subject}}</u> And assigned <br> by
-                                    <u>{{task.assigned}} </u> sir and your status is <u> {{task.status}}.</u></h6>
-                                    <hr>
-                
-                                </div>
-                            </div>
-                        </a>
+                        </div>
                     </div>
 
                     <!-- All-->
@@ -152,10 +136,10 @@
         <div class="logo-box">
             <a href="index.html" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="assets/images/logo2.jpg" alt="" height="22">
+                    <img src="assets/images/logo.jpg" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="assets/images/logo2.jpg" alt="" height="20">
+                    <img src="assets/images/logo.jpg" alt="" height="20">
                 </span>
             </a>
             <a href="index.html" class="logo logo-light text-center">

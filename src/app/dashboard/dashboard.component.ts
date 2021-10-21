@@ -15,6 +15,7 @@ import { Label } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
 import { Chart } from 'chart.js';
 import { AlertService } from '../services/alert.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
   barChartOptions: ChartOptions = {
     responsive: true,
   };
-
+  public loggedIn=false;
   creation_date = [];
   close_date = [];
   amount = [];
@@ -189,10 +190,9 @@ editForm = new FormGroup({
   rating: null,
   creationDate:null};
   
-  constructor(private formBuilder: FormBuilder,private fb: FormBuilder,private accountService:AccountService,
-    private taskService:TaskService,private TaskService:TaskService,private alertmsg: AlertService,
-    private router: Router,private leadService:LeadService,private http: HttpClient,
-    private ContactsService:ContactsService,private route: ActivatedRoute,private apiService: ApiService,
+  constructor(private formBuilder: FormBuilder,private loginService: LoginService,private fb: FormBuilder,private accountService:AccountService,
+    private taskService:TaskService,private alertmsg: AlertService,private leadService:LeadService,private http: HttpClient,
+    private ContactsService:ContactsService,private route: ActivatedRoute,
     
     ) { 
       this.http.get('http://localhost:8080/api/OppoAll').subscribe(data => {
@@ -279,12 +279,7 @@ editForm = new FormGroup({
           fill: false,
           lineTension:0.1,
           backgroundColor:[  
-                "#3cb371",  
-                "#0000FF",  
-                "#9966FF",  
-                "#4C4CFF",  
-                "#00FFFF",  
-                 
+                "#3cb371", "#6658dd","#fa5c7c","#800080","#4fc6e1"                 
           ],  
           data:[this.unqualified, this.new,this.working, this.nurturing, this.qualified]
         }
@@ -304,7 +299,7 @@ editForm = new FormGroup({
   addForm: FormGroup;
     submitted = false;
     ngOnInit(): void {
-      this.loginMsg();
+      
       this.taskService.getAllCount().subscribe(
         data =>{
           this.taskCount = data;
@@ -329,6 +324,8 @@ editForm = new FormGroup({
         }
       )
       
+      this.loggedIn=this.loginService.isLoggedIn();
+
       this.account = new Account();
       this.contacts = new Contacts();
       this.reloadacc();
@@ -479,7 +476,7 @@ editForm = new FormGroup({
     });
     }
     reloadTask() {
-      this.taskService.getAllTasks().subscribe(
+      this.taskService.getTodaysTask().subscribe(
         (data:Tasks)=> this.tasks=data,
         );
       }
@@ -553,5 +550,9 @@ editForm = new FormGroup({
 
     loginMsg(){
       this.alertmsg.showSuccess("Your Login Successfully !!", "Passogen Technology");
+    }
+
+    getSession(){
+      console.log(localStorage.getItem("token"))
     }
 }

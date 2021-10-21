@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from '../../servies/contacts.service';
 import { TaskService } from 'src/app/servies/task.service';
 import { Tasks } from 'src/app/models/tasks';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-contact-status',
@@ -21,6 +22,7 @@ export class ContactStatusComponent implements OnInit {
   id:number;
   public show: boolean=false;
   public buttonName :any ='';
+  public loggedIn = false;
   selectedPolicy : Contacts = {
     id:null,
     salutation: null,
@@ -71,7 +73,7 @@ export class ContactStatusComponent implements OnInit {
   ContactsService: any;
   tasks: any;
   constructor(
-  private formBuilder: FormBuilder,
+  private formBuilder: FormBuilder,private loginService: LoginService,
   private route: Router, private fb: FormBuilder,public taskService: TaskService,private modalService: NgbModal,
   private router: ActivatedRoute,
   private contactsService: ContactsService){}
@@ -124,8 +126,6 @@ export class ContactStatusComponent implements OnInit {
       city:[''],
       street:['']
     });  
-    console.log(this.router.snapshot.params.id);
-    console.log(this.router.snapshot.params.id);
     this.contactsService.getContacts(this.router.snapshot.params.id).subscribe(
       (data:Contacts) => {
         const str1 = data.salutation;
@@ -171,38 +171,6 @@ export class ContactStatusComponent implements OnInit {
       })
     })
   };
-  upcontacts(id: number){
-    this.route.navigate(['/contacts-status',id]);
-  }
-  openMod(targetModal, contacts) {
-    this.modalService.open(targetModal, {size: 'lg',
-    centered: true,
-    backdrop: 'static'
-  });
-  this.contactsService.getContacts(this.router.snapshot.params.id).subscribe((result)=>{
-    this.editProfileForm.patchValue({
-      id: contacts.id,
-      salutation: contacts.salutation,
-      first_Name: contacts.first_Name,
-      middle_Name: contacts.middle_Name,
-      last_Name: contacts.last_Name,
-      title: contacts.title,
-      phone_Number: contacts.phone_Number,
-      mobile_Number: contacts.mobile_Number,
-      email: contacts.email,
-      account_Name: contacts.account_Name,
-      reports_To: contacts.reports_To,
-      department: contacts.department,
-      fax: contacts.fax,
-      address:contacts.address,
-      pincode: contacts.pincode,
-      country: contacts.country,
-      state: contacts.state,
-      city: contacts.city,
-      street: contacts.street
-    });
-  })
-  }
   onSubmit() {
     this.updateForm(this.id);
   }

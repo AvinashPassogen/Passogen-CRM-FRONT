@@ -98,6 +98,7 @@ export class SideBarComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.loginMsg();
     
       this.loginService.getUser().subscribe(
         data => {
@@ -478,5 +479,8 @@ export class SideBarComponent implements OnInit {
        
   insertLead(){
     this.alertmsg.showSuccess("New Lead Added Successfully !!", "Passogen Technology");
+  }
+  loginMsg(){
+    this.alertmsg.showSuccess("Your Login Successfully !!", "Passogen Technology");
   }
 }

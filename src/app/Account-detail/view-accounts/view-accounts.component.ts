@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../servies/account.service';
 import { ApiService } from 'src/app/api.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { LoginService } from 'src/app/login.service';
 declare var $: any;
 @Component({
   selector: 'app-view-accounts',
@@ -21,6 +22,7 @@ export class ViewAccountsComponent implements OnInit {
   countries: {};
   states: {};
   cities: {};
+  public loggedIn = false;
   selectedPolicy:  Account  = { 
     id: null,
     name: null,
@@ -39,7 +41,7 @@ export class ViewAccountsComponent implements OnInit {
     employee: null,
 };
  constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,private loginService: LoginService,
     private route:Router,private alertmsg: AlertService,
     private fb: FormBuilder,
     private modalService: NgbModal,
@@ -48,7 +50,7 @@ export class ViewAccountsComponent implements OnInit {
     submitted = false;
     get a() { return this.editProfileForm.controls; }
     ngOnInit(): void {
-
+      this.loggedIn=this.loginService.isLoggedIn();
       this.getAllCountries();
 
       this.account = new Account();

@@ -1,3 +1,4 @@
+<app-header *ngIf="loggedIn"></app-header>
 <!-- Begin page -->
 <div id="wrapper" class="rw">
     <div class="content-page">
@@ -246,8 +247,8 @@
                                                                 [(ngModel)]="selectedPolicy.status" name="status"
                                                                 required="">
                                                                 <option value="">--None--</option>
-                                                                <option value="Open">Open</option>
-                                                                <option value="Completed">Completed</option>
+                                                                <option value="0">Open</option>
+                                                                <option value="1">Completed</option>
                                                                 <!-- <option value="cold">Cold</option> -->
                                                             </select>
                                                         </div>
@@ -461,8 +462,8 @@
                                         <select class="form-control input" formControlName="status"
                                             [(ngModel)]="selectedPolicy.status" name="status" required="">
                                             <option value="">--None--</option>
-                                            <option value="Open">Open</option>
-                                            <option value="Completed">Completed</option>
+                                            <option value="0">Open</option>
+                                            <option value="1">Completed</option>
                                             <!-- <option value="cold">Cold</option> -->
                                         </select>
                                     </div>
@@ -529,7 +530,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title" id="myCenterModalLabel">Edit Opportunity Information</h4>
+                <h4 class="modal-title" id="myCenterModalLabel">Edit Task Information</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4">
